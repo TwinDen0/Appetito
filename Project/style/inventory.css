@@ -1,0 +1,374 @@
+*{
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+img {
+    pointer-events: none;
+}
+::-webkit-scrollbar {
+    background: rgba(209, 121, 17, 0.16);
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #FFA96A;
+    border-radius: 20px;
+}
+body {
+    font-family: 'PT Sans Narrow', sans-serif;
+    margin: 0;
+    /* background-image: url(/images/inventoryImg/fon.jpg);
+    background-repeat: repeat;
+    width: 100%;
+    background-size: cover; */
+    background: url(/images/inventoryImg/fon-addr.png) repeat top center;
+    width: 100%;
+}
+.menuHeader {
+    margin: 0 auto;
+    margin-top: 0%;
+    width: 85vw;
+    height: 3vw;
+    border-bottom-left-radius: 46px;
+    border-bottom-right-radius: 46px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+.containerHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    height: 3vw;
+}
+.linkHeader {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+.linkText {
+    font-size: 1.3vw;
+    margin-top: 1%;
+    margin-left: 4%;
+    color: #5c5c5c;
+    font-family: 'PT Sans', sans-serif;
+}
+.linkImg {
+    height: 2vw;
+}
+.split {
+    width: 0.2%;
+    height: 50%;
+    background-color: #a7a7a7;
+    margin: auto;
+    margin-top: 1%;
+}
+.main {
+    width: 64%;
+    /* height: 1080px; */
+    /* border: solid 2px black; */
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.kichenText {
+    width: 46%;
+    font-size: 27px;
+}
+.chosenText {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 1%;
+}
+.kichenUtensils {
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+}
+.block {
+    padding: 10px;
+    display: flex;
+    height: 205px;
+    box-sizing: border-box;
+    overflow-x: scroll;
+}
+.kichenBlockY
+{
+    margin-right: 2%;
+}
+.kichenBlock {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    background: #EAE9E9;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0px 1.29236px 5.16943px rgba(0, 0, 0, 0.25);
+    margin-bottom: 5px;
+}
+.text {
+    font-size: 15px;
+}
+.addListBlock {
+    width: 100%;
+    margin-top: 4%;
+}
+.addNameBlock {
+    width: 100%;
+    display: flex;
+}
+.addName {
+    width: 18%;
+}
+.popularity {
+    display: flex;
+    margin-left: 40%;
+}
+.addSearchSringBlock {
+    height: 100%;
+    box-sizing: border-box;
+    margin-right: 5px;
+    display: flex;
+}
+.addSearchSring {
+    height: 20px;
+    margin-top: 4px;
+    border-radius: 15px;
+}
+.search-btn {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 3px;
+    background-image: url(/images/inventoryImg/search.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.select {
+    position: relative;
+    background: rgba(255, 171, 45, 0.68);
+    border-radius: 15px;
+    font-size: 12px;
+}
+.select select {
+    background: none;
+    border: 0;
+    padding: 10px;
+}
+.popularityText {
+    font-size: 16px;
+    width: 70%;
+}
+.iconList {
+    width: 20%;
+    height: 100%;
+    border: solid 2px black;
+    box-sizing: border-box;
+}
+.addKichenUtensils {
+    width: 100%;
+    margin-top: 3%;
+    background-color: #fff;
+}
+.addKichenBlockL {
+    margin: 10px;
+    margin-bottom: 20px;
+}
+.addKichenBlock {
+    min-width: 170px;
+    max-width: 170px;
+    height: 170px;
+    border-radius: 20px;
+    background: #EAE9E9;
+    text-align: center;
+    justify-content: center;
+    box-shadow: 0px 1.29236px 5.16943px rgba(0, 0, 0, 0.25);
+
+}
+.addBlock {
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 2%;
+    flex-wrap: wrap;
+}
+.addText {
+    font-size: 18px;
+}
+.addKichenUtensil {
+    text-align: center;
+    width: 100%;
+    margin-top: 5%;
+}
+footer {
+    width: 100%;
+    background: #c4c4c4;
+    height: 70px;
+    display: none;
+}
+.fmenuBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.fmenu {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: #e7e7e7;
+    margin-right: 50px;
+    margin-top: 14px;
+    font-size: 7px;
+    text-align: center;
+    line-height: 39px;
+}
+
+@media screen and (max-width: 1380px) {
+    .popularity {
+        margin-left: 30%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .addBlock {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .kichenText {
+        font-size: 22px;
+    }
+    .popularity {
+        margin-left: 25%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .chosenText {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .select {
+        font-size: 10px;
+    }
+    .select select {
+        padding: 10px;
+    }
+    .popularity {
+        margin-left: 15%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .kichenText {
+        font-size: 18px;
+    }
+    .popularity {
+        margin-left: 10%;
+    }
+}
+@media screen and (max-width: 800px) {
+    header {
+        display: none;
+    }
+
+    .addSearchSring {
+        width: 100px;
+        display: none;
+    }
+
+    .search-btn {
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+        margin-top: 6px;
+        background-image: url(/images/inventoryImg/search.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .kichenText {
+        font-size: 14px;
+        width: 100%;
+    }
+    .kichenBlock {
+        width: 85px;
+        height: 85px;
+        border-radius: 20px;
+        background: #EAE9E9;
+        text-align: center;
+        justify-content: center;
+    }
+    .block {
+        display: flex;
+        height: 160px;
+        box-sizing: border-box;
+        overflow-x: scroll;
+    }
+    footer {
+        width: 100%;
+        background: #c4c4c4;
+        height: 70px;
+        display: block;
+        position: fixed;
+        bottom: 0;
+    }
+}
+@media screen and (max-width: 600px) {
+    .addKichenBlock {
+        min-width: 140px;
+        height: 140px;
+    }
+    .addText {
+        font-size: 15px;
+    }
+    .select {
+        position: relative;
+        background: rgba(255, 171, 45, 0.68);
+        border-radius: 15px;
+        font-size: 8px;
+        width: 140px;
+    }
+}
+@media screen and (max-width: 550px) {
+    .chosenText {
+        font-size: 10px;
+        margin-top: 1%;
+    }
+    .addText {
+        font-size: 12px;
+    }
+    .fmenu {
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        background: #e7e7e7;
+        margin-right: 40px;
+        margin-top: 10px;
+        font-size: 6px;
+        text-align: center;
+        line-height: 33px;
+    }
+    footer {
+        height: 55px;
+        position: fixed;
+        bottom: 0;
+    }
+    .fmenuBlock {
+        margin-left: 13px;
+    }
+}
+@media screen and (max-width: 510px) {
+    .addKichenBlock {
+        min-width: 100px;
+        height: 100px;
+        border-radius: 20px;
+    }
+}

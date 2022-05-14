@@ -1,0 +1,539 @@
+body{
+    margin: 0;
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: rgb(30, 30, 30);
+}
+
+a{
+   text-decoration: none;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+.Wapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: auto;
+}
+
+#fon800 {
+    display: none;
+}
+
+/****Header**************************************************/
+
+.header {
+    display: flex;
+    position:absolute;
+    width: 20%;
+    max-height: 8%;
+    right: 0;
+    top: 0;
+    margin-top: 1%;
+    z-index: 1;
+}
+
+.lc_img {
+    width: 15%;
+    height: auto;
+    z-index: 1;
+}
+
+.nav_lc {
+    font-family: 'PT Sans Narrow', sans-serif;
+    white-space:nowrap;
+    font-size: 1.5vw;
+    padding-top: 3%;
+    font-weight: 700;
+    color: #1554F7;
+    z-index: 1;
+}
+
+
+/*Container
+**********************************************/
+.container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+}
+
+/***Разметка*************************************************************/
+
+/***INTO****************/
+.intro{
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
+    max-height: 943px;
+    z-index: 1;
+}
+
+.inf{
+    margin-top:50%;
+
+}
+
+.inf_tx{
+    text-align: center;
+    width: 26%;
+    border-bottom: 3px solid #FFC69B;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    font-size: 1vw;
+    padding-bottom: 1%;
+    color: #848484;
+}
+/****Buffer************************************/
+
+.buffer{
+    width: 100%;
+    height: 6%;
+    margin-top: 10%;
+}
+
+.timeline{
+    width: 4%;
+    height: auto;
+    margin-left: 10%;
+}
+
+/**PERIODS*********************************************/
+
+.period{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    margin-left: 0px;
+
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    margin-top: 3%;
+    margin-left: 7%;
+
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2.5vw;
+    line-height: 2;
+    white-space: nowrap;
+
+    color: #171717;
+}
+
+.text{
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5vw;
+    line-height: 1;
+    white-space: nowrap;
+
+    color: #7A7A7A;
+}
+
+.podrobnee_2{
+    width: 50%;
+    margin-top: 7%;
+
+    font-family: 'PT Sans Narrow';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2vw;
+
+    color: #FFFFFF;
+    background: #1563F7;
+    box-shadow: 2px 4px 7px -1px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+}
+
+/***R****************/
+.photo_r {
+    display: flex;
+    margin-left: 12%;
+}
+
+.photo_hero_r{
+    position: absolute;
+    margin-top: -5%;
+    margin-left: -10%;
+    width: 20%;
+
+    z-index: 10;
+}
+
+.photo_fon_r{
+    position: absolute;
+    width: 20%;
+    box-shadow: 5px 6px 13px 3px rgb(0 0 0 / 25%);
+
+    transform: rotate(10.25deg);
+}
+
+.photo_pr_r{
+    position: absolute;
+    width: 20%;
+
+    transform: rotate(10.25deg);
+    z-index: 100;
+}
+
+/***L***************/
+
+.photo_l {
+    display: flex;
+    margin-left: 12%;
+    margin-right: 22%;
+}
+
+.photo_hero_l{
+    position: absolute;
+    margin-top: -5%;
+    margin-left: 5%;
+    width: 20%;
+
+    z-index: 10;
+}
+
+.photo_fon_l{
+    position: absolute;
+    width: 20%;
+    box-shadow: 5px 6px 13px 3px rgb(0 0 0 / 25%);
+
+    transform: rotate(-8.35deg);
+}
+
+.photo_pr_l{
+    position: absolute;
+    width: 20%;
+
+    transform: rotate(-8.35deg);
+    z-index: 100;
+}
+
+/***INTRO**************************************/
+
+.text_b{
+    /* НАЧНИ СВОЁ ПУТЕШЕСТВИЕ ВО ВРЕМЕНИ! */
+
+    position: absolute;
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: bold;
+    line-height: 0.9;
+
+    margin-top: 2%;
+    margin-left: 5%;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+
+    color: #FFFFFF;
+}
+
+.text_b1{
+    font-size: 5vw;
+}
+
+.text_b2{
+    font-size: 4.37vw;
+}
+
+.text_b3{
+    font-size: 4.8vw;
+}
+
+.podrobnee{
+    font-family: 'PT Sans Narrow';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2vw;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    margin-top: 8%;
+
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.arrow{
+    width: 13%;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+/***Паралакс****/
+
+.parallax{
+    margin-top: -5%;
+    margin-left: 50%;
+}
+
+.people{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 1;
+}
+
+.portal{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 0;
+}
+
+.plant{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 0;
+}
+
+.clock{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 0;
+}
+
+.hourglass{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 0;
+}
+
+.reverse{
+    position: absolute;
+    width: 45%;
+    height: auto;
+    z-index: 0;
+}
+
+/***Отзыв**********************************/
+
+.fitback{
+    margin: 0 auto;
+    margin-top: 10%;
+
+    font-family:'PT Sans Narrow';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 4.37vw;
+
+    color: #422DD9;
+}
+
+.message {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 2%;
+}
+
+.Messform {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 100%;
+    height: 10%;
+    justify-content:space-between;
+    margin-top: 2%;
+}
+
+.fitback_form {
+    margin: 0 auto;
+    width: 100%;
+
+    background: #EFEFEF;
+    border-radius: 24px;
+    outline: none;
+    border: none;
+    
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding-left: 2%;
+    padding-right: 2%;
+
+    font-size: 1.5vw;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.str3{
+    font-family:'PT Sans Narrow';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.8vw;
+    margin-left: 1%;
+}
+
+.send {
+    width: 25%;
+    background: #1563F7;
+    border-radius: 48px;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.8vw;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.massageGB {
+    display: flex;
+    justify-items: start;
+    margin: 0 auto;
+    width: 70%;
+
+    background: #FFFFFF;
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.25);
+    border-radius: 55px;
+
+margin-top: 2%;
+
+    box-sizing: border-box;
+    padding-left: 2%;
+    padding-top: 0%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 3%;
+}
+
+.upper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text_mess {
+    display: flex;
+    flex-direction: column;
+    justify-items: space-around;
+    width: 90%;
+    font-size: 1.3vw;
+    margin-left: 2%;
+    text-align: justify;
+}
+
+.userText{
+    margin-bottom: 3%;
+}
+
+.ava {
+    background-position:center center;
+    background-size:cover;
+    border-radius:100%;
+    width: 10%;
+    height: 10%;
+    margin-top: 2%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ava:before {
+    content: "";
+    padding-top: 100%;
+    float: left;
+}
+
+.editFidback {
+    display: flex;
+}
+
+.text1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.8vw;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+
+    #fon800 {
+        display: block;
+    }
+    #fon_stand {
+        display: none;
+    }
+    .title {
+        font-size: 3.5vw;
+        margin-top: 0;
+    }
+
+    .text {
+        font-size: 2vw;
+    }
+
+    .text1 {
+        font-size: 3vw;
+    }
+
+    .fitback {
+        font-size: 4vw;
+    }
+
+    .str3 {
+        font-size: 3vw;
+    }
+
+    .fitback_form {
+        border-radius: 24px;
+    }
+
+    .massageGB {
+        border-radius: 34px;
+    }
+
+    .upper {
+        font-size: 2vw;
+    }
+
+    .userText {
+        font-size: 3vw;
+    }
+
+    .ava {
+        width: 15%;
+    }
+}

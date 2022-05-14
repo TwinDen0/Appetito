@@ -1,0 +1,249 @@
+/*Регистрация
+************************************************************/
+a{
+  color: #f77315;
+}
+a:visited{
+  color: #f77315;
+}
+a:hover {
+  color: rgb(255, 235, 213); /* Цвет активных ссылок */
+}
+
+body{
+  background:url('/images/profile/fonDesktop.png') no-repeat center center fixed;
+  -moz-background-size: 100%;
+  -webkit-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  right: 0px;
+   width:100%; /*width of your image*/
+   height:100%; /*height of your image*/
+   margin:0; /* If you want no margin */
+   padding:0; /*if your want to padding */
+}
+
+.parents{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.registration{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+
+width: 500px;
+height: 590px;
+
+background: #F8F8F8;
+box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.25);
+border-radius: 11px;
+
+}
+
+.reg_zagolovok{
+    /* Регистриция */
+
+position: absolute;
+width: 514px;
+height: 50px;
+justify-content: center;
+top: 30px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: bold;
+font-size: 30px;
+line-height: 15px;
+/* or 42% */
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #303030;
+}
+
+.col-75 {
+/* Rectangle 139 */
+
+position: absolute;
+width: 388px;
+height: 60px;
+
+background: #FFFFFF;
+border-radius: 6px;
+outline: none;
+border: none;
+
+margin-top: 120px;
+margin-left: 53px;
+text-indent: 15px;
+justify-content: center;
+}
+
+.name_reg{
+    /* Имя */
+
+position: absolute;
+width: 384px;
+height: 17px;
+margin-top: 90px;
+margin-left: 53px;
+
+font-family: 'Roboto';
+font-weight: normal;
+font-size: 16px;
+line-height: 15px;
+/* or 94% */
+display: flex;
+align-items: center;
+
+color: #000000;
+}
+
+/***кнопка*******************************************************/
+.checkbox_reg {
+  display: inline-block;
+  position: relative;
+
+  left: 90px;
+  top: 435px;
+
+  padding-left: 30px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.checkbox_reg input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkbox_reg input:checked ~ .checkbox__checkmark {
+  background-color: #ff8c10;
+}
+.checkbox_reg input:checked ~ .checkbox__checkmark:after {
+  opacity: 1;
+}
+.checkbox_reg:hover input ~ .checkbox__checkmark {
+  background-color: #eee;
+}
+.checkbox_reg:hover input:checked ~ .checkbox__checkmark {
+  background-color: #ff8c10;
+}
+ .checkbox__checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #C4C4C4;
+  transition: background-color 0.25s ease;
+  border-radius: 4px;
+}
+.checkbox__checkmark:after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 2px;
+  width: 9px;
+  height: 15px;
+  border: solid rgb(255, 255, 255);
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.checkbox__body {
+/* Регистрируясь, вы соглашаетесь*/
+
+position: absolute;
+width: 336px;
+height: 39px;
+left: 50px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 17px;
+
+
+color: #000000;
+}
+
+
+/**оформить*****************************************************/
+
+.button{
+  /* Rectangle 144 */
+
+position: absolute;
+width: 250px;
+height: 50px;
+left: 125px;
+top: 510px;
+border: 0;
+cursor: pointer;
+
+background: #ff8c10;
+box-shadow: 2px 4px 7px -1px rgba(0, 0, 0, 0.25);
+border-radius: 35px;
+
+/* ЗАРЕГИСТРИРОВАТЬСЯ */
+font-family: 'PT Sans Narrow';
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+display: flex;
+align-items: center;
+text-align: center;
+justify-content: center;
+
+color: rgb(255, 255, 255);
+}
+
+.question{
+
+position: absolute;
+width: 500px;
+text-align: center;
+top: 610px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 17px;
+
+color: #000000;
+}
+
+.error{
+  position: absolute;
+  width: 514px;
+  justify-content: center;
+  top: -40px;
+
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ff2424;
+}

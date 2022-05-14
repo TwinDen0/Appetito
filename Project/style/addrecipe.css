@@ -1,0 +1,692 @@
+*{
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+img {
+    pointer-events: none;
+}
+::-webkit-scrollbar {
+    background: rgba(209, 121, 17, 0.16);
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #FFA96A;
+    border-radius: 20px;
+}
+
+body {
+    margin: 0;
+    background: url(/images/inventoryImg/fon-addr.png) repeat top center;
+    width: 100%;
+}
+.menuHeader {
+    margin: 0 auto;
+    margin-top: 0%;
+    width: 85vw;
+    height: 3vw;
+    border-bottom-left-radius: 46px;
+    border-bottom-right-radius: 46px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+.containerHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin: auto;
+    height: 3vw;
+}
+.linkHeader {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+.linkText {
+    font-size: 1.3vw;
+    margin-top: 1%;
+    margin-left: 4%;
+    color: #5c5c5c;
+    font-family: 'PT Sans', sans-serif;
+}
+.linkImg {
+    height: 2vw;
+}
+.split {
+    width: 0.2%;
+    height: 50%;
+    background-color: #a7a7a7;
+    margin: auto;
+    margin-top: 1%;
+}
+.main {
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.38);
+}
+.addName {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 30px;
+}
+.name {
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+
+}
+.textName {
+    font-size: 18px;
+    margin-left: 2.7%;
+}
+.inputName {
+    width: 100%;
+    border: 0;
+    height: 35px;
+    border-radius: 6.75px;
+    margin-top: 8px;
+    box-shadow: 0px 5.33145px 5.33145px rgba(0, 0, 0, 0.25);
+}
+
+.description {
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.descriptionName {
+    font-size: 20px;
+    margin-left: 2.7%;
+}
+.inputdescription {
+    width: 100%;
+    border: 0;
+    height: 145px;
+    border-radius: 6.75px;
+    margin-top: 8px;
+    box-shadow: 0px 5.33145px 5.33145px rgba(0, 0, 0, 0.25);
+}
+
+.calories {
+    display: flex;
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.textCalories {
+    font-size: 18px;
+    line-height: 35px;
+}
+.inputCalories {
+    width: 55%;
+    border: 0;
+    height: 35px;
+    border-radius: 6.75px;
+    margin-left: 12px;
+    box-shadow: 0px 5.33145px 5.33145px rgba(0, 0, 0, 0.25);
+}
+
+.cookingTime {
+    display: flex;
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.textCookingTime {
+    font-size: 18px;
+    line-height: 35px;
+}
+.inputCookingTime {
+    width: 55%;
+    border: 0;
+    height: 35px;
+    border-radius: 6.75px;
+    margin-left: 12px;
+    box-shadow: 0px 5.33145px 5.33145px rgba(0, 0, 0, 0.25);
+}
+
+.kitchen {
+    display: flex;
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.textKitchen {
+    font-size: 18px;
+    line-height: 35px;
+}
+.inputKitchen {
+    width: 55%;
+    border: 0;
+    height: 35px;
+    border-radius: 6.75px;
+    margin-left: 12px;
+    box-shadow: 0px 5.33145px 5.33145px rgba(0, 0, 0, 0.25);
+}
+
+.chooseIngredientsText {
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.chooseIngredientsText1 {
+    font-size: 18px;
+    margin-left: 2.7%;
+}
+
+.ingredientsMain {
+    background: #FFFFFF;
+    border-radius: 14.25px;
+    margin: 0 auto;
+    width: 65%;
+    margin-top: 8px;
+}
+
+.selectedIngredientsName {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 9.5%;
+}
+
+.selectedProducts {
+    width: 90%;
+    background: #F2F2F2;
+    border-radius: 6.75px;
+    margin: 0 auto;
+    margin-top: 8px;
+    height: 162px;
+}
+.selectedProductsBox {
+    width: 90%;
+    /* border: solid 1px black; */
+    margin: 0 auto;
+    display: flex;
+    overflow-x: scroll;
+}
+.productBox {
+    width: 100px;
+    height: 100px;
+    background: #CDCDCD;
+    border-radius: 6.75px;
+    margin-top: 11px;
+    margin-right: 10px;
+}
+.numberText {
+    font-size: 18px;
+    margin-top: 5px;
+}
+.number {
+    width: 100px;
+    border: 0;
+    border-radius: 3.75px;
+    margin-bottom: 11px;
+}
+
+.suitableTextBox {
+    display: flex;
+    width: 84%;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.suitableText {
+    font-size: 15px;
+    line-height: 27px;
+}
+.select {
+    position: relative;
+    background: #FFC052;
+    border-radius: 5px;
+    font-size: 12px;
+    width: 135px;
+    margin-left: 20px;
+}
+.select select {
+    background: none;
+    border: 0;
+    padding: 6px;
+    width: 135px;
+}
+.popularity {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    margin-left: 30%;
+}
+.suitableProducts {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 8px;
+    background: #F2F2F2;
+    border-radius: 6.75px;
+}
+.suitableProductBox {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 390px;
+    overflow-y: scroll;
+}
+.suitableProduct {
+    width: 105px;
+    height: 105px;
+    background: #CDCDCD;
+    border-radius: 6.75px;
+    margin-right: 11px;
+    margin-bottom: 15px;
+}
+
+.kitckenUtensilsText {
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.kitckenUtensilsText1 {
+    font-size: 18px;
+    margin-left: 2.7%;
+}
+
+.kitckenUtensilsMain {
+    background: #FFFFFF;
+    border-radius: 14.25px;
+    margin: 0 auto;
+    width: 65%;
+    margin-top: 8px;
+}
+.selectedKitckenUtensilsName {
+    font-size: 15px;
+    margin-top: 20px;
+    margin-left: 9.5%;
+}
+.selectedKitckenUtensils {
+    width: 90%;
+    background: #F2F2F2;
+    border-radius: 6.75px;
+    margin: 0 auto;
+    margin-top: 8px;
+    height: 162px;
+}
+.selectedKitckenUtensilsBox {
+    width: 90%;
+    /* border: solid 1px black; */
+    margin: 0 auto;
+    display: flex;
+    overflow-x: scroll;
+}
+.KitckenUtensilBox {
+    width: 100px;
+    height: 100px;
+    background: #CDCDCD;
+    border-radius: 6.75px;
+    margin-top: 11px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.stepsText {
+    margin-left: 20%;
+    margin-top: 30px;
+    width: 63%;
+}
+.stepsText1 {
+    font-size: 18px;
+    margin-left: 2.7%;
+}
+.stepsMain {
+    background: #FFFFFF;
+    border-radius: 14.25px;
+    margin: 0 auto;
+    width: 65%;
+    margin-top: 8px;
+}
+.step {
+    display: flex;
+    width: 92%;
+    margin-left: 1.5%;
+}
+.stepNumber {
+    margin-top: 35px;
+    width: 25.5px;
+    height: 25.5px;
+    font-size: 20px;
+    line-height: 25.5px;
+    text-align: center;
+    background: #BEBEBE;
+    border-radius: 12.75px;
+    color: white;
+    margin-right: 3px;
+}
+.stepContent {
+    margin-top: 35px;
+    width: 100%;
+    height: 118px;
+    background: #F2F2F2;
+    border-radius: 6.75px;
+    display: flex;
+}
+.stepBox {
+    width: 28%;
+    background: #C4C4C4;
+    border-radius: 6px;
+    height: 100px;
+    margin-top: 9.5px;
+    margin-left: 2%;
+}
+.typeStep{
+    display: flex;
+    width: 90%;
+    height: 14px;
+    margin: 0 auto;
+}
+.typeStepText {
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+}
+#selectStep {
+    height: 11.25px;
+    background: #E4E4E4;
+    border-radius: 2.25px;
+    border: 0;
+    font-size: 10px;
+    width: 160%;
+    text-align: center;
+}
+.selectStep {
+    margin-left: 10px;
+}
+.inputStep {
+    width: 63%;
+    height: 90px;
+    border: 0;
+    background: #FFFFFF;
+    border-radius: 7.5px;
+    margin-top: 12px;
+    margin-left: 3%;
+}
+.stepPicture {
+    margin-top: 4px;
+    width: 100%;
+    height: 80px;
+    box-sizing: border-box;
+
+    font-size: 10px;
+    text-align: center;
+    line-height: 80px;
+}
+.addStep {
+    width: 66%;
+    background: #CFCFCF;
+    border-radius: 9px;
+    margin: 0 auto;
+    margin-top: 27px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.sendRecipe{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+    width: 20%;
+    background: #CFCFCF;
+    border-radius: 9px;
+    margin: 0 auto;
+    margin-top: 27px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.indentStep {
+    width: 100%;
+    height: 30px;
+}
+.indentBottom {
+    width: 100%;
+    height: 100px;
+}
+#searchIng {
+    width: 70px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+#searchInv {
+    width: 70px;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+#file_id {
+    box-shadow: none;
+}
+#kitchen {
+    border-radius: 5px;
+    margin-left: 20px;
+}
+#otstup {
+    padding-top: 15px;
+}
+footer {
+    width: 100%;
+    background: #c4c4c4;
+    height: 70px;
+    display: none;
+}
+.fmenuBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.fmenu {
+    width: 39px;
+    height: 39px;
+    border-radius: 50%;
+    background: #e7e7e7;
+    margin-right: 50px;
+    margin-top: 14px;
+    font-size: 7px;
+    text-align: center;
+    line-height: 39px;
+}
+
+@media screen and (max-width: 1200px) {
+    .popularity {
+        margin-left: 25%;
+    }
+    .select {
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .select {
+        width: 110px;
+    }
+    .select select {
+        width: 100px;
+        font-size: 10px;
+    }
+    .input {
+        display: none;
+    }
+    .magGlass {
+        margin-top: 2px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        margin-left: -130px;
+        background-image: url(/images/inventoryImg/search.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+@media screen and (max-width: 1065px) {
+    .sendRecipe {
+        font-size: 16px;
+    }
+    .typeStepText {
+        font-size: 10px;
+    }
+    .selectStep {
+        width: 55px;
+        border-radius: 5px;
+        margin-left: 10px;
+    }
+    .selectStep select {
+        font-size: 10px;
+    }
+    .textCalories {
+        font-size: 15px;
+    }
+    .textCookingTime {
+        font-size: 15px;
+    }
+    .textKitchen {
+        font-size: 15px;
+    }
+}
+@media screen and (max-width: 880px) {
+    a {
+        font-size: 10px;
+    }
+}
+@media screen and (max-width: 860px) {
+    .sendRecipe {
+        font-size: 16px;
+    }
+    .typeStepText {
+        font-size: 10px;
+    }
+    .selectStep {
+        width: 50px;
+        border-radius: 5px;
+        margin-left: 5px;
+    }
+    .selectStep select {
+        font-size: 10px;
+    }
+    .stepBox {
+        width: 135px;
+        height: 100px;
+    }
+    .inputStep {
+        width: 57%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .suitableProduct {
+        width: 80px;
+        height: 80px;
+        margin-right: 30px;
+    }
+    .main {
+        margin: 0 auto;
+        width: 480px;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.38);
+    }
+    .stepsMain {
+        background: #FFFFFF;
+        border-radius: 14.25px;
+        margin: 0 auto;
+        width: 470px;
+        margin-top: 8px;
+    }
+    .productBox  {
+        width: 80px;
+        height: 80px;
+    }
+    .numberText {
+        font-size: 14px;
+    }
+    .number {
+        width: 75px;
+    }
+    .KitckenUtensilBox {
+        width: 80px;
+        height: 80px;
+    }
+    .selectedKitckenUtensils {
+        height: 120px;
+    }
+    .sendRecipe {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 670px) {
+    header {
+        display: none;
+    }
+    footer {
+        width: 100%;
+        background: #c4c4c4;
+        height: 70px;
+        display: block;
+        position: fixed;
+        bottom: 0;
+    }
+}
+@media screen and (max-width: 600px) {
+    .sendRecipe {
+        width: 25%;
+    }
+}
+@media screen and (max-width: 550px) {
+    footer {
+        height: 55px;
+        position: fixed;
+        bottom: 0;
+    }
+    .fmenuBlock {
+        margin-left: 13px;
+    }
+    .fmenu {
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        background: #e7e7e7;
+        margin-right: 40px;
+        margin-top: 10px;
+        font-size: 6px;
+        text-align: center;
+        line-height: 33px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .addName {
+        font-size: 30px;
+    }
+    .textName {
+        font-size: 16px;
+    }
+    .descriptionName {
+        font-size: 18px;
+    }
+    .ingredientsMain {
+        width: 312px;
+    }
+    .kitckenUtensilsMain {
+        width: 312px;
+    }
+    .stepsMain {
+        width: 460px;
+        margin-left: 10px;
+    }
+}

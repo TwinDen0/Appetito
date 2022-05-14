@@ -1,0 +1,481 @@
+*{
+    margin: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+img {
+    pointer-events: none;
+}
+.wapper {
+    background: url(/images/recipes/fonLight.png) no-repeat center center;
+    background-size: cover;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.fireAva {
+    position: absolute;
+    width: 17%;
+    margin-left: 62%;
+    margin-top: 4%;
+}
+.boxAva {
+    width: 6vw;
+    height: 6vw;
+    position: absolute;
+    border-radius: 100%;
+    margin-left: 78%;
+    margin-top: 3%;
+}
+.avtor{
+    position: absolute;
+    margin-left: 67%;
+    margin-top: 3.5%;
+    font-size: 1vw;
+    color: #9a9a9a;
+}
+.avtorName{
+    position: absolute;
+    margin-left: 65%;
+    margin-top: 5.5%;
+    font-size: 1.2vw;
+    color: #ffffff;
+    width: 13%;
+    text-align: center;
+}
+.main {
+    width: 64%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+.mainPhotoRecipe {
+    width: 100%;
+    height: 30vw;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.header {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 3vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -1.7%;
+}
+
+.description {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    font-size: 1.5vw;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 1%;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.Line {
+    position: relative;
+    margin: 0 -28.125%;
+    width: 156.25%;
+    height: 2.5vw;
+    background-color: #FFB987;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.onLine {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: auto;
+}
+
+.textOnLine {
+    width: 50%;
+    height: 100%;
+    font-size: 1.3vw;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 1%;
+}
+
+.subheader {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 2.5vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -1.7%;
+
+}
+
+.box {
+    width: 60vw;
+    height: 15vw;
+    margin: auto;
+    padding: 1%;
+}
+
+.boxScroll {
+    width: 100%;
+    height: 90%;
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 2%;
+    display: flex;
+}
+
+.boxScroll::-webkit-scrollbar {
+    background: rgba(209, 121, 17, 0.16);
+    width: 5px;
+    height: 5px;
+}
+
+.boxScroll::-webkit-scrollbar-thumb {
+    background-color: #FFA96A;
+    border-radius: 20px;
+}
+
+.boxScroll::-webkit-scrollbar-track {
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: auto;
+    margin-right: 7%;
+    align-items: center;
+}
+
+.foodImadge {
+    display: inline-block;
+    vertical-align: top;
+    background-color: bisque;
+    border-radius: 100%;
+    width: 7vw;
+    height: 7vw;
+    box-shadow: 0px 0.75px 15px -0.75px rgb(0 0 0 / 25%);
+    border: 10px solid #fff;
+}
+
+.foodName {
+    text-align: center;
+    font-size: 1.5vw;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.addFoodBox {
+    margin: auto;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.addFood {
+    border-radius: 50px;
+    height: 4vw;
+    width: 26vw;
+    font-size: 1.3vw;
+    cursor: pointer;
+    text-decoration: none;
+    border-style: solid none;
+    outline: none;
+    border: #fff;
+    color: white;
+    background: #ffb987;
+    font-family: 'Roboto Condensed', sans-serif;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+
+.backgroundInventory {
+    position: relative;
+    margin: 0 -28.125%;
+    width: 156.25%;
+    height: 25vw;
+    background: #ffb987;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    box-sizing: border-box;
+    padding-top: 1%;
+}
+
+.descriptionBox1 {
+    width: 100%;
+    height: auto;
+    background: rgba(196, 196, 196, 0.2);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
+.descriptionImg {
+    height: 20vw;
+    width: 35%;
+    background-color: #C4C4C4;
+}
+
+.descriptionText {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    text-align: justify;
+}
+
+.descriptionHeading {
+    font-size: 2vw;
+    height: auto;
+    width: 100%;
+}
+
+.descriptionRecipe {
+    padding-top: 5%;
+    font-size: 1.5vw;
+    height: auto;
+    width: 100%;
+}
+
+.descriptionBox2 {
+    width: 100%;
+    height: auto;
+background: rgba(196, 196, 196, 0.2);
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+    border-radius: 20px;
+}
+
+.lineEnd {
+    margin: 0 -28.125%;
+    width: 156.25%;
+    height: 2.5vw;
+    background-color: #ffb987;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    text-align: center;
+    font-size: 1.8vw;
+}
+
+.fidback {
+    margin: 0 -14.0625%;
+    width: 128.125%;
+    height: auto;
+    background-color: rgb(255 255 255);
+    margin-top: 3%;
+    margin-bottom: 5%;
+    font-size: 1.8vw;
+    display: flex;
+    border-radius: 30px;
+    flex-direction: column;
+}
+
+.allfidbackForm {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-bottom: 10%;
+}
+
+.avatar {
+    width: 10vw;
+    height: 10vw;
+    background-color: rgb(134, 133, 133);
+    border-radius: 100%;
+}
+
+.fidbackForm {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: auto;
+}
+
+.userName {
+    width: 30%;
+    height: auto;
+    font-size: 2vw;
+    padding-left: 3%;
+}
+
+.messenger {
+    width: 100%;
+    height: auto;
+    font-size: 1.5vw;
+    background-color: rgb(255, 255, 255);
+    padding-left: 3%;
+    box-sizing: border-box;
+    margin-top: 5%;
+}
+
+.formFidback {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+}
+
+.sendMes {
+    width: 40%;
+    background-color: #FFB987;
+    border-radius: 48px;
+    margin: 0 auto;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 1.8vw;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    z-index: 1;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.flexFidback {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: auto;
+}
+
+.formAva {
+    background-color: #FFA96A;
+    width: 9vw;
+    height: 9vw;
+    border-radius: 100%;
+}
+
+.textarea {
+    resize: none;
+    height: 10vw;
+    width: 150%;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 1.5vw;
+    font-family: 'PT Sans Narrow', sans-serif;
+    background: #FFF8F3;
+    border: 1px solid rgba(158, 123, 98, 0.51);
+    box-sizing: border-box;
+    border-radius: 16px;
+    font-family: 'PT Sans';
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.017em;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .textOnLine {
+        font-size: 1.6vw;
+        padding-top: 2%;
+    }
+    header{
+        display: none;
+    }
+    .header {
+        font-size: 3.3vw;
+    }
+    .description {
+        font-size: 1.9vw;
+    }
+    .boxScroll {
+        height: 100%;
+    }
+    .foodName {
+        font-size: 1.8vw;
+    }
+    .addFood {
+        height: 6vw;
+        width: 41vw;
+        font-size: 2vw;
+        background: #ffb987;
+    }
+    .descriptionBox2 {
+        flex-direction: column-reverse;
+    }
+    .descriptionText {
+        width: 60%;
+        height: 100%;
+    }
+    .descriptionImg {
+        height: 30vw;
+        width: 100%;
+    }
+    .descriptionText {
+        width: 95%;
+        height: 100%;
+    }
+    .descriptionHeading {
+        font-size: 2.5vw;
+    }
+    .descriptionRecipe {
+        padding-top: 5%;
+        font-size: 2vw;
+        height: auto;
+        width: 100%;
+    }
+    .descriptionBox1 {
+        flex-direction: column;
+    }
+    .Line {
+        height: 4.5vw;
+    }
+    .lineEnd {
+        height: 4.5vw;
+        font-size: 2.8vw;
+        padding-top: 2%;
+    }
+    .messenger {
+        font-size: 2.5vw;
+    }
+    .userName {
+        font-size: 3vw;
+    }
+    .sendMes {
+        width: 54%;
+        font-size: 2.5vw;
+    }
+    .formAva {
+        width: 9vw;
+        height: 9vw;
+    }
+}

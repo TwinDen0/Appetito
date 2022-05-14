@@ -1,0 +1,73 @@
+
+.menuHeader {
+    margin: 0 auto;
+    margin-top: 0%;
+    width: 85vw;
+    height: 3vw;
+    border-bottom-left-radius: 46px;
+    border-bottom-right-radius: 46px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+
+.containerHeader {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+    height: 3vw;
+}
+
+.linkHeader {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+}
+
+.linkText {
+    font-size: 1.1vw;
+    margin-top: 3%;
+    margin-left: 4%;
+    color: #5C5C5C;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.linkImg {
+    height: 2vw;
+}
+
+.split {
+    width: 0.2%;
+    height: 50%;
+    background-color: #a7a7a7;
+    margin: auto;
+    margin-top: 1%;
+}
+
+.btnHeader {
+    background: #FFC700;
+    width: 50%;
+    height: 50%;
+    font-size: 1vw;
+    color: #FFFFFF;
+    border-radius: 100px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-top: 2%;
+    margin-top: 2%;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+
+.profile {
+    width: 2vw;
+    height: 2vw;
+    filter: drop-shadow(0px 1.33333px 5.33333px rgba(0, 0, 0, 0.25));
+
+    border-radius:100%;
+}
