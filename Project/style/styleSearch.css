@@ -339,6 +339,7 @@ input[type="range"]:active::-webkit-slider-thumb{
     height: 75%;
     /* margin-left: 3%; */
     margin: auto;
+    margin-top: 5%;
 }
 
 .recipe {
@@ -481,4 +482,16 @@ input[type="range"]:active::-webkit-slider-thumb{
     width: 10vw;
     height: 1vw;
     font-size: 1vw;
+  }
+
+  .addTrue {
+    width: 15%;
+    height: auto;
+    margin-left: 45%;
+  }
+  .addFalse {
+      width: 10%;
+      height: auto;
+      margin-left: 90%;
+      margin-top: 6%;
   }
