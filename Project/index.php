@@ -35,8 +35,8 @@
 
             <div class = "MainTitle">
                 <div class = "MainTitle_1">ПОДБЕРИ</div>
-                <div class = "MainTitle_2">ИДЕАЛЬНЫЙ</div>
-                <div class = "MainTitle_3">РЕЦЕПТ</div>
+                <div class = "MainTitle_1">ИДЕАЛЬНЫЙ</div>
+                <div class = "MainTitle_1">РЕЦЕПТ</div>
             </div>
 
             <a href="#" class = "start" onclick="location.href='../searchRecipe.php'">НАЧАТЬ</a>

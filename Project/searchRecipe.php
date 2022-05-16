@@ -45,7 +45,7 @@ $SelectedIng = '';
 							<input type="checkbox" required/>
 							<div class="checkbox__checkmark" >
 							</div>
-							<div class="checkbox__body">
+							<div class="checkbox__body" onclick="location.href='../inventory.php'">
 								кухонных принадлежностей
 							</div>
 						</label>
