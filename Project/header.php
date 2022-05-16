@@ -55,12 +55,13 @@
 			  </div>
 
               <div class = "split"></div>
-
-              <div style = "justify-content: space-around;" class = "linkHeader">
-				<a href="#" class = "btnHeader">Войти</a>
+				<div style = "justify-content: space-around;" class = "linkHeader">
+				<a  onclick="location.href='../reg.php'"href="#" class = "btnHeader">Войти</a>
 				<?php session_start(); ?>
-				<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
-			  </div>
+				<div onclick="location.href='../profile.php'">
+					<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+				</div>  
+			</div>
 
 			</div>
         </ul>
