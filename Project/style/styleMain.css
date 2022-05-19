@@ -280,7 +280,31 @@ img {
     background: #FF6B00;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
 }
+.btn1:hover{
+    background: #ff872c;
+}
 
+.btn2 {
+    width: 50%;
+    height: 3vw;
+    font-size: 1.4vw;
+    color: #FFFFFF;
+    border-radius: 100px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: normal;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
+    text-align: center;
+    text-decoration: none;
+    margin-top: 5%;
+    margin-left: 25%;
+    box-sizing: border-box;
+    padding-top: 2%;
+    background: #FFC700;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
+}
+.btn2:hover{
+    background: #ffe11d;
+}
 
 .fonTraining_2 {
     position: absolute;

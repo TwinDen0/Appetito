@@ -100,7 +100,7 @@
                                             «довабить в список покупок» и все ингридиенты из этого списка
                                             появяться в  твоем личном списке покупок, с которым
                                             ты можешь ознакомиться, нажав на эту кнопку</div>
-                <a style = "background: #FFC700;" href="#" class = "btn1" onclick="location.href='../shoppingList.php'">Список покупок</a>
+                <a href="#" class = "btn2" onclick="location.href='../shoppingList.php'">Список покупок</a>
             </div>
             <img src = "images/main/глв челики 2.png" class = "mainPeople_2">
         </div>
@@ -115,7 +115,7 @@
                                                                         нажми на эту кнопку. Помни рецепты включающие
                                                                         в себя посуду,  которой нету в этом списке,
                                                                         не отобразяться в поиске рецептов!</div>
-                <a style = "background: #FFC700;" href="#" class = "btn1" onclick="location.href='../inventory.php'">Инвентарь</a>
+                <a href="#" class = "btn2" onclick="location.href='../inventory.php'">Инвентарь</a>
             </div>
         </div>
 
