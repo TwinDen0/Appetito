@@ -97,15 +97,15 @@ img {
 
 .start {
     position: absolute;
-    width: 12%;
-    height: 3vw;
+    width: 10%;
+    height: 2.5vw;
     margin-top: 24%;
-    margin-left: 44%;
+    margin-left: 45%;
     font-size: 1.5vw;
     color: #FFFFFF;
     box-shadow: 2px 4px 7px -1px rgb(0 0 0 / 25%);
     border-radius: 100px;
-    background: #FAFF00;
+    background: #ffbc00;
     font-family: 'Roboto Slab';
     font-style: normal;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
@@ -113,7 +113,7 @@ img {
     text-decoration: none;
     cursor: pointer;
     z-index: 4;
-    padding-top: 0.7vw;
+    padding-top: 0.3vw;
 }
 
 .steps4 {
@@ -121,13 +121,13 @@ img {
     font-family: 'Laila', sans-serif;
     font-style: normal;
     font-weight: 600;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     display: flex;
     align-items: center;
     text-align: center;
-    letter-spacing: -0.017em;
+    letter-spacing: -0.050em;
     color: rgba(0, 0, 0, 0.38);
-    margin-top: 50%;
+    margin-top: 48%;
     margin-left: 44%;
     width: auto;
     height: auto;
@@ -153,8 +153,8 @@ img {
 }
 
 .flex {
-    width: 20%;
-    height: 100%;
+    width: 15%;
+    margin-top: 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,7 +166,8 @@ img {
 }
 
 .description {
-    width: 69%;
+    margin-top: 10%;
+    width: 100%;
     text-align: center;
     font-size: 1.2vw;
     font-family: 'PT Sans', sans-serif;
@@ -188,7 +189,7 @@ img {
 .fonWaveInversion {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -5%;
     z-index: -1;
     width: 100%;
     height: auto;
@@ -198,7 +199,7 @@ img {
 .fonTraining_1 {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -5%;
     z-index: -5;
     width: 100%;
     height: auto;
@@ -209,20 +210,7 @@ img {
     width: 60%;
     height: auto;
     position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 0;
-    margin-top: 88%;
-    margin-left: 21%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.training_2 {
-    width: 60%;
-    height: auto;
-    position: absolute;
-    left: 0;
+    left: -9vw;
     top: 0;
     z-index: 0;
     margin-top: 88%;
@@ -232,8 +220,15 @@ img {
 }
 
 .mainPeople {
+    margin-left: 10%;
     width: 30%;
     height: fit-content;
+}
+
+.mainPeople_2{
+    margin-left: -10%;
+    width: 30%;
+    height: fit-content;  
 }
 
 .descriptionTraining_1 {
@@ -245,7 +240,8 @@ img {
 }
 
 .headingTraining_1 {
-    font-size: 2.5vw;
+    font-size: 2vw;
+    width: 100%;
     font-family: 'Roboto Slab';
     color: #FFFFFF;
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);
@@ -297,7 +293,7 @@ img {
     height: auto;
     position: absolute;
     left: 0;
-    top: 0;
+
     z-index: 0;
     margin-top: 133%;
     margin-left: 21%;
@@ -320,7 +316,6 @@ img {
     height: auto;
     position: absolute;
     left: 0;
-    top: 0;
     z-index: 0;
     margin-top: 163%;
     margin-left: 21%;
@@ -425,20 +420,19 @@ img {
         font-size: 1.5vw;
     }
     .flex {
-        width: 21%;
+        width: 16%;
     }
     .training_1 {
         width: 80%;
-        margin-left: 13%;
+        margin-left: 100%;
     }
     .training_2 {
         width: 80%;
-        margin-left: 10%;
+        margin-left: 13%;
     }
     .training_3 {
         width: 80%;
-        margin-left: 10%;
-        margin-top: 167%;
+        margin-left: 13%;
     }
     .headingTraining_1 {
         font-size: 3vw;

@@ -66,7 +66,8 @@
 
                 <div class = "flex">
                     <img src = "images/main/пиплы-05.png" class = "people">
-                    <div class = "description">и... Наслаждайся!</div>
+                    <div class = "description">и... Наслаждайся!<br> <br>   
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,7 +102,7 @@
                                             ты можешь ознакомиться, нажав на эту кнопку</div>
                 <a style = "background: #FFC700;" href="#" class = "btn1" onclick="location.href='../shoppingList.php'">Список покупок</a>
             </div>
-            <img src = "images/main/глв челики 2.png" class = "mainPeople">
+            <img src = "images/main/глв челики 2.png" class = "mainPeople_2">
         </div>
 
 
