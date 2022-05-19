@@ -7,12 +7,16 @@
     <title>Добавить рецепт</title>
     <link rel="stylesheet" href="style/addrecipe.css">
 		<link href = "style/styleHeader.css" rel = "stylesheet" type = "text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Epilogue&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
 
 <?php
 include 'header.php';
-?>
+  ?>
 
 <body>
   <form action="../php/sendRecipe.php" method="post" enctype="multipart/form-data">
@@ -25,9 +29,17 @@ include 'header.php';
 
         <div class="name">
             <div class="textName">Добавьте фото:</div>
-            <form id="my-form" enctype="multipart/form-data">
+            <!-- <form id="my-form" enctype="multipart/form-data">
                 <input type="file" accept=".jpg, .jpeg, .png" name="img"  id='file_id' class="inputName" style = "resize: none" required>
-            </form>
+            </form> -->
+              <div class="ava_input__wrapper">
+                <input type="file" accept=".jpg, .jpeg, .png" type="file" name="img" id="file_id" class="ava_input ava_input__file" style = "resize: none" required>
+                <label for="input__file" class="ava_input__file-button">
+                  <span class="ava_input__file-icon-wrapper">
+                  <img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
+                  <span class="ava_input__file-button-text">Выберите файл</span>
+                </label>
+              </div>
         </div>
 
         <div class="description">
@@ -82,9 +94,9 @@ include 'header.php';
                     $nameBar = "'".'selectedIng'.$ingredient['id']."'";
                     echo '
                     <div class="selectedProduct">
-                    <div class="productBox" style = "background: url(./images/ingredients/' . $ingredient['image'] . ') no-repeat center center; background-size: cover;" onclick="DeleteIngredient('.$ingredient['id'].');"></div>
-                    <div class="numberText">количество:</div>
-                    <input type="number" min="0.05" value = "0.05" step="0.05" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'" onchange="Save('.$nameBar.','.$nameBar.');">
+                      <div class="productBox" style = "background: url(./images/ingredients/' . $ingredient['image'] . ') no-repeat center center; background-size: cover;" onclick="DeleteIngredient('.$ingredient['id'].');"></div>
+                        <div class="numberText">количество:</div>
+                      <input type="number" min="0.05" value = "0.05" step="0.05" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'" onchange="Save('.$nameBar.','.$nameBar.');">
                     </div>';
                     $ing = '';
                   }
@@ -156,7 +168,10 @@ include 'header.php';
                         }
 
                         while($row = mysqli_fetch_assoc($query)){
-                          echo '<ing><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"><a>' . $row['name'] . '</a></div></ing>';
+                          echo '<ing>
+                          <div class="suitableNamePrd"><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"></div>
+                          <div class="nprod"><a>' . $row['name'] . '</a></div></div>
+                          </ing>';
                         };
                         ?>
                     </div>
@@ -200,7 +215,7 @@ include 'header.php';
                 <div class="popularity">
                   <input type="text" placeholder="Поиск..." name="searchInv" id="searchInv" class="input">
                   <script>
-                  function search() {
+                  function search2() {
                     let input = document.getElementById("searchInv");
                     let filter = input.value.toUpperCase();
                     let ul = document.getElementById("inventory");
@@ -217,7 +232,7 @@ include 'header.php';
                       }
                     }
                   }
-                  document.addEventListener('keyup', search);
+                  document.addEventListener('keyup', search2);
                   </script>
                   <div class="magGlass"></div>
                   <div class="select">
@@ -251,7 +266,12 @@ include 'header.php';
                   }
 
                   while($row = mysqli_fetch_assoc($query)){
-                    echo '<inv><div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"><a>' . $row['name'] . '</a></div></inv>';
+                    echo '<inv>
+                      <div class="suitableNamePrd">
+                        <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>
+                        <div class="nprod"><a>' . $row['name'] . '</a></div>
+                      </div>
+                    </inv>';
                   };
                   ?>
                 </div>
@@ -263,37 +283,32 @@ include 'header.php';
         <div class="stepsText"><div class="stepsText1">Напишите шаги:</div></div>
         <div class="stepsMain" id="steps">
           <?php
-            $coutSteps = $_GET['coutSteps'];
-            if(!$_GET['coutSteps']) $coutSteps = 1;
-            for ($i=0; $i < $coutSteps; $i++) {
+            $countOfSteps = $_GET['countOfSteps'];
+            if(!$_GET['countOfSteps']) $countOfSteps = 1;
+            for ($i=0; $i < $countOfSteps; $i++) {
               $idStep = $i + 1;
               echo '
               <div class="step">
                   <div class="stepNumber" onclick="DeleteStep('.$i.');">'.$idStep.'</div>
                   <div class="stepContent">
                       <div class="stepBox">
-                          <div class="typeStep">
-                              <div class="typeStepText">тип шага:</div>
-                              <div class="selectStep">
-                                  <select name="selectStep'.$idStep.'" id="selectStep'.$idStep.'" onchange="ChangeSelectStep('.$idStep.');">';
-                                  $chooseStepinGet = 'chooseStep'.$idStep;
-                                  $chooseStep = $_GET[$chooseStepinGet];
-                                    echo '<option value="Порезать"'; echo 'selected="selected"'; echo '>Порезать</option>';
-                                    echo '<option value="Обжарить"'; if($chooseStep=="Обжарить") echo 'selected="selected"'; echo '>Обжарить</option>';
-                                    echo '<option value="Сьесть"'; if($chooseStep=="Сьесть") echo 'selected="selected"'; echo '>Сьесть</option>';
-                                    echo '<option value="Натереть"'; if($chooseStep=="Натереть") echo 'selected="selected"'; echo '>Натереть</option>';
-                                  echo '</select>
-                              </div>
-                          </div>
-                          <div class="stepPicture">Картинка шага</div>
+                        <div class="ava_input__wrapper_2">
+                          <input type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="file_id" class="ava_input ava_input__file" style = "resize: none">
+                          <label for="input__file" class="ava_input__file-button_2" style="cursor:pointer">
+                            <span class="ava_input__file-icon-wrapper">
+                            <img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
+                            <span class="ava_input__file-button-text_2">Выберите файл</span>
+                          </label>
+                        </div>
                       </div>
-                      <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'"></textarea>
+                      <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'" required></textarea>
+                      <input name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
                   </div>
               </div>';
             };
           ?>
 
-            <?php $q = $coutSteps+1;  echo '<div class="addStep" onclick="AddStep('.$q.');" > Добавить шаг </div>';?>
+            <?php $q = $countOfSteps+1;  echo '<div class="addStep" onclick="AddStep('.$q.');" > Добавить шаг </div>';?>
             <div class="indentStep"></div>
         </div>
         <div class="indentBottom"></div>
@@ -301,10 +316,11 @@ include 'header.php';
   </form>
     <script>
       if(sessionStorage.length == 0) {
-        window.location.href = '../addrecipe.php?coutSteps=1';
+        window.location.href = '../addrecipe.php?countOfSteps=1';
         sessionStorage.setItem('steps','1');
         ReplaceAddressBar();
       }
+
       let sortIng=document.querySelector('#sortIng');
       sortIng.addEventListener('change', function(){
         //location.href = "//project/inventory.php?sort=" + el.value;
@@ -317,6 +333,7 @@ include 'header.php';
         searchIng.value = '';
         elementUpdate('#ingredients');
       });
+
       let sortInv=document.querySelector('#sortInv');
       sortInv.addEventListener('change', function(){
         //location.href = "//project/inventory.php?sort=" + el.value;
@@ -334,19 +351,6 @@ include 'header.php';
       kitchen.addEventListener('change', function(){
         ReplaceAddressBar();
       });
-
-      function ChangeSelectStep(id){
-        sessionStorage.setItem('chooseSteps', '');
-        let step = document.getElementById("selectStep"+id);
-        let result = sessionStorage.getItem('chooseSteps') + '';
-        result = result.split('&chooseStep'+id+'=Порезать').join('');
-        result = result.split('&chooseStep'+id+'=Обжарить').join('');
-        result = result.split('&chooseStep'+id+'=Сьесть').join('');
-        result = result.split('&chooseStep'+id+'=Натереть').join('');
-        id = "&chooseStep"+id+"="+step.value+result;
-        sessionStorage.setItem('chooseSteps', id);
-        ReplaceAddressBar();
-      }
 
       function AddIngredient(ingredients){
         let result = sessionStorage.getItem('ingredients') + '';
@@ -392,11 +396,13 @@ include 'header.php';
 
         elementUpdate('#inventorySelect');
       }
+
       function AddStep(steps){
         sessionStorage.setItem('steps', steps);
         ReplaceAddressBar();
         elementUpdate('#steps');
       }
+
       function DeleteStep(steps){
         sessionStorage.setItem('steps', steps);
 
@@ -444,7 +450,7 @@ include 'header.php';
       }
 
       function ReplaceAddressBar(){
-        window.history.replaceState('1', 'Title', '?sortIng='+sortIng.value+'&sortInv='+sortInv.value+'&ingredients='+sessionStorage.getItem('ingredients')+'&inventory='+sessionStorage.getItem('inventory')+'&kitchen='+kitchen.value+'&coutSteps='+sessionStorage.getItem('steps')+'&chooseSteps='+sessionStorage.getItem('chooseSteps'));
+        window.history.replaceState('1', 'Title', '?sortIng='+sortIng.value+'&sortInv='+sortInv.value+'&ingredients='+sessionStorage.getItem('ingredients')+'&inventory='+sessionStorage.getItem('inventory')+'&kitchen='+kitchen.value+'&countOfSteps='+sessionStorage.getItem('steps')+'&chooseSteps='+sessionStorage.getItem('chooseSteps'));
       }
 
       async function elementUpdate(selector) {
@@ -467,11 +473,11 @@ include 'header.php';
 
 <footer>
   <div class="fmenuBlock">
-    <div class="fmenu">Главная</div>
-    <div class="fmenu">Инвентарь</div>
-    <div class="fmenu">Поиск</div>
-    <div class="fmenu">Список</div>
-    <div class="fmenu">Профиль</div>
+    <div class="fmenu" id="main-pct"></div>
+    <div class="fmenu" id="inv-pct"></div>
+    <div class="fmenu" id="search-pct"></div>
+    <div class="fmenu" id="spisok-pct"></div>
+    <div class="fmenu" id="profil-pct"></div>
   </div>
 </footer>
 </html>
