@@ -293,7 +293,7 @@ include 'header.php';
                   <div class="stepContent">
                       <div class="stepBox">
                         <div class="ava_input__wrapper_2">
-                          <input type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="file_id" class="ava_input ava_input__file" style = "resize: none">
+                          <input type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="imgStep'.$idStep.'" class="ava_input ava_input__file" style = "resize: none">
                           <label for="input__file" class="ava_input__file-button_2" style="cursor:pointer">
                             <span class="ava_input__file-icon-wrapper">
                             <img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>

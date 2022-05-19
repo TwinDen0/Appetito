@@ -147,12 +147,11 @@
 								if($steps[$i]=="$" && $des){
 									$numberStep = $number % 2 + 1;
 									echo '<div class = "descriptionBox' . $numberStep . '">';
-											if ($number % 2 == 0) echo '<div class = "descriptionImg" style = "background: url(./images/recipes/'.$recipe['id'].'-'.$number.'.jpg'.') no-repeat center center; background-size: cover;"></div>';
 											echo '<div class = "descriptionText">
 													<div class = "descriptionHeading">Шаг ' . $number . '</div>
 													<div class = "descriptionRecipe">' . $des . '</div>
 											</div>';
-											if ($number % 2 == 1) echo '<div class = "descriptionImg" style = "background: url(./images/recipes/'.$recipe['id'].'-'.$number.'.jpg'.') no-repeat center center; background-size: cover;"></div>';
+											echo '<div class = "descriptionImg" style = "background: url(./images/recipes/'.$recipe['id'].'-'.$number.'.jpg'.') no-repeat center center; background-size: cover;"></div>';
 									echo '</div>';
 									$number += 1;
 									$step = '';
