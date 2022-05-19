@@ -21,14 +21,14 @@
     <header>
 	<ul class = "menuHeader">
 			<div class = "containerHeader">
-			  <div onclick="location.href='../index.php'" class = "linkHeader">
+			  <div onclick="location.href='./index.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-10.png">
 				<div class = "linkText">Главная страница</div>
 			  </div>
 
 			  <div class = "split"></div>
 
-			  <div onclick="location.href='../inventory.php'" class = "linkHeader">
+			  <div onclick="location.href='./inventory.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-07.png">
 				<div class = "linkText">Инвентарь</div>
 			  </div>
@@ -42,25 +42,26 @@
 
 			  <div class = "split"></div>
 
-			  <div onclick="location.href='../searchRecipe.php'" class = "linkHeader">
+			  <div onclick="location.href='./searchRecipe.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-09.png">
 				<div class = "linkText">Поиск рецептов</div>
 			  </div>
 
 			  <div class = "split"></div>
 
-			  <div onclick="location.href='../shoppingList.php'" class = "linkHeader">
+			  <div onclick="location.href='./shoppingList.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-08.png">
 				<div class = "linkText">Список покупок</div>
 			  </div>
 
               <div class = "split"></div>
-
-              <div style = "justify-content: space-around;" class = "linkHeader">
-				<a href="#" class = "btnHeader">Войти</a>
+				<div style = "justify-content: space-around;" class = "linkHeader">
+				<a  onclick="location.href='../reg.php'"href="#" class = "btnHeader">Войти</a>
 				<?php session_start(); ?>
-				<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
-			  </div>
+				<div onclick="location.href='./profile.php'">
+					<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+				</div>  
+			</div>
 
 			</div>
         </ul>

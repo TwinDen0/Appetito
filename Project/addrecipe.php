@@ -12,7 +12,7 @@
 
 <?php
 include 'header.php';
-  ?>
+?>
 
 <body>
   <form action="../php/sendRecipe.php" method="post" enctype="multipart/form-data">

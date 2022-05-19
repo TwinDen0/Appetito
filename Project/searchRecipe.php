@@ -45,7 +45,7 @@ $SelectedIng = '';
 							<input type="checkbox" required/>
 							<div class="checkbox__checkmark" >
 							</div>
-							<div class="checkbox__body">
+							<div class="checkbox__body" onclick="location.href='../inventory.php'">
 								кухонных принадлежностей
 							</div>
 						</label>
@@ -213,7 +213,9 @@ $SelectedIng = '';
 									echo
 									'<ing><div class="productBox">
 									 	<div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="ClickIngredient(' . $row['id'] . ');" id="ingredient' . $row['id'] . '">';
-									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '+'; else  echo '-';
+									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '
+									<img src="images/галочка.png" class = "addTrue">
+									'; else  echo '<img src="images/no.png" class = "addTrue">';
 									echo '<div class = "nameFood"> <a>' . $row['name'] . '</a></div>
 									</div></div></ing>';
 								}
@@ -221,7 +223,9 @@ $SelectedIng = '';
 									echo
 									'<ing><div class="productBox">
 										 <div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="ClickIngredient(' . $row['id'] . ');" id="ingredient' . $row['id'] . '">';
-									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '+'; else  echo '-';
+									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '
+									<img id="ingredientImg' . $row['id'] . '" src="images/галочка.png" class = "addTrue">
+									'; else  echo '<img id="ingredientImg' . $row['id'] . '" src="images/no.png" class = "addTrue">';
 									echo '<div class = "nameFood"> <a>' . $row['name'] . '</a></div>
 									</div></div></ing>';
 								}
@@ -381,14 +385,16 @@ $SelectedIng = '';
 		    elementUpdate('#selectionBox');
 		  }
 			function ClickIngredient(id){
-				let ingredient = document.querySelector('#ingredient'+id);
-				if(ingredient.innerHTML[0] == '-')
+
+				let ingredient = document.querySelector('#ingredientImg'+id);
+				if(ingredient.src == 'http://project/images/no.png')
 					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectAdd='+id+'&extra='+extraRecipes);
 				else
 					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectDelete='+id+'&extra='+extraRecipes);
-				let boxFood = document.querySelector('#boxFood');
+				console.log(ingredient.src);
+					let boxFood = document.querySelector('#boxFood');
 				localStorage.setItem('boxFood', boxFood.scrollTop);
-		    elementUpdate('#selectionBox');
+		    	elementUpdate('#selectionBox');
 				elementUpdate('#recipe');
 		  }
 			function GoToInventory(){
