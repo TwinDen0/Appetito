@@ -27,11 +27,6 @@
 
 	<div class = "wapper"></div>
 
-	<img class = "fireAva" src = "images/recipes/плашка-18.png">
-	<div class="boxAva" style = "background: url(/images/avatars/default.jpg) no-repeat center center; background-size: cover;"></div>
-	<div class = "avtor">автор:</div>
-	<div class = "avtorName">Иван Иванов</div>	
-
 				<div id='phpCode'>
         <div class = "main">
 					<?php
@@ -144,32 +139,23 @@
 							$steps =  $recipe['steps'];
 							$step = '';
 							$des = '';
-							$stepOrDes = 1;
 							$number = 1;
 							for($i = 0; $i < strlen($steps); $i++){
-								if($steps[$i]!="$" && $stepOrDes == 1){
-									$step = $step.$steps[$i];
-								}
-								if($steps[$i]=="$" && $stepOrDes == 1){
-									$stepOrDes = 2;
-								}
-								if($steps[$i]!="$" && $stepOrDes == 2){
+								if($steps[$i]!="$"){
 									$des = $des.$steps[$i];
 								}
 								if($steps[$i]=="$" && $des){
 									$numberStep = $number % 2 + 1;
 									echo '<div class = "descriptionBox' . $numberStep . '">';
-											if ($number % 2 == 0) echo '<div class = "descriptionImg"></div>';
 											echo '<div class = "descriptionText">
-													<div class = "descriptionHeading">Шаг ' . $number . ' - ' . $step . '</div>
+													<div class = "descriptionHeading">Шаг ' . $number . '</div>
 													<div class = "descriptionRecipe">' . $des . '</div>
 											</div>';
-											if ($number % 2 == 1) echo '<div class = "descriptionImg"></div>';
+											echo '<div class = "descriptionImg" style = "background: url(./images/recipes/'.$recipe['id'].'-'.$number.'.jpg'.') no-repeat center center; background-size: cover;"></div>';
 									echo '</div>';
 									$number += 1;
 									$step = '';
 									$des = '';
-									$stepOrDes = 1;
 								}
 							}
 						?>
