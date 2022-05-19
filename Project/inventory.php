@@ -8,15 +8,23 @@
     <link rel="stylesheet" href="style/inventory.css">
     <script type="text/javascript" src="../scripts/elementUpdate.js"></script>
 		<link href = "style/styleHeader.css" rel = "stylesheet" type = "text/css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&&display=swap" rel="stylesheet">
 </head>
 
 <?php
 include 'header.php';
+
   ?>
 
 <body>
     <div class="main">
-        <div class="kichenText">Кухонные принадлежности:</div>
+        <div class="kichenText">Мои кухонные принадлежности:</div>
           <div class="Choose" id="Choose">
               <?php
                 include 'connect.php';
@@ -80,7 +88,6 @@ include 'header.php';
                   <div class="popularity">
                       <div class="addSearchSringBlock">
                           <input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
-                          <div class="search-btn"></div>
                       </div>
                       <script>
                         function search() {
@@ -206,14 +213,10 @@ include 'header.php';
         }
       })();
     </script>
+
+        <?php
+        include 'menuMobile.php';
+        ?>
+
 </body>
-<footer>
-  <div class="fmenuBlock">
-    <div class="fmenu">Главная</div>
-    <div class="fmenu">Инвентарь</div>
-    <div class="fmenu">Поиск</div>
-    <div class="fmenu">Список</div>
-    <div class="fmenu">Профиль</div>
-  </div>
-</footer>
 </html>
