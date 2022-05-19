@@ -106,7 +106,6 @@
         </div>
 
 
-        <img src = "images/main/фон 1-06.png" class = "fonTraining_3">
         <div class = "training_3">
             <img src = "images/main/глв челики 3.png" class = "mainPeople">
             <div class = "descriptionTraining_1">
@@ -120,7 +119,7 @@
             </div>
         </div>
 
-        <img src = "images/main/фон-07.png" class = "fonWaveDown">
+        <img src = "images/main/fon_down.png" class = "fonWaveDown">
         <img src = "images/main/fonDown.png" class = "fonDown"></div>
         <div class = ></div>
 

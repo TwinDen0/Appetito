@@ -105,15 +105,19 @@ img {
     color: #FFFFFF;
     box-shadow: 2px 4px 7px -1px rgb(0 0 0 / 25%);
     border-radius: 100px;
-    background: #ffbc00;
     font-family: 'Roboto Slab';
     font-style: normal;
+    background: url(/images/main/btn1.jpg) no-repeat center center;
     text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     z-index: 4;
     padding-top: 0.3vw;
+}
+.start:hover {
+    background: url(/images/main/btn1_hover.jpg) no-repeat center center;
+    box-shadow: 0px 0px 30px 0px rgba(255, 251, 188, 0.571);
 }
 
 .steps4 {
@@ -189,7 +193,7 @@ img {
 .fonWaveInversion {
     position: absolute;
     left: 0;
-    top: -5%;
+    top: -10%;
     z-index: -1;
     width: 100%;
     height: auto;
@@ -295,20 +299,10 @@ img {
     left: 0;
 
     z-index: 0;
-    margin-top: 133%;
+    margin-top: 115%;
     margin-left: 21%;
     display: flex;
     justify-content: space-around;
-}
-
-.fonTraining_3 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: -3;
-    width: 100%;
-    height: auto;
-    margin-top: 155%;
 }
 
 .training_3 {
@@ -317,8 +311,8 @@ img {
     position: absolute;
     left: 0;
     z-index: 0;
-    margin-top: 163%;
-    margin-left: 21%;
+    margin-top: 140%;
+    margin-left: 18%;
     display: flex;
     justify-content: space-around;
 }
@@ -327,20 +321,20 @@ img {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 0;
+    z-index: -1;
     width: 100%;
     height: auto;
-    margin-top: 185%;
+    margin-top: 150%;
 }
 
 .fonDown {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -1;
+    z-index: -2;
     width: 100%;
     height: auto;
-    margin-top: 191%;
+    margin-top: 165%;
 }
 
 .headingFinal {
@@ -350,7 +344,7 @@ img {
     z-index: -1;
     width: 100%;
     height: auto;
-    margin-top: 202%;
+    margin-top: 177%;
     text-align: center;
     color: #FFFFFF;
     font-family: 'Roboto Condensed', sans-serif;
@@ -367,8 +361,8 @@ img {
     z-index: -1;
     width: 14%;
     height: auto;
-    margin-top: 209%;
-    margin-left: 46%;
+    margin-top: 184%;
+    margin-left: 45%;
 }
 
 .radio800 {
