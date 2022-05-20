@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+  session_start();
+?>
 <html>
 	<head>
 		<meta charset = "UTF-8" />
@@ -20,49 +23,84 @@
 
     <header>
 	<ul class = "menuHeader">
-			<div class = "containerHeader">
-			  <div onclick="location.href='./index.php'" class = "linkHeader">
-				<img class = "linkImg" src = "./header/иконки-10.png">
-				<div class = "linkText">Главная страница</div>
-			  </div>
+		<div class = "containerHeader">
+			<?php 
+			if(( $_SERVER['REQUEST_URI'] != "/")){
+				if( $_SERVER['REQUEST_URI'] != "/index.php"){
+			?>
 
-			  <div class = "split"></div>
+				<div onclick="location.href='./index.php'" class = "linkHeader">
+					<img class = "linkImg" src = "./header/иконки-10.png">
+					<div class = "linkText">Главная страница</div>
+				</div>
 
-			  <div onclick="location.href='./inventory.php'" class = "linkHeader">
+				<div class = "split"></div>
+			<?php 
+				} 
+			}
+			?>
+
+			<?php if($_SERVER['REQUEST_URI'] != "/inventory.php"){ ?>
+
+				<div onclick="location.href='./inventory.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-07.png">
 				<div class = "linkText">Инвентарь</div>
-			  </div>
+				</div>
 
-			  <div class = "split"></div>
+				<div class = "split"></div>
+			<?php } ?>
 
-			  <div class = "linkHeader">
+			<?php if( $_SERVER['REQUEST_URI'] != "/allrecipe.php"){?>
+
+			  <div onclick="location.href='./allrecipe.php'" class = "linkHeader">
 				<img class = "linkImg" src = "./header/иконки-06.png">
 				<div class = "linkText">Все рецепты</div>
 			  </div>
 
 			  <div class = "split"></div>
+			<?php } ?>
 
-			  <div onclick="location.href='./searchRecipe.php'" class = "linkHeader">
-				<img class = "linkImg" src = "./header/иконки-09.png">
-				<div class = "linkText">Поиск рецептов</div>
-			  </div>
 
-			  <div class = "split"></div>
+			<?php if( $_SERVER['REQUEST_URI'] != "/searchRecipe.php"){?>
 
-			  <div onclick="location.href='./shoppingList.php'" class = "linkHeader">
-				<img class = "linkImg" src = "./header/иконки-08.png">
-				<div class = "linkText">Список покупок</div>
-			  </div>
-
-              <div class = "split"></div>
-				<div style = "justify-content: space-around;" class = "linkHeader">
-				<a  onclick="location.href='../login.php'"href="#" class = "btnHeader">Войти</a>
-				<?php session_start(); ?>
-				<div onclick="location.href='./profile.php'">
-					<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+				<div onclick="location.href='./searchRecipe.php'" class = "linkHeader">
+					<img class = "linkImg" src = "./header/иконки-09.png">
+					<div class = "linkText">Поиск рецептов</div>
 				</div>
-			</div>
+				
+				<div class = "split"></div>
+			<?php } ?>
 
+
+			<?php if( $_SERVER['REQUEST_URI'] != "/shoppingList.php"){?>
+
+				<div onclick="location.href='./shoppingList.php'" class = "linkHeader">
+					<img class = "linkImg" src = "./header/иконки-08.png">
+					<div class = "linkText">Список покупок</div>
+				</div>
+
+              	<div class = "split"></div>
+			<?php } ?>
+
+			
+	<!-- регистрация и вход !-->
+			
+				<div style = "justify-content: space-around;" class = "linkHeader">
+					<?php if( $_SESSION['auth'] == true ) { ?>
+
+						<div onclick="location.href='./profile.php'">
+							<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+						</div>
+						<a  onclick="location.href='../exit.php'"href="#" class = "btnHeader">Выйти</a>
+
+					<?php } else { ?>
+						<a  onclick="location.href='../login.php'"href="#" class = "btnHeader">Войти</a>
+
+						<a  onclick="location.href='../registration.php'"href="#" class = "btnHeader2">  Регистрация</a>
+					<?php } ?>
+
+
+				</div>
 			</div>
         </ul>
 	</header>
