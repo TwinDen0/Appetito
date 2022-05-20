@@ -60,17 +60,15 @@
 			  <div class = "split"></div>
 			<?php } ?>
 
-
 			<?php if( $_SERVER['REQUEST_URI'] != "/searchRecipe.php"){?>
 
 				<div onclick="location.href='./searchRecipe.php'" class = "linkHeader">
 					<img class = "linkImg" src = "./header/иконки-09.png">
 					<div class = "linkText">Поиск рецептов</div>
 				</div>
-				
+
 				<div class = "split"></div>
 			<?php } ?>
-
 
 			<?php if( $_SERVER['REQUEST_URI'] != "/shoppingList.php"){?>
 
@@ -79,28 +77,33 @@
 					<div class = "linkText">Список покупок</div>
 				</div>
 
-              	<div class = "split"></div>
-			<?php } ?>
+				<?php if($_SERVER['REQUEST_URI'] != "/profile.php"){ ?>
+					<div class = "split"></div>
+				<?php } ?>
 
+			<?php } ?>
 			
 	<!-- регистрация и вход !-->
-			
-				<div style = "justify-content: space-around;" class = "linkHeader">
-					<?php if( $_SESSION['auth'] == true ) { ?>
 
-						<div onclick="location.href='./profile.php'">
-							<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
-						</div>
-						<a  onclick="location.href='../exit.php'"href="#" class = "btnHeader">Выйти</a>
+				<?php if($_SERVER['REQUEST_URI'] != "/profile.php"){ ?>
 
-					<?php } else { ?>
-						<a  onclick="location.href='../login.php'"href="#" class = "btnHeader">Войти</a>
+					<div style = "justify-content: space-around;" class = "linkHeader">
 
-						<a  onclick="location.href='../registration.php'"href="#" class = "btnHeader2">  Регистрация</a>
-					<?php } ?>
+						<?php if( $_SESSION['auth'] == true ) { ?>
 
+							<div onclick="location.href='./profile.php'" class = "nameheader"> <?php echo($_SESSION['name']) ?> </div>
+							<div style = "margin-left: 15px;" onclick="location.href='./profile.php'">
+								<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+							</div>
+							<a  style = "margin-left: 25px;" onclick="location.href='../exit.php'"href="#" class = "btnHeader2">Выйти</a>
 
-				</div>
+						<?php } else { ?>
+							<a  onclick="location.href='../login.php'"href="#" class = "btnHeader">Войти</a>
+							<a  style = "margin-left: 25px;" onclick="location.href='../registration.php'"href="#" class = "btnHeader2">  Регистрация</a>
+						<?php } ?>
+
+					</div>
+				<?php } ?>
 			</div>
         </ul>
 	</header>
