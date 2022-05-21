@@ -1,222 +1,167 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инвентарь</title>
-    <link rel="stylesheet" href="style/inventory.css">
-    <script type="text/javascript" src="../scripts/elementUpdate.js"></script>
-		<link href = "style/styleHeader.css" rel = "stylesheet" type = "text/css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Roboto&&display=swap" rel="stylesheet">
-</head>
-
 <?php
-include 'header.php';
+$SelectedIng = '';
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "UTF-8" />
+		<meta http-equiv="imagetoolbar" content="no" />
+        <meta name = "viewport" content = "width=device-width">
+		<title>Все рецепты</title>
+		<link href = "style/styleAllRecipe.css" rel = "stylesheet" type = "text/css"/>
+	</head>
 
-  ?>
 
-<body>
-    <div class="main">
-        <div class="kichenText">Мои кухонные принадлежности:</div>
-          <div class="Choose" id="Choose">
-              <?php
-                include 'connect.php';
-                session_start();
-                $mail = $_SESSION['mail'];
-                $trash = $_GET['idInv'];
-                $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
-                $myInventory = mysqli_fetch_assoc($query);
-                $myInventory = $myInventory['myInventory'];
+	<?php include 'header.php'; ?>
 
-                if (isset($_GET['idInvAdd'])) {
-                  $id = $_GET['idInvAdd'];
-                  $myInventory = str_replace(",".$id.",",'',$myInventory);
-                  $myInventory = ','.$id.','.$myInventory;
-                  if(!$out) $out = '';
-                  mysqli_query($conn, "UPDATE `users` SET `myInventory` = '$myInventory' WHERE `mail` = '$mail'");
-                  mysqli_query($conn, "UPDATE `inventory` SET `popularity` = `popularity` + 1 WHERE `id` = '$id'");
-                }
-                if (isset($_GET['idInv'])) {
-                  $id = $_GET['idInv'];
-                  $myInventory = str_replace(",".$id.",",'',$myInventory);
-                  if(!$out) $out = '';
-                  mysqli_query($conn, "UPDATE `users` SET `myInventory` = '$myInventory' WHERE `mail` = '$mail'");
-                  mysqli_query($conn, "UPDATE `inventory` SET `popularity` = `popularity` - 1 WHERE `id` = '$id'");
-                }
+  <body>
+	<div class = "wapper"></div>
+			<?php
+				include 'connect.php';
+				session_start();
+				$mail = $_SESSION['mail'];
+				$sort = $_GET['sort'];
+				$category = $_GET['category'];
 
-                echo '
-                <div class="chosenText">Выбрано: ' . substr_count($myInventory, ',')/2 . '</div>
-                <div class="kichenUtensils">
-                    <div class="block" id="selectInv"> ';
-                for($i = 0; $i <  strlen($myInventory); $i++){
-                  if($myInventory[$i] != "," && $myInventory[$i-1] == ",") {
-                    $id = $myInventory[$i];
-                    if($myInventory[$i] != "," && $myInventory[$i+1] != ",") {
-                      $id = $id.$myInventory[$i+1];
-                      $i+=1;
-                    }
-                    if($myInventory[$i] != "," && $myInventory[$i+1] != "," && $myInventory[$i+2] != ",") {
-                      $id = $id.$myInventory[$i+2];
-                      $i+=1;
-                    }
-                    $query = mysqli_query($conn, "SELECT * FROM `inventory` WHERE `id` = '$id'");
-                    $row = mysqli_fetch_assoc($query);
-                    echo '
-                    <div class="kichenBlockY">
-                    <div class="kichenBlock" onclick = "ClickSelect(' . $row['id'] . ')" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
-                    <div class="kichenUtensil"><span class="text">' . $row['name'] . '</span></div>
-                    </div>';
-                  }
-                };
-               ?>
-            </div>
-          </div>
-          </div>
+				$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+				$selectedIngredientInSearch = mysqli_fetch_assoc($query);
+				$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
+			?>
+	
 
-          <div class="addListBlock">
-              <div class="addNameBlock">
-                  <div class="addName">
-                      <span class="chosenText">Добавить к списку:</span>
-                  </div>
-                  <div class="popularity">
-                      <div class="addSearchSringBlock">
-                          <input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
-                      </div>
-                      <script>
-                        function search() {
-                          let input = document.getElementById("inputSearch");
-                          let filter = input.value.toUpperCase();
-                          let ul = document.getElementById("addBlock");
-                          let inv = ul.getElementsByTagName("inv");
+			<div class = "recipe">
+				<div class = "upeerText">
+					<div style = "margin-top: 9%" class = "headingFilter">Все рецепты:</div>
+				</div>
+				
+<!-- рецепты-->
+				<div id = "recipeB" class = "box" style = "display:flex;">
+					<div class="select">
+							<select name="sortRecipes" id="sortRecipes">
+								<?php
+                 $sortRecipes = $_GET['sortRecipes'];
+                ?>
+                
+									<option value="0" <?php if($sortRecipes!="0") echo 'selected="selected"' ?>>По алфавиту</option>
+									<option value="1" <?php if($sortRecipes=="1") echo 'selected="selected"' ?>>По популярности</option>
+									<option value="2" <?php if($sortRecipes=="2") echo 'selected="selected"' ?>>По времени приготовления</option>
+									<option value="3" <?php if($sortRecipes=="3") echo 'selected="selected"' ?>>По каллорийности</option>
+									<option value="4" <?php if($sortRecipes=="4") echo 'selected="selected"' ?>>По цене</option>
+									<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
+							</select>
+					</div>
+          <div class="addSearchSringBlock" style = "height: 40px;">
+								<input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
+								<div class="search-btn"></div>
+								<script>
+									function search() {
+										let input = document.getElementById("inputSearch");
+										let filter = input.value.toUpperCase();
+										let ul = document.getElementById("recipe");
+										let ing = ul.getElementsByTagName("ing");
 
-                          // Перебирайте все элементы списка и скрывайте те, которые не соответствуют поисковому запросу
-                          for (let i = 0; i < inv.length; i++) {
-                              let a = inv[i].getElementsByTagName("a")[0];
-                              if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                  inv[i].style.display = "";
-                              } else {
-                                  inv[i].style.display = "none";
-                              }
-                          }
-                        }
-                        document.addEventListener('keyup', search);
-                      </script>
-                      <div class="select">
-                          <select name="sort" id="sort">
-                            <?php $sort = $_GET['sort']; ?>
-                              <option value="0" <?php if($sort!="0") echo 'selected="selected"' ?>>По алфавиту</option>
-                              <option value="1" <?php if($sort=="1") echo 'selected="selected"' ?>>По популярности</option>
-                              <option value="2" <?php if($sort=="2") echo 'selected="selected"' ?>>По дате добавления</option>
-                          </select>
-                          <script>
-                            let el=document.querySelector('#sort');
-                            el.addEventListener('change', function(){
-                              //location.href = "//project/inventory.php?sort=" + el.value;
-                              window.history.replaceState('1', 'Title', '?sort='+el.value);
-                              elementUpdate('#addBlock');
-                            });
-                            function ClickSelect(id){
-                              window.history.replaceState('1', 'Title', '?idInv='+id+'&sort='+el.value);
-                              elementUpdate('#Choose');
-                              elementUpdate('#addBlock');
-                              window.history.replaceState('1', 'Title', '?sort='+el.value);
-                            }
-                            function ClickInv(id){
-                              window.history.replaceState('1', 'Title', '?idInvAdd='+id+'&sort='+el.value);
-                              elementUpdate('#Choose');
-                              elementUpdate('#addBlock');
-                              window.history.replaceState('1', 'Title', '?sort='+el.value);
-                            }
-                          </script>
-                      </div>
-                  </div>
-              </div>
-          </div>
+										// Перебирайте все элементы списка и скрывайте те, которые не соответствуют поисковому запросу
+										for (let i = 0; i < ing.length; i++) {
+												let a = ing[i].getElementsByTagName("a")[0];
+												if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+														ing[i].style.display = "";
+												} else {
+														ing[i].style.display = "none";
+												}
+										}
+									}
+									document.addEventListener('keyup', search);
+								</script>
+							</div>
+				</div>
 
-          <div class="addKichenUtensils">
-            <div class="addBlock" id="addBlock">
-            <?php
-              $sort = $_GET['sort'];
-              switch($sort){
-                case "0":
-                  $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `name`");
-                  break;
-                case "1":
-                  $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `popularity` DESC");
-                  break;
-                case "2":
-                  $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `id` DESC");
-                  break;
-                default :
-                  $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `name`");
-                  break;
-              }
 
-              if(!mysqli_num_rows($query)) echo 'Пока пусто';
-              while($row = mysqli_fetch_assoc($query)){
-              for($i = 0; $i <  strlen($myInventory); $i++){
-                if($myInventory[$i] != "," && $myInventory[$i-1] == ",") {
-                  $id = $myInventory[$i];
-                  if($myInventory[$i] != "," && $myInventory[$i+1] != ",") {
-                    $id = $id.$myInventory[$i+1];
-                    $i+=1;
-                  }
-                  if($myInventory[$i] != "," && $myInventory[$i+1] != "," && $myInventory[$i+2] != ",") {
-                    $id = $id.$myInventory[$i+2];
-                    $i+=1;
-                  }
-                  if($row['id'] == $id) {
-                    $none = true;
-                    break;
-                  }
-                }
-              }
-              if(!$none)
-              echo
-              '<inv>
-                <div class="addKichenBlockL">
-                <div class="addKichenBlock" onclick = "ClickInv(' . $row['id'] . ')" style = " background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
-                  <div class="addKichenUtensil"><span class="addText"><a>' . $row['name'] . '</a></span></div>
-                  </div>
-              </inv>';
-              $none = false;
-            };
-            ?>
-            </div>
-          </div>
-        </div>
-    </div>
-    <script>
-    (function() {
-        function scrollHorizontally(e) {
-            e = window.event || e;
-            var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-            document.getElementById('selectInv').scrollLeft += (delta * 70); // Multiplied by 40
-            e.preventDefault();
-        }
+				<div class = "boxRecipe" id="recipe">
+					<?php
+						switch($sortRecipes){
+							case "0":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								break;
+							case "1":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes` DESC");
+								break;
+							case "2":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `time`");
+								break;
+							case "3":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `calories`");
+								break;
+							case "4":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `price`");
+								break;
+							case "5":
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id` DESC");
+								break;
+							default :
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								break;
+						}
+						while($recipe = mysqli_fetch_assoc($query)){
+								$time =  $recipe['time'];
+								$hours = intdiv($time,60);
+								if($hours < 1) $hours = '00';
+								if($hours > 0 && $hours < 10) $hours = '0'.$hours;
+								$minutes = $time % 60;
+								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
+								echo '
+									<ing>
+                  <div class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
+										<div class = "recipeReady_img" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
+										<div class = "recipeReady_descript">
+											<div><a>' . $recipe['name'] . '</a></div>
+											<div> ' . $recipe['description'] . ' </div>
+											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
+											<div> Каллорийность: ' . $recipe['calories'] . '</div>
+											<div> Стоимость: ' . $recipe['price'] . '</div>';
+											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
+											echo '<div style="height:20px"> Не хватает  ингредиентов: ' . substr_count($recipesIngredients, ',')/2 . '</div>';
+											if($extra=='1' && substr_count($recipesInventory, ',')/2 > 0)
+											echo '<div style="height:20px"> Не хватает принадлежностей:' . substr_count($recipesInventory, ',')/2 . '</div>';
+											echo'
+										</div>
+									</div>
+                  </ing>
+								';
+							}
+						
+					?>
+				</div>
+				</div>
 
-        if (document.getElementById('selectInv').addEventListener) {
-            // IE9, Chrome, Safari, Opera
-            document.getElementById('selectInv').addEventListener('mousewheel', scrollHorizontally, false);
-            // Firefox
-            document.getElementById('selectInv').addEventListener('DOMMouseScroll', scrollHorizontally, false);
-        } else {
-            // IE 6/7/8
-            document.getElementById('selectInv').attachEvent('onmousewheel', scrollHorizontally);
-        }
-      })();
-    </script>
+			</div>
+		</div>
+		<script>
 
-        <?php
-        include 'menuMobile.php';
-        ?>
+			let sortRecipes=document.getElementById('sortRecipes');
+		  sortRecipes.addEventListener('change', function(){
+		    //location.href = "//project/ingentory.php?sort=" + el.value;
+		    window.history.replaceState('1', 'Title', '?sortRecipes='+sortRecipes.value);
+		    elementUpdate('#recipe');
+		  });
 
-</body>
+			function GoToRecipe(id){
+				location.href = "http://project/recipe.php?id=" + id;
+			}
+			async function elementUpdate(selector) {
+			  try {
+			    var html = await (await fetch(location.href)).text();
+			    var newdoc = new DOMParser().parseFromString(html, 'text/html');
+			    document.querySelector(selector).outerHTML = newdoc.querySelector(selector).outerHTML;
+			    console.log('Элемент '+selector+' был успешно обновлен');
+					let boxFood = document.querySelector('#boxFood');
+					boxFood.scrollTop = localStorage.getItem('boxFood');
+			    return true;
+			  } catch(err) {
+			    console.log('При обновлении элемента '+selector+' произошла ошибка:');
+			    console.dir(err);
+			    return false;
+			  }
+			}
+		</script>
+    </body>
 </html>
