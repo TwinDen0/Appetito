@@ -1,7 +1,25 @@
 <head>
 		<link href = "style/styleMenu.css" rel = "stylesheet" type = "text/css"/>
-		<script src="scripts/menuMobile.js"></script>
 </head>
+
+<script>
+	function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+}
+</script>
 
 
 <img class = "menu800" src="images/profile/menu.png">

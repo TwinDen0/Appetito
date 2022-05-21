@@ -15,7 +15,8 @@
     justify-content: space-evenly;
     align-items: center;
     width: 90%;
-    margin: auto;
+    margin-top: auto;
+    margin-left: 2.2%;
     height: 3vw;
 }
 
@@ -65,10 +66,35 @@
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
 }
 
+.btnHeader2{
+    width: 50%;
+    height: 50%;
+    font-size: 1.1vw;
+    color: #a5a5a5;
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-top: 2%;
+}
+
+.nameheader{
+    width: 50%;
+    height: 50%;
+    font-size: 1.1vw;
+    color: #101010;
+    font-family: 'PT Sans', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    margin-left: 15%;
+    margin-top: 3%;
+}
+
 .profile {
     width: 2vw;
     height: 2vw;
     filter: drop-shadow(0px 1.33333px 5.33333px rgba(0, 0, 0, 0.25));
-
+    margin-left: 5%;
     border-radius:100%;
 }
