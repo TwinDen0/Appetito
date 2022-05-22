@@ -30,3 +30,17 @@ function fillColor(){
     percent2 = (sliderTwo.value / sliderMaxValue) * 100;
     sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #ff9800 ${percent1}% , #ff9800 ${percent2}%, #dadae5 ${percent2}%)`;
 }
+
+
+function hoverOnRecipe (id) {
+    document.getElementById("recipe__parameter"+id).classList.add("active")
+    document.getElementById("recipe__img"+id).classList.add("active")
+    document.getElementById("recipe__description"+id).classList.add("active")
+    document.getElementById("recipeReady"+id).classList.add("active")
+}
+function hoverOffRecipe (id) {
+    document.getElementById("recipe__parameter"+id).classList.remove("active")
+    document.getElementById("recipe__img"+id).classList.remove("active")
+    document.getElementById("recipe__description"+id).classList.remove("active")
+    document.getElementById("recipeReady"+id).classList.remove("active")
+}
