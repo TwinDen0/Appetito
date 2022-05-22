@@ -19,6 +19,9 @@ include 'header.php';
   ?>
 
 <body>
+  <div class="backgroundAddRecipe">
+
+  </div>
   <form action="../php/sendRecipe.php" method="post" enctype="multipart/form-data">
     <div class="main" id="all">
         <div class="addName">Добавить рецепт</div>
@@ -49,7 +52,7 @@ include 'header.php';
 
         <div class="calories">
             <div class="textCalories">Введите примерную коллорийность:</div>
-            <input type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');" required></input>
+            <input type="number" min="0" step="1" type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');" required></input>
         </div>
 
         <div class="cookingTime">
@@ -175,6 +178,7 @@ include 'header.php';
                         }
 
                         while($row = mysqli_fetch_assoc($query)){
+                          if(!strpos($ingredients, $row['id']))
                           echo '<ing>
                           <div class="suitableNamePrd"><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"></div>
                           <div class="nprod"><a>' . $row['name'] . '</a></div></div>
@@ -273,6 +277,7 @@ include 'header.php';
                   }
 
                   while($row = mysqli_fetch_assoc($query)){
+                    if(!strpos($inventory, $row['id']))
                     echo '<inv>
                       <div class="suitableNamePrd">
                         <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>
@@ -309,7 +314,7 @@ include 'header.php';
                         </div>
                       </div>
                       <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'" required></textarea>
-                      <input name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
+                      <input id="stepCount" name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
                   </div>
               </div>';
             };
@@ -371,6 +376,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#ingredientsSelect');
+        elementUpdate('#ingredients');
       }
       function DeleteIngredient(ingredients){
         let result = sessionStorage.getItem('ingredients') + '';
@@ -383,6 +389,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#ingredientsSelect');
+        elementUpdate('#ingredients');
       }
       function AddInventory(inventory){
         let result = sessionStorage.getItem('inventory') + '';
@@ -393,6 +400,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#inventorySelect');
+        elementUpdate('#inventory');
       }
       function DeleteInventory(inventory){
         let result = sessionStorage.getItem('inventory') + '';
@@ -402,6 +410,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#inventorySelect');
+        elementUpdate('#inventory');
       }
 
       function AddStep(steps){
@@ -423,8 +432,8 @@ include 'header.php';
 
       function RelaceTextArea(){
         document.querySelectorAll('textarea, input').forEach(function(e) {
-            if(e.id != 'file_id'){
-              if(e.value === '') e.value = window.sessionStorage.getItem(e.name, e.value);
+            if(e.type != 'file'){
+              if(e.value === '' && window.sessionStorage.getItem(e.name)) e.value = window.sessionStorage.getItem(e.name);
               e.addEventListener('input', function() {
                   window.sessionStorage.setItem(e.name, e.value);
               })
@@ -435,6 +444,12 @@ include 'header.php';
       document.addEventListener("DOMContentLoaded", function() {
           RelaceTextArea();
           ReplaceNumberInput();
+          ReplaceAddressBar();
+          elementUpdate('#inventorySelect');
+          elementUpdate('#inventory');
+          elementUpdate('#ingredientsSelect');
+          elementUpdate('#ingredients');
+          elementUpdate('#steps');
       });
 
       function ReplaceNumberInput(){
@@ -477,14 +492,7 @@ include 'header.php';
       }
     </script>
 </body>
-
-<footer>
-  <div class="fmenuBlock">
-    <div class="fmenu" id="main-pct"></div>
-    <div class="fmenu" id="inv-pct"></div>
-    <div class="fmenu" id="search-pct"></div>
-    <div class="fmenu" id="spisok-pct"></div>
-    <div class="fmenu" id="profil-pct"></div>
-  </div>
-</footer>
+<?php
+include 'menuMobile.php';
+?>
 </html>

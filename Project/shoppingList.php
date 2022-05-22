@@ -12,7 +12,7 @@
 <?php
 	include 'header.php';
     ?>
-    
+
 <body>
     <div class = "wapper"></div>
     <div id = "background" onclick = "closeList()" class = "background"></div>
@@ -88,7 +88,7 @@
                     <img src="images/category/mushroom.png" class = "categoryBlock1" onclick="ClickCategory('Грибы');">
                     <img src="images/category/milk.png" class = "categoryBlock1" onclick="ClickCategory('Молочное');">
                     <img src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупы');">
-                    <img src="images/category/pasta.png"" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
+                    <img src="images/category/pasta.png" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
                     <img src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Масла');">
                     <img src="images/category/jam.png" class = "categoryBlock1" onclick="ClickCategory('Джемы');">
                     <img src="images/category/chicken.png" class = "categoryBlock1" onclick="ClickCategory('Птица');">

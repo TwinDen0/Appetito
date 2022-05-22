@@ -25,7 +25,8 @@ img {
 
 body {
     margin: 0;
-    background: url(/images/inventoryImg/fon-addr.png) repeat top center;
+    background: url(/images/inventoryImg/fon-addr.png) no-repeat top center;
+    background-attachment: fixed;
     width: 100%;
 }
 .menuHeader {
