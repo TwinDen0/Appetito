@@ -11,68 +11,64 @@ $SelectedIng = '';
 		<link href = "style/styleAllRecipe.css" rel = "stylesheet" type = "text/css"/>
 	</head>
 
+<?php include 'header.php'; ?>
 
-	<?php include 'header.php'; ?>
+<body>
+	<?php
+		include 'connect.php';
+		session_start();
+		$mail = $_SESSION['mail'];
+		$sort = $_GET['sort'];
+		$category = $_GET['category'];
 
-  <body>
-	<div class = "wapper"></div>
-			<?php
-				include 'connect.php';
-				session_start();
-				$mail = $_SESSION['mail'];
-				$sort = $_GET['sort'];
-				$category = $_GET['category'];
-
-				$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
-				$selectedIngredientInSearch = mysqli_fetch_assoc($query);
-				$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
-			?>
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+		$selectedIngredientInSearch = mysqli_fetch_assoc($query);
+		$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
+	?>
 	
 
-			<div class = "recipe">
-				<div class = "upeerText">
-					<div style = "margin-top: 9%" class = "headingFilter">Все рецепты:</div>
-				</div>
+	<div class = "recipe">
+		<div class = "upeerText">
+			<div style = "margin-top: 9%" class = "headingFilter">Все рецепты:</div>
+		</div>
 				
 <!-- рецепты-->
 				<div id = "recipeB" class = "box" style = "display:flex;">
 					<div class="select">
-							<select name="sortRecipes" id="sortRecipes">
-								<?php
-                 $sortRecipes = $_GET['sortRecipes'];
-                ?>
-                
-									<option value="0" <?php if($sortRecipes!="0") echo 'selected="selected"' ?>>По алфавиту</option>
-									<option value="1" <?php if($sortRecipes=="1") echo 'selected="selected"' ?>>По популярности</option>
-									<option value="2" <?php if($sortRecipes=="2") echo 'selected="selected"' ?>>По времени приготовления</option>
-									<option value="3" <?php if($sortRecipes=="3") echo 'selected="selected"' ?>>По каллорийности</option>
-									<option value="4" <?php if($sortRecipes=="4") echo 'selected="selected"' ?>>По цене</option>
-									<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
-							</select>
+						<select name="sortRecipes" id="sortRecipes">
+							<?php $sortRecipes = $_GET['sortRecipes']; ?>
+			
+							<option value="0" <?php if($sortRecipes!="0") echo 'selected="selected"' ?>>По алфавиту</option>
+							<option value="1" <?php if($sortRecipes=="1") echo 'selected="selected"' ?>>По популярности</option>
+							<option value="2" <?php if($sortRecipes=="2") echo 'selected="selected"' ?>>По времени приготовления</option>
+							<option value="3" <?php if($sortRecipes=="3") echo 'selected="selected"' ?>>По каллорийности</option>
+							<option value="4" <?php if($sortRecipes=="4") echo 'selected="selected"' ?>>По цене</option>
+							<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
+						</select>
 					</div>
-          <div class="addSearchSringBlock" style = "height: 40px;">
-								<input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
-								<div class="search-btn"></div>
-								<script>
-									function search() {
-										let input = document.getElementById("inputSearch");
-										let filter = input.value.toUpperCase();
-										let ul = document.getElementById("recipe");
-										let ing = ul.getElementsByTagName("ing");
+					<div class="addSearchSringBlock" style = "height: 40px;">
+						<input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
+						<div class="search-btn"></div>
+						<script>
+							function search() {
+								let input = document.getElementById("inputSearch");
+								let filter = input.value.toUpperCase();
+								let ul = document.getElementById("recipe");
+								let ing = ul.getElementsByTagName("ing");
 
-										// Перебирайте все элементы списка и скрывайте те, которые не соответствуют поисковому запросу
-										for (let i = 0; i < ing.length; i++) {
-												let a = ing[i].getElementsByTagName("a")[0];
-												if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
-														ing[i].style.display = "";
-												} else {
-														ing[i].style.display = "none";
-												}
+								// Перебирайте все элементы списка и скрывайте те, которые не соответствуют поисковому запросу
+								for (let i = 0; i < ing.length; i++) {
+										let a = ing[i].getElementsByTagName("a")[0];
+										if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+												ing[i].style.display = "";
+										} else {
+												ing[i].style.display = "none";
 										}
-									}
-									document.addEventListener('keyup', search);
-								</script>
-							</div>
+								}
+							}
+							document.addEventListener('keyup', search);
+						</script>
+					</div>
 				</div>
 
 
@@ -137,31 +133,31 @@ $SelectedIng = '';
 		</div>
 		<script>
 
-			let sortRecipes=document.getElementById('sortRecipes');
-		  sortRecipes.addEventListener('change', function(){
+		let sortRecipes=document.getElementById('sortRecipes');
+		sortRecipes.addEventListener('change', function(){
 		    //location.href = "//project/ingentory.php?sort=" + el.value;
 		    window.history.replaceState('1', 'Title', '?sortRecipes='+sortRecipes.value);
 		    elementUpdate('#recipe');
-		  });
+		});
 
-			function GoToRecipe(id){
-				location.href = "http://project/recipe.php?id=" + id;
+		function GoToRecipe(id){
+			location.href = "http://project/recipe.php?id=" + id;
+		}
+		async function elementUpdate(selector) {
+			try {
+			var html = await (await fetch(location.href)).text();
+			var newdoc = new DOMParser().parseFromString(html, 'text/html');
+			document.querySelector(selector).outerHTML = newdoc.querySelector(selector).outerHTML;
+			console.log('Элемент '+selector+' был успешно обновлен');
+				let boxFood = document.querySelector('#boxFood');
+				boxFood.scrollTop = localStorage.getItem('boxFood');
+			return true;
+			} catch(err) {
+			console.log('При обновлении элемента '+selector+' произошла ошибка:');
+			console.dir(err);
+			return false;
 			}
-			async function elementUpdate(selector) {
-			  try {
-			    var html = await (await fetch(location.href)).text();
-			    var newdoc = new DOMParser().parseFromString(html, 'text/html');
-			    document.querySelector(selector).outerHTML = newdoc.querySelector(selector).outerHTML;
-			    console.log('Элемент '+selector+' был успешно обновлен');
-					let boxFood = document.querySelector('#boxFood');
-					boxFood.scrollTop = localStorage.getItem('boxFood');
-			    return true;
-			  } catch(err) {
-			    console.log('При обновлении элемента '+selector+' произошла ошибка:');
-			    console.dir(err);
-			    return false;
-			  }
-			}
+		}
 		</script>
     </body>
 </html>

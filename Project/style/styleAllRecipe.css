@@ -2,12 +2,22 @@
     margin: 0;
     -moz-user-select: none;
     -webkit-user-select: none;
-    -ms-user-select: none; 
+    -ms-user-select: none;
     user-select: none;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'PT Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing:0.017em;
 }
 img { 
     pointer-events: none; 
+}
+body {
+    margin: 0;
+    background: url(/images/inventoryImg/fon-addr.png) repeat top center;
+    width: 100%;
+    height: 100%;
+    overflow:  hidden;
 }
 ::-webkit-scrollbar {
     background: rgba(209, 121, 17, 0.16);
@@ -39,196 +49,8 @@ img {
     font-size: 1.8vw;
     margin-top: 5%;
 }
-
-.boxFilter {
-    width: 100%;
-    height: 100vh;
-    background-color: rgb(255, 255, 255);
-    /* margin: auto; */
-    border-radius: 20px;
-    margin-top: 2%;
-}
-
-.upTextFilter {
-    display: flex;
-    width: 84%;
-    height: 5%;
-    margin: 2% 0% 0% 2%;
-    justify-content: space-evenly;
-}
-
-.upTextFilter_1 {
-    font-size: 1.4vw;
-    padding-right: 5%;
-}
-
-
-/***чекбокс*******************************************************/
-.checkbox_reg {
-    display: flex;
-    position: relative;
-    flex-direction: row-reverse;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  .checkbox_reg input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .checkbox_reg input:checked ~ .checkbox__checkmark {
-    background-color: #ffffff;
-    border: #cfcfcf solid 0.2vw;
-  }
-  .checkbox_reg input:checked ~ .checkbox__checkmark:after {
-    opacity: 1;
-  }
-  .checkbox_reg:hover input ~ .checkbox__checkmark {
-    background-color: #eee;
-  }
-  .checkbox_reg:hover input:checked ~ .checkbox__checkmark {
-    background-color: #ffffff;
-    border: #cfcfcf solid 0.2vw;
-  }
-   .checkbox__checkmark {
-    height: 1.5vw;
-    width: 1.5vw;
-    background-color: #ffffff;
-    border: #cfcfcf solid 0.2vw;
-    transition: background-color 0.25s ease;
-    border-radius: 4px;
-  }
-  .checkbox__checkmark:after {
-    content: "";
-    position: absolute;
-    left: 21.9vw;
-    top: -0.5vw;
-    width: 0.7vw;
-    height: 2vw;
-    border: solid rgb(52 219 43);
-    border-width: 0 0.3vw 0.25vw 0;
-    transform: rotate(45deg);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .checkbox__body {
-    width: 20vw;
-    height: 39px;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.4vw;
-    padding-left: 1vw;
-    color: #ff9800;
-  }
-
-/***Ползунок*******************************************************/
-
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.container{
-    position: relative;
-    width: 82.5%;
-    height: 7%;
-    margin-left: 2.5%;
-}
-input[type="range"]{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 100%;
-    outline: none;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    background-color: transparent;
-    pointer-events: none;
-}
-.slider-track{
-    width: 100%;
-    height: 5px;
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    border-radius: 5px;
-}
-input[type="range"]::-webkit-slider-runnable-track{
-    -webkit-appearance: none;
-    height: 5px;
-}
-input[type="range"]::-moz-range-track{
-    -moz-appearance: none;
-    height: 5px;
-}
-input[type="range"]::-ms-track{
-    appearance: none;
-    height: 5px;
-}
-input[type="range"]::-webkit-slider-thumb{
-    -webkit-appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    background-color: #ff9800;
-    cursor: pointer;
-    margin-top: -9px;
-    pointer-events: auto;
-    border-radius: 50%;
-}
-input[type="range"]::-moz-range-thumb{
-    -webkit-appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #ff9800;
-    pointer-events: auto;
-}
-input[type="range"]::-ms-thumb{
-    appearance: none;
-    height: 1.7em;
-    width: 1.7em;
-    cursor: pointer;
-    border-radius: 50%;
-    background-color: #ff9800;
-    pointer-events: auto;
-}
-input[type="range"]:active::-webkit-slider-thumb{
-    background-color: #ffffff;
-    border: 3px solid #ff9800;
-}
-.values{
-    width: 100%;
-    display: flex;
-    position: relative;
-    margin: auto;
-    border-radius: 5px;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.4vw;
-    margin: 0% 0% 0% 2.7%;
-}
-.val {
-    padding-right: 2%;
-}
 /********************************************************/
 
-.choice {
-    display: flex;
-    width: 97%;
-    height: 5%;
-    margin-left: 3%;
-}
-.choiceText {
-    font-size: 1.4vw;
-}
 .ingredients {
     width: 60%;
     height: 100%;
@@ -244,65 +66,6 @@ input[type="range"]:active::-webkit-slider-thumb{
     display: flex;
     width: 100%;
     height: auto;
-}
-
-.boxIngredient {
-    width: 97%;
-    height: auto;
-    margin-left: 3%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-
-.boxScroll {
-    width: 97%;
-    height: 53%;
-    box-sizing: border-box;
-    overflow: hidden;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding-bottom: 1%;
-}
-
-.boxScroll::-webkit-scrollbar {
-    background: rgba(209, 121, 17, 0.16);
-    width: 5px;
-    height: 5px;
-}
-
-.boxScroll::-webkit-scrollbar-thumb {
-    background-color: #FFA96A;
-    border-radius: 20px;
-}
-
-
-.boxScroll::-webkit-scrollbar-track {
-    border: 1px solid transparent;
-    background-clip: content-box;
-}
-
-.textCut {
-    width: 100%;
-    height: auto;
-    font-size: 1.2vw;
-    padding-bottom: 2%;
-}
-
-.categoryImage {
-    display: inline-block;
-    vertical-align: top;
-    background-color: rgb(105, 105, 105);
-    border-radius: 50%;
-    width: 4vw;
-    height: 4vw;
-    margin-right: 0.3%;
-    pointer-events:all;
-    
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none; 
-    user-select: none;
 }
 
 .box {
@@ -323,25 +86,6 @@ input[type="range"]:active::-webkit-slider-thumb{
     margin-top: 2%;
 }
 
-.productBox {
-    width: 160px;
-    height: 215px;
-    background: #ffffff;
-    border: solid 0.1vw #80808045;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    margin: 15px;
-    filter: drop-shadow(0px 0px 5px rgba(184, 175, 143, 0.5));
-}
-
-.foodImage {
-    width: 90%;
-    height: 75%;
-    /* margin-left: 3%; */
-    margin: auto;
-    margin-top: 5%;
-}
-
 .recipe {
     width: 31%;
     height: 112vh;
@@ -351,34 +95,6 @@ input[type="range"]:active::-webkit-slider-thumb{
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-}
-
-.boxInstrumentation {
-    width: 98%;
-    height: 9.3vw;
-    background-color: rgb(231, 231, 231);
-    margin-top: 2%;
-    border-radius: 20px;
-    padding: 1%;
-    font-size: 1.3vw;
-    box-sizing: border-box;
-}
-
-.instrumentationImage {
-    display: inline-block;
-    vertical-align: top;
-    background-color: rgb(105, 105, 105);
-    border-radius: 50%;
-    width: 5vw;
-    height: 5vw;
-    margin-right: 0.3%;
-    margin-top: 1%;
-}
-
-.searchRecipe {
-    width: 98%;
-    height: 80%;
-    background-color: antiquewhite;
 }
 
 .boxRecipe {
@@ -451,47 +167,16 @@ input[type="range"]:active::-webkit-slider-thumb{
     margin-left: 1%;
 }
 
-.nameFood {
-    width: 97%;
-    margin: auto;
-    font-size: 14px;
-    text-align: center;
-    /* bottom: 0; */
-    margin-top: 90%;
-}
-
-.checkbox__bodyProd {
-    width: 12vw;
-    /* height: 38px; */
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.8vw;
-    padding-left: 1vw;
-    padding-top: 3%;
-}
-
 #recipeB {
     margin-top: 2%;
 }
 
 #left:after {
     left: 13.9vw;
-  }
+}
 
-  .addSearchSring {
+.addSearchSring {
     width: 10vw;
     height: 1vw;
     font-size: 1vw;
-  }
-
-  .addTrue {
-    width: 15%;
-    height: auto;
-    margin-left: 45%;
-  }
-  .addFalse {
-      width: 10%;
-      height: auto;
-      margin-left: 90%;
-      margin-top: 6%;
-  }
+}
