@@ -26,7 +26,7 @@
             <div class="reg_zagolovok"><b>Регистрация</b></div>
             <form action="reg.php" method="post">
                 <div class="name_reg"><b>Никнейм:</b></div>
-                <input  name="name" maxlength="15" class="col-75" type="text" placeholder="Иван" required>
+                <input  name="name" maxlength="10" class="col-75" type="text" placeholder="Иван" required>
 
                 <div class="name_reg" style="top: 120px;"><b>Почта:</b></div>
                 <input  name="mail" class="col-75" type="email" placeholder="email@gmail.com" style="top: 120px;" required>

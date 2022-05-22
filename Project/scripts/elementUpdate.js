@@ -11,3 +11,16 @@ async function elementUpdate(selector) {
     return false;
   }
 }
+
+
+function ShoppingListOpen() {
+  document.getElementById("ShoppingList").style.display = 'block';
+  document.getElementById("background").style.zIndex = 2;
+  document.getElementById("selectList").style.marginTop = '-1%';
+}
+
+function closeList() {
+  document.getElementById("ShoppingList").style.display = '';
+  document.getElementById("background").style.zIndex = -2;
+  document.getElementById("selectList").style.marginTop = '4.5vw';
+}

@@ -60,7 +60,7 @@ $id = $user['id'];
         <label class = "heading_add">Новое имя</label>
 
         <div class="ava_input__wrapper">
-          <input maxlength="15" type="text" name="name" id="input__file" class="input__file" multiple>
+          <input maxlength="10" type="text" name="name" id="input__file" class="input__file" multiple>
         </div>
         <button type="submit" class = "ava_add">Изменить</button>
 	    </form>
@@ -244,5 +244,9 @@ $id = $user['id'];
 					massage.style.display = 'flex';
 				}
 			</script>
+
+		<?php
+        include 'menuMobile.php';
+        ?>
     </body>
 </html>
