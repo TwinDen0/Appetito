@@ -15,8 +15,9 @@
     
 <body>
     <div class = "wapper"></div>
+    <div id = "background" onclick = "closeList()" class = "background"></div>
     <div class="main">
-        <div class="shoppingList">
+        <div class="shoppingList" id = "ShoppingList" >
             <img class = "note" src = "images/shoppingList/скрепки.png">
             <div class="shoppingListBlocks" id="selectList">
               <?php
@@ -79,6 +80,7 @@
         </div>
         <div class="chooseProducts">
             <div class="chooseProductsText">Выбери продукты:</div>
+            <a class = "look" onclick="ShoppingListOpen()">Смотреть список</a>
             <div class="category">
                 <div class="categoryText">категория:</div>
                 <div class="categoryBlocks">
@@ -216,5 +218,10 @@
     document.getElementById("inputQuantity"+id).value = '0';
   }
 </script>
+
+        <?php
+        include 'menuMobile.php';
+        ?>
+
 </body>
 </html>

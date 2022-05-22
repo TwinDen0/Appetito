@@ -41,6 +41,7 @@
     width: 78%;
 }
 .shoppingList {
+    display: block;
     width: 35.5%;
     display: flex;
     flex-direction: column;
@@ -182,7 +183,8 @@
     background: none;
     border: 0;
     padding: 4%;
-    width: 97%;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .inputSearchText {
@@ -196,7 +198,7 @@
 }
 .productSelectionBox1 {
     width: 94%;
-    height: 50vh;
+    height: 55vh;
     margin: 0 auto;
     margin-top: 18px;
     display: flex;
@@ -239,4 +241,261 @@
     border: 0;
     border-radius: 20px;
     text-align: center;
+}
+.look {
+display: none
+}
+.background {
+    display: none;
+}
+
+@media screen and (max-width: 1400px) {
+    .productBox {
+        width: 150px;
+        height: 200px;
+    }
+    .productName {
+        height: 125px;
+        line-height: 20px;
+        font-size: 16px;
+    }
+    .amountText1 {
+        font-size: 14px;
+        width: 90%;
+        line-height: 24px;
+    }
+    .shoppingListBlock {
+        height: 125px;
+    }
+    .shoppingListBlocks {
+        width: 30%;
+        margin-top: 5%;
+    }
+    .note {
+        width: 95%;
+    }
+    .cross {
+        margin-top: -1%;
+        width: 3vw;
+        height: 3vw;
+        margin-left: 90%;
+    }
+    .nameProductText {
+        font-size: 17px;
+    }
+}
+
+@media screen and (max-width: 1295px) {
+    .productBox {
+        width: 130px;
+        height: 180px;
+    }
+    .productName {
+        height: 105px;
+        line-height: 20px;
+        font-size: 14px;
+    }
+    .amountText1 {
+        font-size: 12px;
+        width: 100%;
+        line-height: 24px;
+    }
+    
+}
+
+@media screen and (max-width: 1155px) {
+    .productBox {
+        width: 120px;
+        height: 170px;
+    }
+    .productName {
+        font-size: 11px;
+    }
+    .amountText1 {
+        font-size: 9px;
+    }
+    .productName {
+        height: 105px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (max-width: 1085px) {
+    .productBox {
+        width: 110px;
+        height: 160px;
+    }
+    .productName {
+        height: 95px;
+    }
+    
+}
+
+@media screen and (max-width: 1010px) {
+    .productBox {
+        width: 100px;
+        height: 150px;
+    }
+    .productName {
+        height: 85px;
+    }
+}
+
+@media screen and (max-width: 945px) {
+    .productBox {
+        width: 90px;
+        height: 140px;
+    }
+    .productName {
+        height: 75px;
+        font-size: 9px;
+    }
+    .nameProductText {
+        font-size: 15px;
+    }
+    .amountText {
+        font-size: 13px;
+    }
+    .priceText {
+        font-size: 13px;
+    }
+    .shoppingListBlock {
+        height: 100px;
+    }
+}
+@media screen and (max-width: 871px) {
+    .productBox {
+        width: 80px;
+        height: 115px;
+    }
+    .productName {
+        height: 65px;
+        font-size: 8px;
+    }
+    .amountInput {
+        font-size: 8px;
+    }
+    .amountText1 {
+        font-size: 8px;
+    }
+    .amountText {
+        font-size: 11px;
+    }
+    .priceText {
+        font-size: 11px;
+    }
+    
+}
+
+@media screen and (max-width: 801px) {
+
+    .shoppingList {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .shoppingList {
+        display: none;
+        position: absolute;
+        z-index: 3;
+        width: 70vw;
+        left: 0;
+        right: 0;
+        margin-left: 16%;
+    }
+    .chooseProducts {
+        width: 55%;
+        background: white;
+        box-sizing: border-box;
+        padding: 2%;
+        border-radius: 20px;
+        margin: auto;
+    }
+    .main {
+        margin: auto;
+        margin-top: 10%;
+    }
+    .chooseProducts {
+        width: 90vw;
+        height: 90vh;
+    }
+    .productBox {
+        width: 110px;
+        height: 160px;
+    }
+    .productName {
+        height: 95px;
+        font-size: 12px;
+    }
+    .amountInput {
+        font-size: 11px;
+    }
+    .amountText1 {
+        font-size: 11px;
+    }
+    .productSelectionBox1 {
+        height: 65vh;
+    }
+    .look {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 22%;
+    height: 4.5vw;
+    margin-top: 12%;
+    margin-right: 8%;
+    font-size: 2vw;
+    color: #FFFFFF;
+    box-shadow: 2px 4px 7px -1px rgb(0 0 0 / 25%);
+    border-radius: 100px;
+    font-family: 'Roboto Slab';
+    font-style: normal;
+    background: url(/images/main/btn1.jpg) no-repeat center center;
+    text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    padding-top: 1.5vw;
+    }
+    .background {
+        display: block;
+        background-color: black;
+        opacity: 0.5;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        margin-top: -10%;
+        z-index: -2;
+    }
+    .shoppingListBlocks {
+        width: 95%;
+        top: 85%;
+    }
+    .note {
+        width: 95%;
+    }
+    .cross {
+        margin-top: -2%;
+        width: 5vw;
+        height: 5vw;
+        margin-left: 93%;
+    }
+    .shoppingListBlock {
+        height: 140px;
+    }
+    .shoppingListPicture {
+        width: 34%;
+        height: 70%;
+    }
+    .nameProductText {
+        font-size: 20px;
+    }
+    .amountText {
+        font-size: 14px;
+    }
+    .priceText {
+        font-size: 14px;
+    }
 }
