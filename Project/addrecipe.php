@@ -178,7 +178,7 @@ include 'header.php';
                         }
 
                         while($row = mysqli_fetch_assoc($query)){
-                          if(!strpos($ingredients, $row['id']))
+                          if(strpos($ingredients, $row['id'])=== false)
                           echo '<ing>
                           <div class="suitableNamePrd"><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"></div>
                           <div class="nprod"><a>' . $row['name'] . '</a></div></div>
@@ -277,7 +277,7 @@ include 'header.php';
                   }
 
                   while($row = mysqli_fetch_assoc($query)){
-                    if(!strpos($inventory, $row['id']))
+                    if(!strpos($inventory, $row['id'])=== false)
                     echo '<inv>
                       <div class="suitableNamePrd">
                         <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>

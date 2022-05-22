@@ -40,7 +40,7 @@
         $quan = $quan.$quantityIngredients[$i];
       }
       if($quantityIngredients[$i]=="," && $quan){
-        $quantity4Price[count($quantity4Price) - 1] = $quan;
+        $quantity4Price[count($quantity4Price)] = $quan;
         $quan = '';
       }
     }
@@ -51,7 +51,7 @@
         $ing = $ing.$ingredients[$i];
       }
       if($ingredients[$i]=="," && $ing){
-        $ingredients4Price[count($ingredients4Price) - 1] = $ing;
+        $ingredients4Price[count($ingredients4Price)] = $ing;
         $ing = '';
       }
     }
