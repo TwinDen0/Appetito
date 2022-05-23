@@ -275,9 +275,9 @@ include 'header.php';
                     $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `name`");
                     break;
                   }
-
+                  
                   while($row = mysqli_fetch_assoc($query)){
-                    if(!strpos($inventory, $row['id'])=== false)
+                    if(strpos($inventory, $row['id'])=== false)
                     echo '<inv>
                       <div class="suitableNamePrd">
                         <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>
