@@ -40,7 +40,9 @@ $hashpass = password_hash($pass, PASSWORD_BCRYPT);
 $token = password_hash($mail, PASSWORD_BCRYPT);;
 $avatar = "default.jpg";
 
-$sql = "INSERT INTO `users` (`name`, `mail`,`pass`, `token`,`avatar`) VALUES ('$name', '$mail', '$hashpass', '$token' , '$avatar')";
+$sql = "INSERT INTO `users` (`name`, `mail`, `avatar`, `pass`, `confirmed`, `token`, `myInventory`, `ShoppingList`, `SelectedIngredientInSearch`, `comments`, `likes`, `myRecipes`, `favoriteRecipes`) VALUES 
+('$name', '$mail', '$avatar', '$hashpass' , NULL, '$token', '', '', '', '0', '0', '', '')";
+
 $_SESSION['auth'] = true;
 
 $message = 'Привет, ' . $name . '! Для подтверждения вашей почты перейдите по http://project/confirmed.php?token=' . $token . '';

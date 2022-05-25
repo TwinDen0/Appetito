@@ -32,7 +32,34 @@
 
   if($ingredients && $inventory && $steps){
     $quantityIngredients = $_POST['quantityIngredients'];
-    $price = 100;
+    $price = 0;
+    $quantity4Price = array();
+    $quan = '';
+    for($i = 0; $i < strlen($quantityIngredients); $i++){
+      if($quantityIngredients[$i]!=","){
+        $quan = $quan.$quantityIngredients[$i];
+      }
+      if($quantityIngredients[$i]=="," && $quan){
+        $quantity4Price[count($quantity4Price)] = $quan;
+        $quan = '';
+      }
+    }
+    $ingredients4Price = array();
+    $ing = '';
+    for($i = 0; $i < strlen($ingredients); $i++){
+      if($ingredients[$i]!=","){
+        $ing = $ing.$ingredients[$i];
+      }
+      if($ingredients[$i]=="," && $ing){
+        $ingredients4Price[count($ingredients4Price)] = $ing;
+        $ing = '';
+      }
+    }
+    for ($i=0; $i < count($ingredients4Price); $i++) {
+      $query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `id` = '$ingredients4Price[$i]'");
+      $row = mysqli_fetch_assoc($query);
+      $price += $quantity4Price[$i] * $row['price'];
+    }
     $sql = "INSERT INTO `recipes` (`id`, `name`, `image`, `description`, `author`, `steps`, `time`, `calories`, `price`, `kitchen`, `likes`, `ingredients`, `quantityIngredients`, `inventory`, `reviews`) VALUES (NULL, '$name', '$image', '$description', '$mail', '$steps','$time','$calories','$price','$kitchen','$likes','$ingredients','$quantityIngredients','$inventory','$reviews');";
     $conn->query($sql);
     $conn->close();

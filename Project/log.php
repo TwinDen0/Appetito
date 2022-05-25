@@ -34,5 +34,4 @@ if(password_verify($pass,$hashpass)){
     header('Location: ../login.php');
 }
 
-
 ?>

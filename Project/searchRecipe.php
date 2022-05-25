@@ -272,7 +272,7 @@ $SelectedIng = '';
 							<div class="checkbox__bodyProd">
 								 С недостающими продуктами
 							</div>
-						</label>
+					</label>
 				</div>
 				<div class = "boxRecipe" id="recipe">
 					<?php

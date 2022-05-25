@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/shoppingList.css">
     <script type="text/javascript" src="../scripts/elementUpdate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <title>Список покупок</title>
 </head>
 
 <?php
 	include 'header.php';
     ?>
-    
+
 <body>
     <div class = "wapper"></div>
     <div id = "background" onclick = "closeList()" class = "background"></div>
@@ -32,21 +33,7 @@
                 $quantity = "";
                 $quantityOrId = 0;
 
-                if($_GET['idRemove']){
-                  $id = $_GET['idRemove'];
-                  $quantityIng = $_GET['idRemoveQuantity'];
-                  $shoppingList = str_replace(",".$id ."-".$quantityIng."," , '' , $shoppingList);
-                  mysqli_query($conn, "UPDATE `users` SET `ShoppingList` = '$shoppingList' WHERE `mail` = '$mail'");
-                }
-
-                if($_GET['idAdd']){
-                  $id = $_GET['idAdd'];
-                  $quantityIng = $_GET['idAddQuantity'];
-                  $shoppingList = ",".$id ."-".$quantityIng.",".$shoppingList;
-                  mysqli_query($conn, "UPDATE `users` SET `ShoppingList` = '$shoppingList' WHERE `mail` = '$mail'");
-                }
-
-                for($i = 0; $i <  strlen($shoppingList); $i++){
+                for($i = 0; $i < strlen($shoppingList); $i++){
                     if($shoppingList[$i] != "-" && $shoppingList[$i] != ",") {
                       if($quantityOrId == 0)
                       $idIngredient = $idIngredient.$shoppingList[$i];
@@ -88,7 +75,7 @@
                     <img src="images/category/mushroom.png" class = "categoryBlock1" onclick="ClickCategory('Грибы');">
                     <img src="images/category/milk.png" class = "categoryBlock1" onclick="ClickCategory('Молочное');">
                     <img src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупы');">
-                    <img src="images/category/pasta.png"" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
+                    <img src="images/category/pasta.png" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
                     <img src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Масла');">
                     <img src="images/category/jam.png" class = "categoryBlock1" onclick="ClickCategory('Джемы');">
                     <img src="images/category/chicken.png" class = "categoryBlock1" onclick="ClickCategory('Птица');">
@@ -184,7 +171,7 @@
                             <div class="productName" style = " background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick = "ClickAdd('. $row['id'] .')"></div>
                             <div class="amount">
                                 <div class="amountText1">Количество (кг):</div>
-                                <input type="number" min="0" value = "0" step="0.05" class="amountInput" id="inputQuantity' . $row['id'] . '">
+                                <input type="number" min="0.05" value = "0.05" step="0.05" class="amountInput" id="inputQuantity' . $row['id'] . '">
                             </div>
                             <div class="productName"><a>' . $row['name'] . '</a></div>
                         </div></ing>';
@@ -209,13 +196,11 @@
     elementUpdate('#selectionBox');
   }
   function ClickRemove(id, quantity){
-    window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&idRemove='+id+'&idRemoveQuantity='+quantity);
-    elementUpdate('#selectList');
+    $.post('php/deleteInShoppingList.php', {'id':id, 'quantity':quantity}, function() {elementUpdate('#selectList');});
   }
   function ClickAdd(id){
-    window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&idAdd='+id+'&idAddQuantity='+document.getElementById("inputQuantity"+id).value);
-    elementUpdate('#selectList');
-    document.getElementById("inputQuantity"+id).value = '0';
+    $.post('php/addInShoppingList.php', {'id':id, 'quantity':document.getElementById("inputQuantity"+id).value},function() {elementUpdate('#selectList');});
+    document.getElementById("inputQuantity"+id).value = '0.05';
   }
 </script>
 

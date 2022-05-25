@@ -19,6 +19,9 @@ include 'header.php';
   ?>
 
 <body>
+  <div class="backgroundAddRecipe">
+
+  </div>
   <form action="../php/sendRecipe.php" method="post" enctype="multipart/form-data">
     <div class="main" id="all">
         <div class="addName">Добавить рецепт</div>
@@ -49,7 +52,7 @@ include 'header.php';
 
         <div class="calories">
             <div class="textCalories">Введите примерную коллорийность:</div>
-            <input type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');" required></input>
+            <input type="number" min="0" step="1" type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');" required></input>
         </div>
 
         <div class="cookingTime">
@@ -58,13 +61,20 @@ include 'header.php';
         </div>
 
         <div class="kitchen">
-            <div class="textKitchen">Вид кухни:</div>
+            <div class="textKitchen">Категория:</div>
             <?php $kitchen = $_GET['kitchen']; ?>
             <select name="kitchen" id="kitchen">
-                <option value="Другая" <?php echo 'selected="selected"' ?>>Другая</option>
-                <option value="Итальянская" <?php if($kitchen=="Итальянская") echo 'selected="selected"' ?>>Итальянская</option>
-                <option value="Грузинская" <?php if($kitchen=="Грузинская") echo 'selected="selected"' ?>>Грузинская</option>
-                <option value="Греческая" <?php if($kitchen=="Греческая") echo 'selected="selected"' ?>>Греческая</option>
+                <option value="Другая" <?php echo 'selected="selected"' ?>>Другое</option>
+                <option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
+                <option value="Первые блюда" <?php if($kitchen=="Первые блюда") echo 'selected="selected"' ?>>Первые блюда</option>
+                <option value="Вторые блюда" <?php if($kitchen=="Вторые блюда") echo 'selected="selected"' ?>>Вторые блюда</option>
+                <option value="Закузки" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закузки</option>
+                <option value="Салаты" <?php if($kitchen=="Салаты") echo 'selected="selected"' ?>>Салаты</option>
+                <option value="Соусы, кремы" <?php if($kitchen=="Соусы, кремы") echo 'selected="selected"' ?>>Соусы, кремы</option>
+                <option value="Напитки" <?php if($kitchen=="Напитки") echo 'selected="selected"' ?>>Напитки</option>
+                <option value="Десерты" <?php if($kitchen=="Десерты") echo 'selected="selected"' ?>>Десерты</option>
+                <option value="Выпечка" <?php if($kitchen=="Выпечка") echo 'selected="selected"' ?>>Выпечка</option>
+                <option value="Торты" <?php if($kitchen=="Торты") echo 'selected="selected"' ?>>Торты</option>
             </select>
         </div>
 
@@ -168,6 +178,7 @@ include 'header.php';
                         }
 
                         while($row = mysqli_fetch_assoc($query)){
+                          if(strpos($ingredients, $row['id'])=== false)
                           echo '<ing>
                           <div class="suitableNamePrd"><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"></div>
                           <div class="nprod"><a>' . $row['name'] . '</a></div></div>
@@ -264,8 +275,9 @@ include 'header.php';
                     $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `name`");
                     break;
                   }
-
+                  
                   while($row = mysqli_fetch_assoc($query)){
+                    if(strpos($inventory, $row['id'])=== false)
                     echo '<inv>
                       <div class="suitableNamePrd">
                         <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>
@@ -302,7 +314,7 @@ include 'header.php';
                         </div>
                       </div>
                       <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'" required></textarea>
-                      <input name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
+                      <input id="stepCount" name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
                   </div>
               </div>';
             };
@@ -364,6 +376,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#ingredientsSelect');
+        elementUpdate('#ingredients');
       }
       function DeleteIngredient(ingredients){
         let result = sessionStorage.getItem('ingredients') + '';
@@ -376,6 +389,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#ingredientsSelect');
+        elementUpdate('#ingredients');
       }
       function AddInventory(inventory){
         let result = sessionStorage.getItem('inventory') + '';
@@ -386,6 +400,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#inventorySelect');
+        elementUpdate('#inventory');
       }
       function DeleteInventory(inventory){
         let result = sessionStorage.getItem('inventory') + '';
@@ -395,6 +410,7 @@ include 'header.php';
         ReplaceAddressBar();
 
         elementUpdate('#inventorySelect');
+        elementUpdate('#inventory');
       }
 
       function AddStep(steps){
@@ -416,8 +432,8 @@ include 'header.php';
 
       function RelaceTextArea(){
         document.querySelectorAll('textarea, input').forEach(function(e) {
-            if(e.id != 'file_id'){
-              if(e.value === '') e.value = window.sessionStorage.getItem(e.name, e.value);
+            if(e.type != 'file'){
+              if(e.value === '' && window.sessionStorage.getItem(e.name)) e.value = window.sessionStorage.getItem(e.name);
               e.addEventListener('input', function() {
                   window.sessionStorage.setItem(e.name, e.value);
               })
@@ -428,6 +444,12 @@ include 'header.php';
       document.addEventListener("DOMContentLoaded", function() {
           RelaceTextArea();
           ReplaceNumberInput();
+          ReplaceAddressBar();
+          elementUpdate('#inventorySelect');
+          elementUpdate('#inventory');
+          elementUpdate('#ingredientsSelect');
+          elementUpdate('#ingredients');
+          elementUpdate('#steps');
       });
 
       function ReplaceNumberInput(){
@@ -470,14 +492,7 @@ include 'header.php';
       }
     </script>
 </body>
-
-<footer>
-  <div class="fmenuBlock">
-    <div class="fmenu" id="main-pct"></div>
-    <div class="fmenu" id="inv-pct"></div>
-    <div class="fmenu" id="search-pct"></div>
-    <div class="fmenu" id="spisok-pct"></div>
-    <div class="fmenu" id="profil-pct"></div>
-  </div>
-</footer>
+<?php
+include 'menuMobile.php';
+?>
 </html>

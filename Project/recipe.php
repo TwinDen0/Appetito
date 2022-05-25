@@ -7,6 +7,7 @@
 		<link href = "style/styleRecipe.css" rel = "stylesheet" type = "text/css"/>
 		<link href = "style/styleHeader.css" rel = "stylesheet" type = "text/css"/>
 		<script type="text/javascript" src="../scripts/elementUpdate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,27 +213,10 @@
 								?>
             </div>
         </div>
-					<?php
-						if($_GET['GoToShoppingList']){
-							include 'connect.php';
-							session_start();
-							$mail = $_SESSION['mail'];
-							$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
-							$shoppingList = mysqli_fetch_assoc($query);
-							$shoppingList = $shoppingList['ShoppingList'];
-							for($i = 0; $i < count($ingredients); $i++){
-								$shoppingList = str_replace(",". $ingredients[$i] ."-".$quantityIngredients[$i]."," , '' , $shoppingList);
-								$shoppingList = $shoppingList.",". $ingredients[$i] ."-".$quantityIngredients[$i].",";
-							}
-							mysqli_query($conn, "UPDATE `users` SET `ShoppingList` = '$shoppingList' WHERE `mail` = '$mail'");
-						}
-					 ?>
 				</div>
 				<script>
 					function AddIngredients(id){
-						window.history.replaceState('1', 'Title', '?id='+id+'&GoToShoppingList=1');
-				    elementUpdate('#phpCode');
-						alert("Продукты успешно добавленны в ваш список покупок!");
+						$.post('php/addIngredientsFromRecipe.php', {'id':id},function() {elementUpdate('#phpCode'); alert("Продукты успешно добавленны в ваш список покупок!");});
 					}
 				</script>
 
