@@ -19,7 +19,7 @@
     <div id = "background" onclick = "closeList()" class = "background"></div>
     <div class="main">
         <div class="shoppingList" id = "ShoppingList" >
-            <img class = "note" src = "images/shoppingList/скрепки.png">
+          <div class = "noteImg">
             <div class="shoppingListBlocks" id="selectList">
               <?php
                 include 'connect.php';
@@ -63,6 +63,7 @@
                     }
                 };
                ?>
+            </div>
             </div>
         </div>
         <div class="chooseProducts">

@@ -161,7 +161,7 @@ input[type="range"]{
 }
 .slider-track{
     width: 100%;
-    height: 5px;
+    height: 0.5vh;
     position: absolute;
     margin: auto;
     top: 0;
@@ -652,8 +652,190 @@ input[type="range"]:active::-webkit-slider-thumb{
     .productBox {
         width: 75px;
         height: 130px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
     .nameFood {
         font-size: 9px;
+    }
+}
+
+@media screen and (max-width: 836px) {
+    .productBox {
+        width: 70px;
+        height: 125px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .main800 {
+        flex-direction: column;
+    }
+    .ingredients {
+        width: 90%;
+        margin: auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 5%;
+    }
+    .headingFilter {
+        font-size: 2.5vw;
+        margin: auto;
+    }
+    .upTextFilter_1 {
+        font-size: 2.3vw;
+    }
+    .checkbox__body {
+        font-size: 2.3vw;
+    }
+    .upTextFilter {
+        width: 98%;
+    }
+    .checkbox__body {
+        width: auto;
+    }
+    .checkbox__checkmark {
+        height: 2.5vw;
+        width: 2.5vw;
+    }
+    .checkbox_reg {
+        justify-content: space-around;
+        width: 45%;
+    }
+    .checkbox__checkmark:after {
+        left: 36.9vw;
+        top: -0.5vw;
+        width: 1vw;
+        height: 3vw;
+        border-width: 0 0.3vw 0.3vw 0;
+    }
+    .values {
+        font-size: 2vw;
+        padding-top: 1%;
+    }
+    .choiceText {
+        font-size: 2vw;
+    }
+    .choiceSelect {
+        font-size: 2vw;
+    }
+    .checkbox__checkmark_choice {
+        border-top: 1vw solid #808080;
+        border-left: 1vw solid #ff060600;
+        border-right: 1vw solid transparent;
+    }
+    .checkbox__checkmark_choice:after {
+        border-top: 1vw solid #808080;
+        border-left: 1vw solid #ff060600;
+        border-right: 1vw solid transparent;
+    }
+    .textCut {
+        font-size: 2vw;
+    }
+    .boxScroll {
+        height: 9vw;
+    }
+    .categoryImage {
+        width: 7vw;
+        height: 7vw;
+    }
+    .select select {
+        font-size: 1.5vw;
+    }
+    .addSearchSring {
+        width: 20vw;
+        height: 2vw;
+        font-size: 1.5vw;
+    }
+    .nameFood {
+        font-size: 12px;
+    }
+    .productBox {
+        width: 135px;
+        height: 180px;
+    }
+    .boxFood {
+        height: 70%;
+    }
+    .boxFilter {
+        height: 85vh;
+    }
+    .recipe {
+        width: 90%;
+        margin: auto;
+    }
+    .boxRecipe {
+        width: 100%;
+    }
+    #recipeB {
+        width: 100%;
+        align-items: center;
+    }
+    .checkbox__bodyProd {
+        width: auto;
+        font-size: 2vw;
+    }
+    .checkbox__bodyProd {
+        padding-top: 1%;
+    }
+    .recipeReady {
+        width: 90%;
+        height: 30vw;
+    }
+    .recipeReady_img {
+        width: 34vw;
+    }
+    .recipeReady_descript {
+        height: 100%;
+        width: 50%;
+        font-size: 2vw;
+        padding-top: 3%;
+        padding-left: 3%;
+    }
+    .boxRecipe {
+        width: 100%;
+        height: 90vh;
+    }
+    #left:after {
+        left: 35.9vw;
+    }
+}
+
+@media screen and (max-width: 777px) {
+    .productBox {
+        width: 125px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .productBox {
+        width: 110px;
+        height: 175px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .productBox {
+        width: 95px;
+        height: 160px;
+    }
+    .boxFood {
+        height: 75%;
+    }
+}
+@media screen and (max-width: 593px) {
+    .productBox {
+        width: 80px;
+        height: 135px;
+    }
+    .nameFood {
+        font-size: 9px;
+    }    
+    .boxFood {
+        height: 80%;
     }
 }

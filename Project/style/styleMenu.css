@@ -24,11 +24,11 @@
 @media only screen and (max-width: 800px) {
     .menu800 {
         display: block;
-        margin-top: 3%;
+        margin-top: 2%;
         right: 0;
         top: 0;
         margin-right: 2%;
-        height: 4vw;
+        height: 3vw;
         z-index: 0;
         position: absolute;
     }
@@ -36,10 +36,11 @@
     .dropbtn {
         float: right;
         position: fixed;
-        width: 8vw;
-        height: 8vw;
-        left: 89vw;
+        width: 5vw;
+        height: 5vw;
+        left: 93vw;
         top: 1vw;
+        /* left: 2%; */
         z-index: 2;
         border: none;
         cursor: pointer;
@@ -58,7 +59,7 @@
         position: fixed;
         background-color: #ffffff;
         width: 38vw;
-        height: 100vw;
+        height: 100vh;
         right: 0;
         overflow: auto;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -70,7 +71,7 @@
         color: black;
         text-decoration: none;
         display: block;
-        height: 8%;
+        height: 10vw;
         font-size: 3vw;
         box-sizing: border-box;
         padding-left: 4%;
@@ -83,7 +84,7 @@
 
     .splitHorizontal {
         width: 90%;
-        height: 0.2%;
+        height: 0.3vw;
         background-color: #6b6b6b4f;
         margin: auto;
     }
