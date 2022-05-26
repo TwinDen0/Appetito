@@ -53,7 +53,17 @@
 
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
-	            <div class = "header">' . $recipe['name'] . '</div>
+	           
+				<div style = "display:flex;width: 100%;justify-content: center;">
+
+					<div class = "header">' . $recipe['name'] . '</div>
+
+					<div class="like">
+						<button class="like-toggle basic2"> ♥</button>
+					</div>
+
+				</div>
+
 	            <div class = "description">' . $recipe['description'] . '</div>
 	            <div class = "Line">
 	                <div class = "onLine">
@@ -63,6 +73,17 @@
 	            </div>
 						';
 					?>
+
+			
+
+			<script>
+				$(function(){
+					$('.like-toggle').click(function(){
+						$(this).toggleClass('like-active');
+						$(this).next().toggleClass('hidden');
+					});
+				});
+			</script>
 
             <div class = "subheader">Ингредиенты:</div>
             <div class = "box">

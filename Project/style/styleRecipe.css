@@ -78,15 +78,14 @@ img {
 }
 
 .header {
-    margin: auto;
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 3vw;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-family: 'Roboto', sans-serif;
-    letter-spacing: -1.7%;
+       width: auto;
+       height: auto;
+       text-align: center;
+       font-size: 3vw;
+       margin-top: 2%;
+       margin-bottom: 2%;
+       font-family: 'Roboto', sans-serif;
+       letter-spacing: -1.7%;
 }
 
 .description {
@@ -415,6 +414,36 @@ background: rgba(196, 196, 196, 0.2);
     letter-spacing: -0.017em;
 }
 
+.hidden{
+    transition: all 0.3s linear;
+  }
+.like{
+    transition: all 0.3s linear;
+    margin-top: 1.8vw;
+    width: auto;
+    margin-left: 5%;
+}
+.like-toggle.basic2{
+    border: none;
+    width: 2.5vw;
+    height: 2.5vw;
+    font-size: 2vw;
+    border-radius: 100px;
+    background: #ababab;
+    color: #fff;
+    transition: all 0.3s linear;
+  }
+
+  .like-active.basic2{
+    background: #f84235;
+    transition: all 0.3s linear;
+  }
+  .like-toggle.basic2:not(.like-active):hover{
+    background: #438CCA;
+    width: 60px;
+    transition: all 0.3s linear;
+  }
+  
 
 @media only screen and (max-width: 800px) {
     .textOnLine {
