@@ -30,7 +30,7 @@ $SelectedIng = '';
 				$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
 			?>
 
-		<div style="display: flex">
+		<div class = "main800" style="display: flex">
 			<div class = "ingredients">
 				<div class = "upeerText">
 					<div class = "headingFilter">Фильтры для поиска рецептов:</div>
@@ -45,7 +45,7 @@ $SelectedIng = '';
 							<input type="checkbox" required/>
 							<div class="checkbox__checkmark" >
 							</div>
-							<div class="checkbox__body" onclick="location.href='../inventory.php'">
+							<div  id = "er" class="checkbox__body" onclick="location.href='../inventory.php'">
 								кухонных принадлежностей
 							</div>
 						</label>
@@ -62,7 +62,7 @@ $SelectedIng = '';
 						</span>
 						<span> &dash; </span>
 						<span id="range2">
-							100
+							5000
 						</span>
 						<span >
 							₽
@@ -71,44 +71,54 @@ $SelectedIng = '';
 
 					<div class="container">
 						<div class="slider-track"></div>
-						<input type="range" min="0" max="100" value="30" id="slider-1" oninput="slideOne()">
-						<input type="range" min="0" max="100" value="70" id="slider-2" oninput="slideTwo()">
+						<input type="range" min="0" max="5000" value="1500" id="slider-1" oninput="slideOne()">
+						<input type="range" min="0" max="5000" value="3000" id="slider-2" oninput="slideTwo()">
 					</div>
-					<script src="scripts/doubleD.js"></script>
+					<script src="scripts/price.js"></script>
+
+
 
 					<div class = "choice">
 						<div class = "choiceText">Выбери продкуты:</div>
 						<!-- Количоство выбранных ингредиентов -->
-						<div style="font-size: 1.4vw; margin-left: 5%;">Выбранно <?php echo substr_count($selectedIngredientInSearch, ',')/2; ?></div>
-						<input type="checkbox" name="selectIngredients" value="+" id="onlySelect">
+						<div class = "choiceSelect">Выбранно <?php echo substr_count($selectedIngredientInSearch, ',')/2; ?></div>
+						
+
+						<label class="checkbox_choice">
+							<input type="checkbox" name="selectIngredients" value="+" id="onlySelect" required/>
+							<div class="checkbox__checkmark_choice">
+							</div>
+						</label>
+
+
 					</div>
 					
 					<!-- Выбор категорий -->
 					<div class = "boxIngredient">
 						<div class = "textCut">категория:</div>
 						<div class = "boxScroll">
-							<img src="images/category/all.png" class = "categoryImage" onclick="ClickCategory('');">
-							<img src="images/category/mushroom.png" class = "categoryImage" onclick="ClickCategory('Грибы');">
-							<img src="images/category/milk.png" class = "categoryImage" onclick="ClickCategory('Молочное');">
-							<img src="images/category/groats.png" class = "categoryImage" onclick="ClickCategory('Крупы');">
-							<img src="images/category/pasta.png"" class = "categoryImage" onclick="ClickCategory('Макароны');">
-							<img src="images/category/oil.png" class = "categoryImage" onclick="ClickCategory('Масла');">
-							<img src="images/category/bobs.png" class = "categoryImage" onclick="ClickCategory('Бобовые');">
-							<img src="images/category/jam.png" class = "categoryImage" onclick="">
-							<img src="images/category/chicken.png" class = "categoryImage" onclick="">
-							<img src="images/category/fish.png" class = "categoryImage" onclick="">
-							<img src="images/category/egg.png" class = "categoryImage" onclick="">
-							<img src="images/category/flour.png" class = "categoryImage" onclick="">
-							<img src="images/category/bread.png" class =  "categoryImage" onclick="">
-							<img src="images/category/meat.png" class = "categoryImage" onclick="">
-							<img src="images/category/carrot.png" class = "categoryImage" onclick="">
-							<img src="images/category/nut.png" class = "categoryImage" onclick="">
-							<img src="images/category/sauce.png" class = "categoryImage" onclick="">
-							<img src="images/category/spices.png" class = "categoryImage" onclick="">
-							<img src="images/category/cheese.png" class = "categoryImage" onclick="">
-							<img src="images/category/apple.png" class = "categoryImage" onclick="">
-							<img src="images/category/blackberry.png" class = "categoryImage" onclick="">
-							<img src="images/category/green.png" class = "categoryImage" onclick="">
+							<img src="images/category/all.png" class = "categoryImage"  title="Все продукты" onclick="ClickCategory('');">
+							<img src="images/category/mushroom.png" class = "categoryImage" title="Грибы" onclick="ClickCategory('Грибы');">
+							<img src="images/category/milk.png" class = "categoryImage" title="Молочные продукты" onclick="ClickCategory('Молочное');">
+							<img src="images/category/groats.png" class = "categoryImage" title="Крупы" onclick="ClickCategory('Крупы');">
+							<img src="images/category/pasta.png"" class = "categoryImage" title="Макароны" onclick="ClickCategory('Макароны');">
+							<img src="images/category/oil.png" class = "categoryImage" title="Масла" onclick="ClickCategory('Масла');">
+							<img src="images/category/bobs.png" class = "categoryImage" title="Бобовые" onclick="ClickCategory('Бобовые');">
+							<img src="images/category/jam.png" class = "categoryImage" title="Джемы" onclick="">
+							<img src="images/category/chicken.png" class = "categoryImage" title="Курица" onclick="">
+							<img src="images/category/fish.png" class = "categoryImage" title="Рыба" onclick="">
+							<img src="images/category/egg.png" class = "categoryImage" title="Яйца" onclick="">
+							<img src="images/category/flour.png" class = "categoryImage" title="Мука" onclick="">
+							<img src="images/category/bread.png" class =  "categoryImage" title="Мучное" onclick="">
+							<img src="images/category/meat.png" class = "categoryImage" title="Мясо" onclick="">
+							<img src="images/category/carrot.png" class = "categoryImage" title="Овощи" onclick="">
+							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="">
+							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="">
+							<img src="images/category/spices.png" class = "categoryImage" title="Специи" onclick="">
+							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="">
+							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="">
+							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="">
+							<img src="images/category/green.png" class = "categoryImage" title="Зелень" onclick="">
 						</div>
 					</div>
 
@@ -239,7 +249,7 @@ $SelectedIng = '';
 
 			<div class = "recipe">
 				<div class = "upeerText">
-					<div style = "margin-top: 9%" class = "headingFilter">Подходящие рецепты:</div>
+					<div style = "margin-top: 1%" class = "headingFilter">Подходящие рецепты:</div>
 				</div>
 				
 <!-- рецепты-->
@@ -322,11 +332,13 @@ $SelectedIng = '';
 								$minutes = $time % 60;
 								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
 								echo '
-									<div class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
-										<div class = "recipeReady_img" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
-										<div class = "recipeReady_descript">
-											<div>' . $recipe['name'] . '</div>
-											<div> ' . $recipe['description'] . ' </div>
+									<div onmouseover = "hoverOnRecipe ('.$recipe['id'].')" onmouseout = "hoverOffRecipe ('.$recipe['id'].')" id = "recipeReady'.$recipe['id'].'" class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
+										<div class = "recipeReady_img" id = "recipe__img'.$recipe['id'].'" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
+					
+										<div id = "recipe__description'.$recipe['id'].'" class = "recipe__description"> ' . $recipe['description'] . ' </div>
+
+										<div class = "recipeReady_descript" id = "recipe__parameter'.$recipe['id'].'">
+											<div> ' . $recipe['name'] . '</div>
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
 											<div> Стоимость: ' . $recipe['price'] . '</div>';
@@ -343,7 +355,7 @@ $SelectedIng = '';
 					?>
 				</div>
 				</div>
-
+						
 			</div>
 		</div>
 		<script>
@@ -419,5 +431,10 @@ $SelectedIng = '';
 			  }
 			}
 		</script>
+
+		<?php
+        include 'menuMobile.php';
+        ?>
+
     </body>
 </html>

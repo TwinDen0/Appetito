@@ -9,6 +9,7 @@
     font-weight: 400;
     letter-spacing:0.017em;
 }
+
 img {
     pointer-events: none;
 }
@@ -112,6 +113,23 @@ body {
     overflow-x: auto;
     border-radius: 20px;
 }
+.block::-webkit-scrollbar {
+    background: rgba(209, 121, 17, 0.16);
+    width: 5px;
+    height: 5px;
+}
+
+.block::-webkit-scrollbar-thumb {
+    background-color: #FFA96A;
+    border-radius: 20px;
+}
+
+
+.block::-webkit-scrollbar-track {
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+
 .kichenBlockY { 
     margin-right: 2%;
     height: 100%;
@@ -202,6 +220,7 @@ body {
     width: 170px;
     border-radius: 20px;
     box-shadow: 0px 1.29236px 5.16943px rgb(0 0 0 / 25%);
+    overflow-wrap: break-word;
 }
 .addKichenBlock {
     width: 90%;
@@ -212,6 +231,7 @@ body {
 }
 .addBlock {
     display: flex;
+    justify-content: space-around;
     box-sizing: border-box;
     margin-bottom: 2%;
     flex-wrap: wrap;
@@ -264,6 +284,15 @@ footer {
     .main {
         width: 85%;
     }
+    .kichenBlock {
+        width: 130px;
+        height: 120px;
+    }
+    .addKichenBlockL {
+        margin: 20px;
+        height: 213px;
+        width: 142px;
+    }
 }
 @media screen and (max-width: 1100px) {
     .kichenText {
@@ -315,15 +344,18 @@ footer {
     .addKichenBlockL {
         margin: 10px;
         margin-bottom: 20px;
-        height: 150px;
+        height: 165px;
         width: 120px;
     }
     .addKichenBlock {
         width: 90%;
-        height: 90px;
+        height: 110px;
     }
     .addText {
         font-size: 14px;
+    }
+    .chosenText {
+        font-size: 20px;
     }
     .search-btn {
         width: 20px;
@@ -335,12 +367,12 @@ footer {
         background-size: cover;
     }
     .kichenText {
-        font-size: 14px;
+        font-size: 24px;
         width: 100%;
     }
     .kichenBlock {
-        width: 100px;
-        height: 100px;
+        width: 115px;
+        height: 115px;
         border-radius: 20px;
         background: #EAE9E9;
         text-align: center;
@@ -348,7 +380,7 @@ footer {
     }
     .block {
         display: flex;
-        height: 160px;
+        height: 195px;
         box-sizing: border-box;
     }
 }

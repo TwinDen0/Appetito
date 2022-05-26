@@ -22,19 +22,19 @@
 </script>
 
 
-<img class = "menu800" src="images/profile/menu.png">
+<img class = "menu800" src="images/profile/menu2-02.png">
 
 <div onclick="myFunction()" class="dropbtn"></div>
 		<div id="myDropdown" class="dropdown-content">
-			<a class = "textMenu" href="#">Главная</a>
+			<a onclick="location.href='./index.php'" class = "textMenu" href="#">Главная</a>
 			<div class = "splitHorizontal"></div>
-			<a class = "textMenu" href="#">Добавить свой рецепт</a>
+			<a onclick="location.href='./addrecipe.php'" class = "textMenu" href="#">Добавить свой рецепт</a>
 			<div class = "splitHorizontal"></div>
-			<a class = "textMenu" href="#">Инвентарь</a>
+			<a onclick="location.href='./inventory.php'" class = "textMenu" href="#">Инвентарь</a>
 			<div class = "splitHorizontal"></div>
-			<a class = "textMenu" href="#">Все рецепты</a>
+			<a onclick="location.href='./allrecipe.php'" class = "textMenu" href="#">Все рецепты</a>
 			<div class = "splitHorizontal"></div>
-			<a class = "textMenu" href="#">Найти рецепт</a>
+			<a onclick="location.href='./searchRecipe.php'" class = "textMenu" href="#">Найти рецепт</a>
 			<div class = "splitHorizontal"></div>
-			<a class = "textMenu"href="#">Список покупок</a>
+			<a onclick="location.href='./shoppingList.php'" class = "textMenu"href="#">Список покупок</a>
 		</div>

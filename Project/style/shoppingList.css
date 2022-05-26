@@ -52,14 +52,22 @@
     margin-top: 12px;
 }
 .shoppingListBlocks {
-    width: 25%;
+    width: 100%;
     overflow-y: scroll;
-    height: 75vh;
-    margin-top: 4%;
+    height: 88%;
+    margin-top: 10vh;
     position: absolute;
-    background: url(/images/shoppingList/блокнот.png) center center;
+    box-shadow: -8px 0 6px -5px rgb(72 0 0 / 50%);
 }
 
+.noteImg {
+    width: 25%;
+    height: 85vh;
+    position: absolute;
+    background: url(/images/shoppingList/allNote.png) no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 5px 5px -5px rgb(72 0 0 / 50%);
+}
 
 .shoppingListBlocks::-webkit-scrollbar {
     width: 5px;
@@ -250,6 +258,9 @@ display: none
 }
 
 @media screen and (max-width: 1400px) {
+    .noteImg {
+        width: 28%;
+    }
     .productBox {
         width: 150px;
         height: 200px;
@@ -260,16 +271,15 @@ display: none
         font-size: 16px;
     }
     .amountText1 {
-        font-size: 14px;
+        font-size: 13px;
         width: 90%;
         line-height: 24px;
     }
+    .priceText {
+        font-size: 13px;
+    }
     .shoppingListBlock {
         height: 125px;
-    }
-    .shoppingListBlocks {
-        width: 30%;
-        margin-top: 5%;
     }
     .note {
         width: 95%;
@@ -281,7 +291,7 @@ display: none
         margin-left: 90%;
     }
     .nameProductText {
-        font-size: 17px;
+        font-size: 15px;
     }
 }
 
@@ -351,16 +361,16 @@ display: none
         font-size: 9px;
     }
     .nameProductText {
-        font-size: 15px;
+        font-size: 13px;
     }
     .amountText {
-        font-size: 13px;
+        font-size: 11px;
     }
     .priceText {
-        font-size: 13px;
+        font-size: 11px;
     }
     .shoppingListBlock {
-        height: 100px;
+        height: 110px;
     }
 }
 @media screen and (max-width: 871px) {
@@ -388,13 +398,15 @@ display: none
 }
 
 @media screen and (max-width: 801px) {
-
     .shoppingList {
         display: block;
     }
 }
 
 @media screen and (max-width: 800px) {
+    .noteImg {
+        width: 88%;
+    }
     .shoppingList {
         display: none;
         position: absolute;
@@ -438,26 +450,26 @@ display: none
         height: 65vh;
     }
     .look {
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 22%;
-    height: 4.5vw;
-    margin-top: 12%;
-    margin-right: 8%;
-    font-size: 2vw;
-    color: #FFFFFF;
-    box-shadow: 2px 4px 7px -1px rgb(0 0 0 / 25%);
-    border-radius: 100px;
-    font-family: 'Roboto Slab';
-    font-style: normal;
-    background: url(/images/main/btn1.jpg) no-repeat center center;
-    text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    padding-top: 1.5vw;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 22%;
+        height: 4.5vw;
+        margin-top: 12%;
+        margin-right: 8%;
+        font-size: 2vw;
+        color: #FFFFFF;
+        box-shadow: 2px 4px 7px -1px rgb(0 0 0 / 25%);
+        border-radius: 100px;
+        font-family: 'Roboto Slab';
+        font-style: normal;
+        background: url(/images/main/btn1.jpg) no-repeat center center;
+        text-shadow: 0px 4px 4px rgb(0 0 0 / 38%), 0px 1px 5px rgb(234 84 0 / 63%);
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        padding-top: 1.5vw;
     }
     .background {
         display: block;
@@ -468,10 +480,6 @@ display: none
         position: absolute;
         margin-top: -10%;
         z-index: -2;
-    }
-    .shoppingListBlocks {
-        width: 95%;
-        top: 85%;
     }
     .note {
         width: 95%;
