@@ -199,6 +199,7 @@ body {
     font-size: 15px;
     margin-top: 20px;
     margin-left: 9.5%;
+    padding-top: 2%;
 }
 
 .selectedProducts {
@@ -214,7 +215,7 @@ body {
     /* border: solid 1px black; */
     margin: 0 auto;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .productBox {
     width: 100px;
@@ -240,6 +241,7 @@ body {
     width: 84%;
     margin: 0 auto;
     margin-top: 20px;
+    justify-content: space-around;
 }
 .suitableText {
     font-size: 15px;
@@ -311,6 +313,7 @@ body {
     font-size: 15px;
     margin-top: 20px;
     margin-left: 9.5%;
+    padding-top: 2%;
 }
 .selectedKitckenUtensils {
     width: 90%;
@@ -325,7 +328,7 @@ body {
     /* border: solid 1px black; */
     margin: 0 auto;
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 .KitckenUtensilBox {
     width: 100px;
@@ -432,15 +435,17 @@ body {
     line-height: 80px;
 }
 .addStep {
-    width: 30%;
+    width: 40%;
     color: white;
     background: #FF6B00;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%), inset 0px 4px 4px rgb(255 255 255 / 25%);
     border-radius: 39px;
     margin: 0 auto;
     margin-top: 27px;
-    height: 30px;
-    font-size: 20px;
+    height: 50px;
+    font-size: 22px;
+    padding-top: 10px;
+    box-sizing: border-box;
     text-align: center;
     line-height: 30px;
     cursor: pointer;
@@ -450,15 +455,15 @@ body {
     bottom: 20px;
     right: 20px;
     color: white;
-    width: 20%;
-    background: #ffea29;
-    border-radius: 9px;
+    width: 18%;
+    background: #ffa85d;
+    border-radius: 50px;
     margin: 0 auto;
     margin-top: 27px;
-    height: 30px;
-    font-size: 20px;
+    height: 60px;
+    font-size: 22px;
     text-align: center;
-    line-height: 30px;
+    /* line-height: 30px; */
     cursor: pointer;
     text-shadow: 0px 1.33333px 4px rgb(0 0 0 / 25%);
     border: none;
@@ -532,6 +537,8 @@ footer {
     box-shadow: 0px 0px 5.33145px rgba(0, 0, 0, 0.25);
     /* border: solid 1px gray; */
     margin-top: 5px;
+    height: 165px;
+    margin-bottom: 5%;
 }
 #main-picture {
     background: url(/images/inventoryImg/main.png) no-repeat top center;
@@ -587,7 +594,7 @@ footer {
 .ava_input__file-button {
     width: 250px;
     max-width: 70%;
-    height: 30px;
+    height: 40px;
     background: #f89a4c;
     color: #fff;
     font-size: 1.125rem;
@@ -725,7 +732,7 @@ footer {
     }
     .main {
         margin: 0 auto;
-        width: 480px;
+        width: 670px;
         margin-top: 20px;
         background: rgba(255, 255, 255, 0.38);
     }

@@ -47,7 +47,10 @@ body {
 
 .headingFilter {
     font-size: 1.8vw;
-    margin-top: 5%;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: -0.02em;
 }
 /********************************************************/
 
@@ -66,6 +69,7 @@ body {
     display: flex;
     width: 100%;
     height: auto;
+    margin-top: 3%;
 }
 
 .box {
@@ -87,47 +91,62 @@ body {
 }
 
 .recipe {
-    width: 31%;
-    height: 112vh;
-    padding-left: 3%;
-    /* padding-right: 3%; */
-    padding-top: 1%;
+    width: 80vw;
+    height: 90vh;
+    margin: auto;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
 }
 
-.boxRecipe {
+.allbox {
     width: 80vw;
     height: 70vh;
     background-color: rgb(241 241 241);
+    margin-top: 2%;
+}
+
+.boxRecipe {
+    width: 100%;
+    height: 100%;
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
     overflow: hidden;
     overflow: auto;
-    margin-top: 2%;
+    display: flex;
+    justify-content: space-around;
     border-radius: 20px;
 }
 
+
 .recipeReady {
-    width: 90%;
+    width: 30%;
     height: 13vw;
-    margin: auto;
     margin-top: 3%;
     border-radius: 30px;
+    background-color: white;
+}
+.recipeReady.active {
+    background-color: rgb(255, 218, 169);
+    transition: all 0.4s ease;
 }
 
 .recipeReady_descript {
     height: 100%;
     width: 50%;
     background: #ffffff;
-    /* margin-right: 6%; */
-    /* margin-top: 4%; */
     border-radius: 0px;
     font-size: 0.8vw;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
+    box-sizing: border-box;
+    padding-top: 2%;
+    padding-left: 2%;
+}
+.recipeReady_descript.active {
+    display: none;
+    transition: all 0.4s ease;
 }
 
 .recipeReady_img {
@@ -136,6 +155,21 @@ body {
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
 }
+.recipeReady_img.active {
+    display: none;
+    transition: all 0.4s ease;
+}
+
+.recipe__description {
+    display: none;
+}
+.recipe__description.active {
+    display: block;
+    text-align: center;
+    margin: auto;
+    transition: opacity 0.4s ease;
+}
+
 
 .select {
     position: relative;
@@ -148,8 +182,8 @@ body {
     background: none;
     border: 0;
     padding: 4%;
-    font-size: 0.8vw;
-    width: 97%;
+    font-size: 1vw;
+    width: 100%;
 }
 
 .search_Box {

@@ -28,6 +28,11 @@
 
 	<div class = "wapper"></div>
 
+		<div class = "avtor">автор:</div>
+		<img src="images/recipes/плашка-18.png" class = "fireAva">
+		<img src="images/avatars/default.jpg" class = "boxAva">
+		<div class = "avtorName">Иван Иванов</div>
+
 				<div id='phpCode'>
         <div class = "main">
 					<?php

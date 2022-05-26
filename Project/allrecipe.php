@@ -9,6 +9,13 @@ $SelectedIng = '';
         <meta name = "viewport" content = "width=device-width">
 		<title>Все рецепты</title>
 		<link href = "style/styleAllRecipe.css" rel = "stylesheet" type = "text/css"/>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=PT+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Epilogue&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Roboto&&display=swap" rel="stylesheet">
 	</head>
 
 <?php include 'header.php'; ?>
@@ -29,7 +36,7 @@ $SelectedIng = '';
 
 	<div class = "recipe">
 		<div class = "upeerText">
-			<div style = "margin-top: 9%" class = "headingFilter">Все рецепты:</div>
+			<div class = "headingFilter">Все рецепты:</div>
 		</div>
 				
 <!-- рецепты-->
@@ -71,7 +78,7 @@ $SelectedIng = '';
 					</div>
 				</div>
 
-
+			<div class="allbox">
 				<div class = "boxRecipe" id="recipe">
 					<?php
 						switch($sortRecipes){
@@ -105,31 +112,27 @@ $SelectedIng = '';
 								$minutes = $time % 60;
 								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
 								echo '
-									<ing>
-                  <div class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
-										<div class = "recipeReady_img" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
-										<div class = "recipeReady_descript">
-											<div><a>' . $recipe['name'] . '</a></div>
-											<div> ' . $recipe['description'] . ' </div>
+                  					<div onmouseover = "hoverOnRecipe ('.$recipe['id'].')" onmouseout = "hoverOffRecipe ('.$recipe['id'].')" id = "recipeReady'.$recipe['id'].'" class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
+										<div class = "recipeReady_img" id = "recipe__img'.$recipe['id'].'" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
+
+										<div id = "recipe__description'.$recipe['id'].'" class = "recipe__description"> ' . $recipe['description'] . ' </div>
+
+										<div class = "recipeReady_descript" id = "recipe__parameter'.$recipe['id'].'">
+											<div> ' . $recipe['name'] . '</div>
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
-											<div> Стоимость: ' . $recipe['price'] . '</div>';
-											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
-											echo '<div style="height:20px"> Не хватает  ингредиентов: ' . substr_count($recipesIngredients, ',')/2 . '</div>';
-											if($extra=='1' && substr_count($recipesInventory, ',')/2 > 0)
-											echo '<div style="height:20px"> Не хватает принадлежностей:' . substr_count($recipesInventory, ',')/2 . '</div>';
-											echo'
+											<div> Стоимость: ' . $recipe['price'] . '</div>
 										</div>
 									</div>
-                  </ing>
 								';
 							}
 						
 					?>
 				</div>
-				</div>
-
+				<script src="scripts/price.js"></script>
 			</div>
+		</div>
+		</div>
 		</div>
 		<script>
 

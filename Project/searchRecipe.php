@@ -30,7 +30,7 @@ $SelectedIng = '';
 				$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
 			?>
 
-		<div style="display: flex">
+		<div class = "main800" style="display: flex">
 			<div class = "ingredients">
 				<div class = "upeerText">
 					<div class = "headingFilter">Фильтры для поиска рецептов:</div>
@@ -355,7 +355,7 @@ $SelectedIng = '';
 					?>
 				</div>
 				</div>
-
+						
 			</div>
 		</div>
 		<script>
@@ -431,5 +431,10 @@ $SelectedIng = '';
 			  }
 			}
 		</script>
+
+		<?php
+        include 'menuMobile.php';
+        ?>
+
     </body>
 </html>

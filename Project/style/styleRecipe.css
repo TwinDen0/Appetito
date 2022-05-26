@@ -6,6 +6,19 @@
     user-select: none;
     font-family: 'PT Sans Narrow', sans-serif;
 }
+::-webkit-scrollbar {
+    background: rgba(209, 121, 17, 0.16);
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    border: 1px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #FFA96A;
+    border-radius: 20px;
+}
 img {
     pointer-events: none;
 }
@@ -92,7 +105,7 @@ img {
     margin: 0 -28.125%;
     width: 156.25%;
     height: 2.5vw;
-    background-color: #FFB987;
+    background: #ffb98794;
     margin-top: 2%;
     margin-bottom: 2%;
     font-family: 'Roboto', sans-serif;
@@ -216,7 +229,7 @@ img {
     margin: 0 -28.125%;
     width: 156.25%;
     height: 25vw;
-    background: #ffb987;
+    background: #ffb98794;
     margin-top: 2%;
     margin-bottom: 2%;
     box-sizing: border-box;
@@ -454,7 +467,7 @@ background: rgba(196, 196, 196, 0.2);
         width: 100%;
     }
     .descriptionBox1 {
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
     .Line {
         height: 4.5vw;
