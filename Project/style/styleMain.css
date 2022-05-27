@@ -204,11 +204,11 @@ img {
 .fonTraining_1 {
     position: absolute;
     left: 0;
-    top: -5%;
+    top: -10%;
     z-index: -5;
     width: 100%;
     height: auto;
-    margin-top: 78%;
+    margin-top: 80%;
 }
 
 .training_1 {
@@ -356,10 +356,10 @@ img {
     position: absolute;
     left: 0;
     top: 0;
-    z-index: -2;
+    z-index: -5;
     width: 100%;
     height: auto;
-    margin-top: 165%;
+    margin-top: 166%;
 }
 
 .headingFinal {
@@ -428,6 +428,9 @@ img {
     header {
         display: none;
     }
+    .people_all{
+        margin-left: 0%;
+    }
     .steps4 {
         font-size: 2vw;
         margin-left: 40%;
@@ -443,18 +446,22 @@ img {
     }
     .training_1 {
         width: 80%;
-        margin-left: 100%;
+        margin-left: 10%;
+        margin-top: 83%;
     }
     .training_2 {
         width: 80%;
-        margin-left: 13%;
+        margin-left: 14%;
     }
     .training_3 {
         width: 80%;
-        margin-left: 13%;
+        margin-left: 3%;
+        margin-top: 144%;
     }
     .headingTraining_1 {
-        font-size: 3vw;
+        font-size: 2.5vw;
+        width: 70%;
+        margin-left: 15%;
     }
     .textTraining_1 {
         font-size: 1.9vw;
@@ -473,23 +480,28 @@ img {
         padding-top: 1%;
         margin-left: 26%;
     }
+    .btn2 {
+        width: 48%;
+        height: 4vw;
+        font-size: 2vw;
+        padding-top: 1%;
+        margin-left: 26%;
+    }
     .fonWaveDown {
         margin-top: 197%;
     }
     .fonDown {
-        margin-top: 200%;
+        margin-top: 167%;
     }
     .headingFinal {
-        margin-top: 212%;
+        margin-top: 175%;
     }
     .mainPeopleFinal {
         width: 16%;
         height: auto;
-        margin-top: 218%;
+        margin-top: 182%;
         margin-left: 43%;
     }
-
-
 
     .menu800 {
         display: block;

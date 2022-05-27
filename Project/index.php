@@ -27,7 +27,7 @@
 	include 'header.php';
     ?>
 
-    <body>
+<body>
         <div>
             <img src = "images/main/фон.png" class = "fonKitchen">
             <img src = "images/main/фон-06.png" class = "fonKitchenWave">
@@ -75,9 +75,7 @@
             </div>
         </div>
 
-        <img src = "images/main/фон-07.png" class = "fonWave">
         <img src = "images/main/fonUp.png" class = "fonTraining_1">
-        <img src = "images/main/фон-08.png" class = "fonWaveInversion">
         <div class = "training_1">
             <img src = "images/main/глв челики 1.png" class = "mainPeople">
             <div class = "descriptionTraining_1">
@@ -95,7 +93,6 @@
         </div>
 
 
-        <img src = "images/main/фон3-06.png" class = "fonTraining_2">
         <div class = "training_2">
             <div class = "descriptionTraining_1">
                 <div style = "color:#250000" class = "headingTraining_1">Мы сами составим твой список покупок!</div>
@@ -122,9 +119,7 @@
             </div>
         </div>
 
-        <img src = "images/main/fon_down.png" class = "fonWaveDown">
         <img src = "images/main/fonDown.png" class = "fonDown"></div>
-        <div class = ></div>
 
         <div class = "headingFinal">Приятного аппетита!</div>
         <img src = "images/main/глв челики 4.png" class = "mainPeopleFinal">
