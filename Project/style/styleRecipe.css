@@ -81,7 +81,7 @@ img {
        width: auto;
        height: auto;
        text-align: center;
-       font-size: 3vw;
+       font-size: 50px;
        margin-top: 2%;
        margin-bottom: 2%;
        font-family: 'Roboto', sans-serif;
@@ -92,7 +92,7 @@ img {
     margin: auto;
     width: 100%;
     height: auto;
-    font-size: 1.5vw;
+    font-size: 25px;
     text-align: center;
     box-sizing: border-box;
     padding-top: 1%;
@@ -103,7 +103,7 @@ img {
     position: relative;
     margin: 0 -28.125%;
     width: 156.25%;
-    height: 2.5vw;
+    height: auto;
     background: #ffb98794;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -120,7 +120,7 @@ img {
 .textOnLine {
     width: 50%;
     height: 100%;
-    font-size: 1.3vw;
+    font-size: 20px;
     text-align: center;
     box-sizing: border-box;
     padding-top: 1%;
@@ -131,7 +131,7 @@ img {
     width: 100%;
     height: auto;
     text-align: center;
-    font-size: 2.5vw;
+    font-size: 35px;
     margin-top: 2%;
     margin-bottom: 2%;
     font-family: 'Roboto', sans-serif;
@@ -141,7 +141,7 @@ img {
 
 .box {
     width: 60vw;
-    height: 15vw;
+    height: auto;
     margin: auto;
     padding: 1%;
 }
@@ -195,7 +195,7 @@ img {
 
 .foodName {
     text-align: center;
-    font-size: 1.5vw;
+    font-size: 25px;
     font-family: 'PT Sans', sans-serif;
 }
 
@@ -227,7 +227,7 @@ img {
     position: relative;
     margin: 0 -28.125%;
     width: 156.25%;
-    height: 25vw;
+    height: auto;
     background: #ffb98794;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -241,6 +241,7 @@ img {
     background: rgba(196, 196, 196, 0.2);
     display: flex;
     justify-content: space-between;
+    flex-direction: row-reverse;
     margin-top: 3%;
     border-radius: 20px;
 }
@@ -261,14 +262,14 @@ img {
 }
 
 .descriptionHeading {
-    font-size: 2vw;
+    font-size: 30px;
     height: auto;
     width: 100%;
 }
 
 .descriptionRecipe {
     padding-top: 5%;
-    font-size: 1.5vw;
+    font-size: 25px;
     height: auto;
     width: 100%;
 }
@@ -276,7 +277,7 @@ img {
 .descriptionBox2 {
     width: 100%;
     height: auto;
-background: rgba(196, 196, 196, 0.2);
+    background: rgba(196, 196, 196, 0.2);
     display: flex;
     justify-content: space-between;
     margin-top: 3%;
@@ -286,12 +287,12 @@ background: rgba(196, 196, 196, 0.2);
 .lineEnd {
     margin: 0 -28.125%;
     width: 156.25%;
-    height: 2.5vw;
+    height: auto;
     background-color: #ffb987;
     margin-top: 3%;
     margin-bottom: 5%;
     text-align: center;
-    font-size: 1.8vw;
+    font-size: 33px;
 }
 
 .fidback {
@@ -419,13 +420,12 @@ background: rgba(196, 196, 196, 0.2);
   }
 .like{
     transition: all 0.3s linear;
-    margin-top: 1.8vw;
     width: auto;
     margin-left: 5%;
 }
 .like-toggle.basic2{
     border: none;
-    width: 2.5vw;
+    width: 3.5vw;
     height: 2.5vw;
     font-size: 2vw;
     border-radius: 100px;
@@ -439,11 +439,36 @@ background: rgba(196, 196, 196, 0.2);
     transition: all 0.3s linear;
   }
   .like-toggle.basic2:not(.like-active):hover{
-    background: #438CCA;
+    background: #fd9e44;
     width: 60px;
     transition: all 0.3s linear;
   }
   
+
+  @media only screen and (max-width: 1000px) {
+    .textOnLine {
+        font-size: 15px;
+    }
+    .header {
+        font-size: 40px;
+    }
+    .description {
+        font-size: 22px;
+    }
+    .foodName {
+        font-size: 18px;
+    }
+    .subheader {
+        font-size: 28px;
+    }
+    .descriptionHeading {
+        font-size: 24px;
+    }
+    .descriptionRecipe {
+        font-size: 18px;
+    }
+  }
+
 
 @media only screen and (max-width: 800px) {
     .textOnLine {
@@ -464,6 +489,9 @@ background: rgba(196, 196, 196, 0.2);
     }
     .foodName {
         font-size: 1.8vw;
+    }
+    .subheader {
+        font-size: 3vw;
     }
     .addFood {
         height: 6vw;
@@ -519,5 +547,136 @@ background: rgba(196, 196, 196, 0.2);
     .formAva {
         width: 9vw;
         height: 9vw;
+    }
+    .avtor {
+        position: absolute;
+        margin-left: 64%;
+        margin-top: -3.5%;
+        font-size: 1.5vw;
+        color: #9a9a9a;
+    }
+    .fireAva {
+        position: absolute;
+        width: 20%;
+        margin-left: 59%;
+        margin-top: -2%;
+    }
+    .boxAva {
+        width: 6vw;
+        height: 6vw;
+        position: absolute;
+        border-radius: 100%;
+        margin-left: 78%;
+        margin-top: -3%;
+    }
+    .avtorName {
+        position: absolute;
+        margin-left: 63%;
+        margin-top: -0.5%;
+        font-size: 1.5vw;
+        color: #ffffff;
+        width: 13%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .header {
+        font-size: 5.3vw;
+    }
+    .description {
+        font-size: 3.9vw;
+    }
+    .foodName {
+        font-size: 2.5vw;
+    }
+    .addFood {
+        height: 6vw;
+        width: 50vw;
+        font-size: 2.4vw;
+    }
+    .descriptionHeading {
+        font-size: 3vw;
+    }
+    .descriptionRecipe {
+        font-size: 3vw;
+    }
+    .textarea {
+        height: 20vw;
+        width: 155%;
+        margin-left: 25%;
+        padding-left: 7%;
+        padding-right: 4%;
+        font-size: 3.5vw;
+    }
+    .sendMes {
+        width: 76%;
+        height: 6vw;
+        font-size: 3.5vw;
+    }
+    .like-toggle.basic2 {
+        border: none;
+        width: 5.5vw;
+        height: 4.5vw;
+        font-size: 3.5vw;
+        border-radius: 100px;
+        background: #ababab;
+        color: #fff;
+        transition: all 0.3s linear;
+    }
+    .like-toggle.basic2:not(.like-active):hover {
+        background: #fd9e44;
+        width: 40px;
+        transition: all 0.3s linear;
+    }
+    .like-active.basic2{
+        background: #f84235;
+        transition: all 0.3s linear;
+      }
+    .foodImadge {
+        width: 9vw;
+        height: 9vw;
+    }
+    .backgroundInventory {
+        margin-top: 8%;
+    }
+    .addFood {
+        height: 8vw;
+        width: 50vw;
+        font-size: 2.4vw;
+        margin-top: 7%;
+    }
+    .mainPhotoRecipe {
+        margin-top: 20%;
+    }
+    .avtor {
+        position: absolute;
+        margin-left: 61%;
+        margin-top: -3.5%;
+        font-size: 2vw;
+        color: #9a9a9a;
+    }
+    .fireAva {
+        position: absolute;
+        width: 25%;
+        margin-left: 54%;
+        margin-top: -2%;
+    }
+    .boxAva {
+        width: 9vw;
+        height: 9vw;
+        position: absolute;
+        border-radius: 100%;
+        margin-left: 77%;
+        margin-top: -4%;
+    }
+    .avtorName {
+        position: absolute;
+        margin-left: 57%;
+        margin-top: -0.5%;
+        font-size: 2vw;
+        color: #ffffff;
+        width: 19%;
+        text-align: center;
     }
 }

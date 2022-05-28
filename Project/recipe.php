@@ -54,7 +54,7 @@
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
 	           
-				<div style = "display:flex;width: 100%;justify-content: center;">
+				<div style = "display:flex;width: 100%;justify-content: center;align-items: center;">
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
@@ -206,7 +206,7 @@
 
 								<?php
 									$reviews =  $recipe['reviews'];
-									if (!$reviews) echo 'Пока пусто';
+									if (!$reviews) echo '<div style="margin:auto; padding: 5%">Пока пусто</div>';
 									$mailRev = '';
 									$rev = '';
 									$mailOrRev = 1;
