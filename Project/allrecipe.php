@@ -53,7 +53,7 @@ $SelectedIng = '';
 							<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
 						</select>
 					</div>
-					<div class="addSearchSringBlock" style = "height: 40px;">
+					<div class="addSearchSringBlock">
 						<input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
 						<div class="search-btn"></div>
 						<script>
@@ -112,6 +112,7 @@ $SelectedIng = '';
 								$minutes = $time % 60;
 								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
 								echo '
+								<ing>
                   					<div onmouseover = "hoverOnRecipe ('.$recipe['id'].')" onmouseout = "hoverOffRecipe ('.$recipe['id'].')" id = "recipeReady'.$recipe['id'].'" class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
 										<div class = "recipeReady_img" id = "recipe__img'.$recipe['id'].'" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
 
@@ -124,7 +125,7 @@ $SelectedIng = '';
 											<div> Стоимость: ' . $recipe['price'] . '</div>
 										</div>
 									</div>
-								';
+								</ing>';
 							}
 						
 					?>
