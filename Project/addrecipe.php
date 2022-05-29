@@ -36,7 +36,7 @@ include 'header.php';
                 <input type="file" accept=".jpg, .jpeg, .png" name="img"  id='file_id' class="inputName" style = "resize: none" required>
             </form> -->
               <div class="ava_input__wrapper">
-                <input type="file" accept=".jpg, .jpeg, .png" type="file" name="img" id="file_id" class="ava_input ava_input__file" style = "resize: none" required>
+                <input type="file" accept=".jpg, .jpeg, .png" type="file" name="img" id="file_id" style = "resize: none" onchange="uploadImage(event)" class="ava_input ava_input__file" required>
                 <label for="input__file" class="ava_input__file-button">
                   <span class="ava_input__file-icon-wrapper">
                   <img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
@@ -44,6 +44,8 @@ include 'header.php';
                 </label>
               </div>
         </div>
+
+        <div style="margin: 0 auto; margin-top:20px;" id="photo"></div>
 
         <div class="description">
             <div class="descriptionName">Введите описание:</div>
@@ -178,7 +180,7 @@ include 'header.php';
                         }
 
                         while($row = mysqli_fetch_assoc($query)){
-                          if(strpos($ingredients, $row['id'])=== false)
+                          if(strpos($ingredients, ",".$row['id'].",")=== false)
                           echo '<ing>
                           <div class="suitableNamePrd"><div class="suitableProduct" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddIngredient('.$row['id'].');"></div>
                           <div class="nprod"><a>' . $row['name'] . '</a></div></div>
@@ -275,9 +277,9 @@ include 'header.php';
                     $query = mysqli_query($conn, "SELECT * FROM `inventory` ORDER BY `name`");
                     break;
                   }
-                  
+
                   while($row = mysqli_fetch_assoc($query)){
-                    if(strpos($inventory, $row['id'])=== false)
+                    if(strpos($inventory, ",".$row['id'].",")=== false)
                     echo '<inv>
                       <div class="suitableNamePrd">
                         <div class="suitableProduct" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="AddInventory('.$row['id'].');"></div>
@@ -303,9 +305,9 @@ include 'header.php';
               <div class="step">
                   <div class="stepNumber" onclick="DeleteStep('.$i.');">'.$idStep.'</div>
                   <div class="stepContent">
-                      <div class="stepBox">
+                      <div class="stepBox" id="stepBox'.$idStep.'">
                         <div class="ava_input__wrapper_2">
-                          <input type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="imgStep'.$idStep.'" class="ava_input ava_input__file" style = "resize: none">
+                          <input onchange="uploadImageStep(event, '.$idStep.')" type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="imgStep'.$idStep.'" class="ava_input ava_input__file" style = "resize: none">
                           <label for="input__file" class="ava_input__file-button_2" style="cursor:pointer">
                             <span class="ava_input__file-icon-wrapper">
                             <img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
@@ -327,6 +329,8 @@ include 'header.php';
     </div>
   </form>
     <script>
+      var maxSize = 1048576;
+
       if(sessionStorage.length == 0) {
         window.location.href = '../addrecipe.php?countOfSteps=1';
         sessionStorage.setItem('steps','1');
@@ -450,7 +454,50 @@ include 'header.php';
           elementUpdate('#ingredientsSelect');
           elementUpdate('#ingredients');
           elementUpdate('#steps');
+          if(window.sessionStorage.getItem('photo')){
+            let name = window.sessionStorage.getItem('photo');
+            let res = window.sessionStorage.getItem(name);
+            let photo = document.getElementById("photo");
+            photo.style.background = 'url('+res+') no-repeat center center';
+            photo.style.backgroundSize = 'cover';
+            photo.style.width = "500px";
+            photo.style.height = "240px";
+            const dt = new DataTransfer();
+            dt.items.add(dataURLtoFile(res, name));
+            const fileList = dt.files;
+            document.getElementById('file_id').files = fileList;
+          }
+
+          UpdatePhotoSteps();
       });
+
+      function UpdatePhotoSteps(){
+        for (var i = 1; i <= document.getElementById("stepCount").value; i++) {
+          if(window.sessionStorage.getItem("stepPhoto"+i)){
+            let name = window.sessionStorage.getItem("stepPhoto"+i);
+            let res = window.sessionStorage.getItem(name);
+            let photo = document.getElementById("stepBox"+i);
+            photo.style.background = 'url('+res+') no-repeat center center';
+            photo.style.backgroundSize = 'cover';
+            const dt = new DataTransfer();
+            dt.items.add(dataURLtoFile(res, name));
+            const fileList = dt.files;
+            document.getElementById("imgStep"+i).files = fileList;
+          }
+        }
+      }
+
+      function dataURLtoFile(dataurl, filename) {
+       var arr = dataurl.split(','),
+           mime = arr[0].match(/:(.*?);/)[1],
+           bstr = atob(arr[1]),
+           n = bstr.length,
+           u8arr = new Uint8Array(n);
+       while(n--){
+           u8arr[n] = bstr.charCodeAt(n);
+       }
+       return new File([u8arr], filename, {type:mime});
+      }
 
       function ReplaceNumberInput(){
         for (var i = 1; i < 1000; i++) {
@@ -483,6 +530,7 @@ include 'header.php';
           console.log('Элемент '+selector+' был успешно обновлен');
           RelaceTextArea();
           ReplaceNumberInput();
+          if(selector == "#steps") UpdatePhotoSteps();
           return true;
         } catch(err) {
           console.log('При обновлении элемента '+selector+' произошла ошибка:');
@@ -490,6 +538,63 @@ include 'header.php';
           return false;
         }
       }
+
+      function uploadImage(event) {
+        var reader = new FileReader();
+        var name = event.target.files[0].name;
+        reader.addEventListener("load", function () {
+            if (this.result && sessionStorage && event.target.files[0].size <= maxSize) {
+                try {
+                  window.sessionStorage.setItem(name, this.result);
+                  window.sessionStorage.setItem('photo', name);
+                  let photo = document.getElementById("photo");
+                  photo.style.background = 'url('+this.result+') no-repeat center center';
+                  photo.style.backgroundSize = 'cover';
+                  photo.style.width = "500px";
+                  photo.style.height = "240px";
+               } catch(error) {
+                  alert("Ошибка при отображении фото в окне. Ваше фото добавилось в форму для отправки рецепта, но мы рекомендуем добавить фото с меньшим размером для избежания возникновения ошибок в дальнейшем");
+                  console.log("Ошибочка вышла", error);
+               }
+            }
+            if(event.target.files[0].size > maxSize){
+               alert("Слишком большое изображение");
+               const dt = new DataTransfer();
+               event.files = dt.files;
+               let photo = document.getElementById("photo");
+               photo.style.background = 'none';
+               photo.style.height = "0px";
+            };
+        });
+        reader.readAsDataURL(event.target.files[0]);
+     }
+
+     function uploadImageStep(event, stepId) {
+       var reader = new FileReader();
+       var name = event.target.files[0].name;
+       reader.addEventListener("load", function () {
+           if (this.result && sessionStorage && event.target.files[0].size <= maxSize) {
+               try {
+                 window.sessionStorage.setItem(name, this.result);
+                 window.sessionStorage.setItem("stepPhoto"+stepId, name);
+                 let photo = document.getElementById("stepBox"+stepId);
+                 photo.style.background = 'url('+this.result+') no-repeat center center';
+                 photo.style.backgroundSize = 'cover';
+          	   } catch(error) {
+                 alert("Ошибка при отображении фото в окне. Ваше фото добавилось в форму для отправки рецепта, но мы рекомендуем добавить фото с меньшим размером для избежания возникновения ошибок в дальнейшем");
+                 console.log("Ошибочка вышла", error);
+          	   }
+           }
+           if(event.target.files[0].size > maxSize){
+              alert("Слишком большое изображение");
+              const dt = new DataTransfer();
+              event.files = dt.files;
+              let photo = document.getElementById("stepBox"+stepId);
+              photo.style.background = 'none';
+           };
+       });
+       reader.readAsDataURL(event.target.files[0]);
+    }
     </script>
 </body>
 <?php
