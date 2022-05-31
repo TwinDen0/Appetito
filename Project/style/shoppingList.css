@@ -210,7 +210,6 @@
     margin: 0 auto;
     margin-top: 18px;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
     overflow-y: scroll;
 }

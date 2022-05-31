@@ -320,7 +320,7 @@ input[type="range"]:active::-webkit-slider-thumb{
 
 .boxFood {
     width: 100%;
-    height: 100%;
+    height: 95%;
     box-sizing: border-box;
     flex-direction:row;
     flex-wrap:wrap;
@@ -599,6 +599,15 @@ input[type="range"]:active::-webkit-slider-thumb{
     .selectoinBox {
         height: 60vh;
     }
+    .boxFood {
+        height: 82%;
+    }
+    .boxFilter {
+        height: 95vh;
+    }
+    .boxRecipe {
+        height: 90vh;
+    }
 }
 
 @media screen and (max-width: 1420px) {
@@ -620,18 +629,38 @@ input[type="range"]:active::-webkit-slider-thumb{
         font-size: 11px;
         margin-top: 100%;
     }
+    .foodImage {
+        width: 90%;
+        height: 68%;
+    }
+    .boxFilter {
+        height: 90vh;
+    }
+    .boxRecipe {
+        height: 85vh;
+    }
 }
 
 @media screen and (max-width: 1195px) {
     .productBox {
         width: 105px;
-        height: 160px;
+        height: 150px;
     }
     .nameFood {
         font-size: 10px;
+        margin-top: 85%;
     }
     .selectoinBox {
         height: 65vh;
+    }
+    .boxFood {
+        height: 65%;
+    }
+    .boxFilter {
+        height: 85vh;
+    }
+    .boxRecipe {
+        height: 80vh;
     }
 }
 
@@ -646,24 +675,41 @@ input[type="range"]:active::-webkit-slider-thumb{
     .selectoinBox {
         height: 70vh;
     }
+    .boxFood {
+        height: 60%;
+    }
+    .boxFilter {
+        height: 77vh;
+    }
+    .boxRecipe {
+        height: 72vh;
+    }
 }
 
 @media screen and (max-width: 960px) {
     .productBox {
         width: 75px;
-        height: 130px;
+        height: 115px;
         border-bottom-left-radius: 10px;
         border-bottom-right-radius: 10px;
     }
     .nameFood {
         font-size: 9px;
     }
-}
+    .boxFood {
+        height: 50%;
+    }
+    .boxFilter {
+        height: 67vh;
+    }
+    .boxRecipe {
+        height: 62vh;
+    }
 
-@media screen and (max-width: 836px) {
+@media screen and (max-width: 850px) {
     .productBox {
         width: 70px;
-        height: 125px;
+        height: 105px;
     }
 }
 
@@ -682,15 +728,23 @@ input[type="range"]:active::-webkit-slider-thumb{
         padding-right: 0;
         padding-top: 5%;
     }
+    #headingFil {
+        margin-top: 7%;
+    }
+    .container {
+        width: 96%;
+        height: 10vw;
+        margin-left: 2%;
+    }
     .headingFilter {
-        font-size: 2.5vw;
+        font-size: 29px;
         margin: auto;
     }
     .upTextFilter_1 {
-        font-size: 2.3vw;
+        font-size: 3vw;
     }
     .checkbox__body {
-        font-size: 2.3vw;
+        font-size: 2.6vw;
     }
     .upTextFilter {
         width: 98%;
@@ -714,27 +768,28 @@ input[type="range"]:active::-webkit-slider-thumb{
         border-width: 0 0.3vw 0.3vw 0;
     }
     .values {
-        font-size: 2vw;
-        padding-top: 1%;
+        font-size: 3vw;
+        padding-top: 3%;
     }
     .choiceText {
-        font-size: 2vw;
+        font-size: 3vw;
     }
     .choiceSelect {
-        font-size: 2vw;
+        font-size: 3vw;
     }
     .checkbox__checkmark_choice {
-        border-top: 1vw solid #808080;
-        border-left: 1vw solid #ff060600;
-        border-right: 1vw solid transparent;
+        border-top: 2vw solid #808080;
+        border-left: 2vw solid #ff060600;
+        border-right: 2vw solid transparent;
     }
     .checkbox__checkmark_choice:after {
-        border-top: 1vw solid #808080;
-        border-left: 1vw solid #ff060600;
-        border-right: 1vw solid transparent;
+        border-top: 2vw solid #808080;
+        border-left: 2vw solid #ff060600;
+        border-right: 2vw solid transparent;
     }
     .textCut {
-        font-size: 2vw;
+        font-size: 2.8vw;
+        padding-top: 2%;
     }
     .boxScroll {
         height: 9vw;
@@ -762,7 +817,7 @@ input[type="range"]:active::-webkit-slider-thumb{
         height: 70%;
     }
     .boxFilter {
-        height: 85vh;
+        height: 95vh;
     }
     .recipe {
         width: 90%;
@@ -805,26 +860,29 @@ input[type="range"]:active::-webkit-slider-thumb{
     }
 }
 
-@media screen and (max-width: 777px) {
+@media screen and (max-width: 790px) {
     .productBox {
         width: 125px;
     }
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 740px) {
     .productBox {
         width: 110px;
         height: 175px;
     }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 670px) {
     .productBox {
         width: 95px;
         height: 160px;
     }
     .boxFood {
         height: 75%;
+    }
+    .boxFilter {
+        height: 90vh;
     }
 }
 @media screen and (max-width: 593px) {
@@ -836,6 +894,29 @@ input[type="range"]:active::-webkit-slider-thumb{
         font-size: 9px;
     }    
     .boxFood {
+        height: 85%;
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .productBox {
+        width: 80px;
+        height: 110px;
+    }
+    .nameFood {
+        font-size: 9px;
+        margin-top: 75%;
+    }    
+    .boxFood {
         height: 80%;
+    }
+    .productBox {
+        margin: 10px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .boxFood {
+        height: 85%;
     }
 }

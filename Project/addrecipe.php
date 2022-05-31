@@ -27,7 +27,7 @@ include 'header.php';
         <div class="addName">Добавить рецепт</div>
         <div class="name">
             <div class="textName">Введите название:</div>
-            <input type="text" name="nameRecipe" id="inputName" class="inputName" style = "resize: none" onchange="Save('inputName','inputName');" required></input>
+            <input type="text" maxlength="60" name="nameRecipe" id="inputName" class="inputName" style = "resize: none" onchange="Save('inputName','inputName');" required></input>
         </div>
 
         <div class="name">
@@ -49,7 +49,7 @@ include 'header.php';
 
         <div class="description">
             <div class="descriptionName">Введите описание:</div>
-            <textarea name="description" id="inputDescription" class="inputdescription" style = "resize: none" onchange="Save('inputDescription','inputDescription');" required></textarea>
+            <textarea name="description" maxlength="450" id="inputDescription" class="inputdescription" style = "resize: none" onchange="Save('inputDescription','inputDescription');" required></textarea>
         </div>
 
         <div class="calories">
@@ -70,7 +70,7 @@ include 'header.php';
                 <option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
                 <option value="Первые блюда" <?php if($kitchen=="Первые блюда") echo 'selected="selected"' ?>>Первые блюда</option>
                 <option value="Вторые блюда" <?php if($kitchen=="Вторые блюда") echo 'selected="selected"' ?>>Вторые блюда</option>
-                <option value="Закузки" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закузки</option>
+                <option value="Закузки" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закуски</option>
                 <option value="Салаты" <?php if($kitchen=="Салаты") echo 'selected="selected"' ?>>Салаты</option>
                 <option value="Соусы, кремы" <?php if($kitchen=="Соусы, кремы") echo 'selected="selected"' ?>>Соусы, кремы</option>
                 <option value="Напитки" <?php if($kitchen=="Напитки") echo 'selected="selected"' ?>>Напитки</option>

@@ -46,7 +46,6 @@
 
             <div class = "steps4">Сделай это в 4 шага!</div>
 
-            <img src="images/main/фон3-06.png" class = "fon_People">
             <div class = "people_all">
                 <div class = "flex">
                     <img src = "images/main/пиплы-03.png" class = "people">
