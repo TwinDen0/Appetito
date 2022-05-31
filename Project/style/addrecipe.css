@@ -9,6 +9,9 @@
 img {
     pointer-events: none;
 }
+#imgRecipes {
+    width: 100%;
+}
 ::-webkit-scrollbar {
     background: rgba(209, 121, 17, 0.16);
     width: 5px;
