@@ -53,7 +53,7 @@
 			<?php if( $_SERVER['REQUEST_URI'] != "/allrecipe.php"){?>
 
 			  <div onclick="location.href='./allrecipe.php'" class = "linkHeader">
-				<img class = "linkImg" src = "./header/иконки-06.png">
+				<img class = "linkImg" src = "./header/иконки-08.png">
 				<div class = "linkText">Все рецепты</div>
 			  </div>
 
@@ -73,7 +73,7 @@
 			<?php if( $_SERVER['REQUEST_URI'] != "/shoppingList.php"){?>
 
 				<div onclick="location.href='./shoppingList.php'" class = "linkHeader">
-					<img class = "linkImg" src = "./header/иконки-08.png">
+					<img class = "linkImg" src = "./header/иконки-06.png">
 					<div class = "linkText">Список покупок</div>
 				</div>
 

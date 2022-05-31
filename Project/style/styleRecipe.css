@@ -124,6 +124,7 @@ img {
     text-align: center;
     box-sizing: border-box;
     padding-top: 1%;
+    padding-bottom: 1%;
 }
 
 .subheader {
@@ -241,7 +242,6 @@ img {
     background: rgba(196, 196, 196, 0.2);
     display: flex;
     justify-content: space-between;
-    flex-direction: row-reverse;
     margin-top: 3%;
     border-radius: 20px;
 }

@@ -100,25 +100,25 @@ $SelectedIng = '';
 							<img src="images/category/all.png" class = "categoryImage"  title="Все продукты" onclick="ClickCategory('');">
 							<img src="images/category/mushroom.png" class = "categoryImage" title="Грибы" onclick="ClickCategory('Грибы');">
 							<img src="images/category/milk.png" class = "categoryImage" title="Молочные продукты" onclick="ClickCategory('Молочное');">
-							<img src="images/category/groats.png" class = "categoryImage" title="Крупы" onclick="ClickCategory('Крупы');">
+							<img src="images/category/groats.png" class = "categoryImage" title="Крупы и злаки" onclick="ClickCategory('Крупыизлаки');">
 							<img src="images/category/pasta.png"" class = "categoryImage" title="Макароны" onclick="ClickCategory('Макароны');">
-							<img src="images/category/oil.png" class = "categoryImage" title="Масла" onclick="ClickCategory('Масла');">
+							<img src="images/category/oil.png" class = "categoryImage" title="Масла" onclick="ClickCategory('Маслорастительное');">
 							<img src="images/category/bobs.png" class = "categoryImage" title="Бобовые" onclick="ClickCategory('Бобовые');">
-							<img src="images/category/jam.png" class = "categoryImage" title="Джемы" onclick="">
-							<img src="images/category/chicken.png" class = "categoryImage" title="Курица" onclick="">
-							<img src="images/category/fish.png" class = "categoryImage" title="Рыба" onclick="">
-							<img src="images/category/egg.png" class = "categoryImage" title="Яйца" onclick="">
-							<img src="images/category/flour.png" class = "categoryImage" title="Мука" onclick="">
-							<img src="images/category/bread.png" class =  "categoryImage" title="Мучное" onclick="">
-							<img src="images/category/meat.png" class = "categoryImage" title="Мясо" onclick="">
-							<img src="images/category/carrot.png" class = "categoryImage" title="Овощи" onclick="">
-							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="">
-							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="">
+							<img src="images/category/jam.png" class = "categoryImage" title="Джемы" onclick="ClickCategory('Джемы');">
+							<img src="images/category/chicken.png" class = "categoryImage" title="Птица" onclick="ClickCategory('Птица');">
+							<img src="images/category/fish.png" class = "categoryImage" title="Рыба и морепродуты" onclick="ClickCategory('Рыбаиморепродукты');">
+							<img src="images/category/egg.png" class = "categoryImage" title="Яйца" onclick="ClickCategory('Яйца');">
+							<img src="images/category/flour.png" class = "categoryImage" title="Мука" onclick="ClickCategory('Мука');">
+							<img src="images/category/bread.png" class =  "categoryImage" title="Мучное" onclick="ClickCategory('Хлеб');">
+							<img src="images/category/meat.png" class = "categoryImage" title="Мясо" onclick="ClickCategory('Мясо');">
+							<img src="images/category/carrot.png" class = "categoryImage" title="Овощи" onclick="ClickCategory('Овощи');">
+							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="ClickCategory('Орехи');">
+							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="ClickCategory('Соусы');">
 							<img src="images/category/spices.png" class = "categoryImage" title="Специи" onclick="">
 							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="">
-							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="">
-							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="">
-							<img src="images/category/green.png" class = "categoryImage" title="Зелень" onclick="">
+							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="ClickCategory('Фрукты');">
+							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="ClickCategory('Ягоды');">
+							<img src="images/category/green.png" class = "categoryImage" title="Зелень" onclick="ClickCategory('Зелень');">
 						</div>
 					</div>
 
@@ -249,7 +249,7 @@ $SelectedIng = '';
 
 			<div class = "recipe">
 				<div class = "upeerText">
-					<div style = "margin-top: 1%" class = "headingFilter">Подходящие рецепты:</div>
+					<div id = "headingFil" class = "headingFilter">Подходящие рецепты:</div>
 				</div>
 				
 <!-- рецепты-->
