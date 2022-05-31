@@ -80,6 +80,13 @@ include 'header.php';
 
         <button type="submit" class="sendRecipe">Отправить рецепт</button>
 
+        
+<!-- Кнопочки админа -->
+        <button type="submit" class="AdminButtonOk">Принять</button>
+        <button type="submit" class="AdminButtonNo">Отклонить</button>
+<!-- Кнопочки админа -->
+
+
         <div class="chooseIngredientsText"><div class="chooseIngredientsText1">Выбери Ингредиенты:</div></div>
 <!-- Выбранные ингредиенты -->
         <div class="ingredientsMain">

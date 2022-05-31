@@ -229,6 +229,16 @@
 												<div class = "fidbackForm">
 													<div class = "userName">' . $user['name'] . '</div>
 													<div class = "messenger">' . $rev . '</div>
+
+
+					<!-- Кнопочки редактирования -->
+													<div class = "znak_edit">
+														<a href="">&#9998;</a>
+														<a href="">&#9746;</a>
+													</div>
+					<!-- Кнопочки редактирования -->
+
+					
 												</div>
 											</div>';
 											$mailRev = '';
