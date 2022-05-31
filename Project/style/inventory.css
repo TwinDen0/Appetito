@@ -35,6 +35,16 @@ body {
     background: url(/images/inventoryImg/fon-addr.png) repeat top center;
     width: 100%;
 }
+.error {
+    width: 100vw;
+    font-size: 29px;
+    color: #ea0000;
+    text-align: center;
+    box-sizing: border-box;
+    margin-top: 15vh;
+    font-weight: 500;
+    letter-spacing: 0.017em;
+}
 .menuHeader {
     margin: 0 auto;
     margin-top: 0%;

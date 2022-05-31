@@ -108,7 +108,7 @@ include 'header.php';
                     <div class="selectedProduct">
                       <div class="productBox" style = "background: url(./images/ingredients/' . $ingredient['image'] . ') no-repeat center center; background-size: cover;" onclick="DeleteIngredient('.$ingredient['id'].');"></div>
                         <div class="numberText">количество:</div>
-                      <input type="number" min="0.05" value = "0.05" step="0.05" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'" onchange="Save('.$nameBar.','.$nameBar.');">
+                      <input type="number" min="0.001" value = "0.001" step="0.001" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'" onchange="Save('.$nameBar.','.$nameBar.');">
                     </div>';
                     $ing = '';
                   }

@@ -78,16 +78,15 @@
         <div class = "training_1">
             <img src = "images/main/глв челики 1.png" class = "mainPeople">
             <div class = "descriptionTraining_1">
-                <div class = "headingTraining_1">На нашем сайте уже более
-                                                100 рецептов!</div>
-                <div class = "textTraining_1">Совсеми рецептами на нашем
+                <div class = "headingTraining_1">На нашем сайте полно рецептов!</div>
+                <div class = "textTraining_1">Со всеми рецептами на нашем
                                             сайте ты можешь ознакомиться нажав
                                             на кноку ниже, а если у тебя есть
                                             свой уникальный рецепт и ты хочешь
                                             им поделиться, то отправь его нам,
                                             заполнив по форме, которая находится
                                             в твоем личном кабинете!</div>
-                <a href="#" class = "btn1" onclick="location.href='../searchRecipe.php'">Посмотреть рецепты</a>
+                <a href="#" class = "btn1" onclick="location.href='../allrecipe.php'">Посмотреть рецепты</a>
             </div>
         </div>
 
