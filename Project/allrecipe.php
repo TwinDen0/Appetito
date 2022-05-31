@@ -53,7 +53,26 @@ $SelectedIng = '';
 							<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
 						</select>
 					</div>
-					<div class="addSearchSringBlock" style = "height: 40px;">
+
+					
+					<div class="select">
+						<select name="sortRecipes" id="sortRecipes">
+							<?php $sortRecipes = $_GET['sortRecipes']; ?>
+							<option value="Другая" <?php echo 'selected="selected"' ?>>Другое</option>
+							<option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
+							<option value="Первые блюда" <?php if($kitchen=="Первые блюда") echo 'selected="selected"' ?>>Первые блюда</option>
+							<option value="Вторые блюда" <?php if($kitchen=="Вторые блюда") echo 'selected="selected"' ?>>Вторые блюда</option>
+							<option value="Закузки" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закуски</option>
+							<option value="Салаты" <?php if($kitchen=="Салаты") echo 'selected="selected"' ?>>Салаты</option>
+							<option value="Соусы, кремы" <?php if($kitchen=="Соусы, кремы") echo 'selected="selected"' ?>>Соусы, кремы</option>
+							<option value="Напитки" <?php if($kitchen=="Напитки") echo 'selected="selected"' ?>>Напитки</option>
+							<option value="Десерты" <?php if($kitchen=="Десерты") echo 'selected="selected"' ?>>Десерты</option>
+							<option value="Выпечка" <?php if($kitchen=="Выпечка") echo 'selected="selected"' ?>>Выпечка</option>
+							<option value="Торты" <?php if($kitchen=="Торты") echo 'selected="selected"' ?>>Торты</option>
+						</select>
+					</div>
+
+					<div class="addSearchSringBlock">
 						<input class="addSearchSring" type="text" placeholder="Поиск..." id="inputSearch">
 						<div class="search-btn"></div>
 						<script>
@@ -112,6 +131,7 @@ $SelectedIng = '';
 								$minutes = $time % 60;
 								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
 								echo '
+								<ing>
                   					<div onmouseover = "hoverOnRecipe ('.$recipe['id'].')" onmouseout = "hoverOffRecipe ('.$recipe['id'].')" id = "recipeReady'.$recipe['id'].'" class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
 										<div class = "recipeReady_img" id = "recipe__img'.$recipe['id'].'" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"> </div>
 
@@ -124,7 +144,7 @@ $SelectedIng = '';
 											<div> Стоимость: ' . $recipe['price'] . '</div>
 										</div>
 									</div>
-								';
+								</ing>';
 							}
 						
 					?>
@@ -162,5 +182,10 @@ $SelectedIng = '';
 			}
 		}
 		</script>
+
+		<?php
+        include 'menuMobile.php';
+        ?>
+
     </body>
 </html>

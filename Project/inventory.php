@@ -21,6 +21,16 @@
 include 'header.php';
 ?>
 
+<?php
+ if ($_SESSION['auth'] == false){?>
+
+    <div class="error">Ошибка, вы не вошли в аккаунт!</div>
+
+<?php include 'menuMobile.php';
+
+  } else {
+?>
+
 <body>
     <div class="main">
         <div class="kichenText">Мои кухонные принадлежности:</div>
@@ -218,4 +228,9 @@ include 'header.php';
         ?>
 
 </body>
+
+<?php
+ };
+?>
+
 </html>

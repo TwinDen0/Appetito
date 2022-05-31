@@ -27,7 +27,7 @@
 	include 'header.php';
     ?>
 
-    <body>
+<body>
         <div>
             <img src = "images/main/фон.png" class = "fonKitchen">
             <img src = "images/main/фон-06.png" class = "fonKitchenWave">
@@ -46,7 +46,6 @@
 
             <div class = "steps4">Сделай это в 4 шага!</div>
 
-            <img src="images/main/фон3-06.png" class = "fon_People">
             <div class = "people_all">
                 <div class = "flex">
                     <img src = "images/main/пиплы-03.png" class = "people">
@@ -75,27 +74,23 @@
             </div>
         </div>
 
-        <img src = "images/main/фон-07.png" class = "fonWave">
         <img src = "images/main/fonUp.png" class = "fonTraining_1">
-        <img src = "images/main/фон-08.png" class = "fonWaveInversion">
         <div class = "training_1">
             <img src = "images/main/глв челики 1.png" class = "mainPeople">
             <div class = "descriptionTraining_1">
-                <div class = "headingTraining_1">На нашем сайте уже более
-                                                100 рецептов!</div>
-                <div class = "textTraining_1">Совсеми рецептами на нашем
+                <div class = "headingTraining_1">На нашем сайте полно рецептов!</div>
+                <div class = "textTraining_1">Со всеми рецептами на нашем
                                             сайте ты можешь ознакомиться нажав
                                             на кноку ниже, а если у тебя есть
                                             свой уникальный рецепт и ты хочешь
                                             им поделиться, то отправь его нам,
                                             заполнив по форме, которая находится
                                             в твоем личном кабинете!</div>
-                <a href="#" class = "btn1" onclick="location.href='../searchRecipe.php'">Посмотреть рецепты</a>
+                <a href="#" class = "btn1" onclick="location.href='../allrecipe.php'">Посмотреть рецепты</a>
             </div>
         </div>
 
 
-        <img src = "images/main/фон3-06.png" class = "fonTraining_2">
         <div class = "training_2">
             <div class = "descriptionTraining_1">
                 <div style = "color:#250000" class = "headingTraining_1">Мы сами составим твой список покупок!</div>
@@ -122,9 +117,7 @@
             </div>
         </div>
 
-        <img src = "images/main/fon_down.png" class = "fonWaveDown">
         <img src = "images/main/fonDown.png" class = "fonDown"></div>
-        <div class = ></div>
 
         <div class = "headingFinal">Приятного аппетита!</div>
         <img src = "images/main/глв челики 4.png" class = "mainPeopleFinal">

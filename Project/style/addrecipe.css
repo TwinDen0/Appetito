@@ -470,6 +470,7 @@ body {
     cursor: pointer;
     text-shadow: 0px 1.33333px 4px rgb(0 0 0 / 25%);
     border: none;
+    z-index: 5;
 }
 .indentStep {
     width: 100%;
@@ -766,6 +767,20 @@ footer {
     .sendRecipe {
         font-size: 12px;
     }
+    .nprod {
+        line-height: 9px;
+    }
+    .suitableNamePrd {
+        height: 130px;
+    }
+    .sendRecipe {
+        right: 5px;
+        width: 21%;
+        border-radius: 50px;
+        margin-top: 27px;
+        height: 48px;
+        font-size: 16px;
+    }
 }
 
 #main-pct {
@@ -783,17 +798,9 @@ footer {
 #profil-pct {
     background: url(/images/header/Безымянный-5-02\ 1.png) no-repeat top center;
 }
-@media screen and (max-width: 670px) {
-    header {
-        display: none;
-    }
-    footer {
-        width: 100%;
-        background: #FFFBF9;
-        height: 70px;
-        display: block;
-        position: fixed;
-        bottom: 0;
+@media screen and (max-width: 680px) {
+    .main {
+        width: 520px;
     }
     .sendRecipe{
         bottom: 80px;
@@ -804,12 +811,8 @@ footer {
         width: 25%;
     }
 }
+
 @media screen and (max-width: 550px) {
-    footer {
-        height: 55px;
-        position: fixed;
-        bottom: 0;
-    }
     .fmenuBlock {
         margin-left: 13px;
     }
@@ -823,6 +826,13 @@ footer {
         font-size: 6px;
         text-align: center;
         line-height: 33px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .main {
+        margin: 0 auto;
+        width: 400px;
     }
 }
 @media screen and (max-width: 480px) {

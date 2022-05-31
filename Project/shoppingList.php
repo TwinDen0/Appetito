@@ -75,25 +75,25 @@
                     <img src="images/category/all.png" class = "categoryBlock1" onclick="ClickCategory('');">
                     <img src="images/category/mushroom.png" class = "categoryBlock1" onclick="ClickCategory('Грибы');">
                     <img src="images/category/milk.png" class = "categoryBlock1" onclick="ClickCategory('Молочное');">
-                    <img src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупы');">
+                    <img src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупыизлаки');">
                     <img src="images/category/pasta.png" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
-                    <img src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Масла');">
+                    <img src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Маслорастительное');">
                     <img src="images/category/jam.png" class = "categoryBlock1" onclick="ClickCategory('Джемы');">
                     <img src="images/category/chicken.png" class = "categoryBlock1" onclick="ClickCategory('Птица');">
-                    <img src="images/category/fish.png" class = "categoryBlock1" onclick="ClickCategory('Рыба');">
-                    <img src="images/category/egg.png" class = "categoryBlock1" onclick="">
+                    <img src="images/category/fish.png" class = "categoryBlock1" onclick="ClickCategory('Рыбаиморепродукты');">
+                    <img src="images/category/egg.png" class = "categoryBlock1" onclick="ClickCategory('Яйца');">
                     <img src="images/category/bobs.png" class = "categoryBlock1" onclick="ClickCategory('Бобовые');">
-                    <img src="images/category/flour.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/bread.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/meat.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/carrot.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/nut.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/sauce.png" class = "categoryBlock1" onclick="">
+                    <img src="images/category/flour.png" class = "categoryBlock1" onclick="ClickCategory('Мука');">
+                    <img src="images/category/bread.png" class = "categoryBlock1" onclick="ClickCategory('Хлеб');">
+                    <img src="images/category/meat.png" class = "categoryBlock1" onclick="ClickCategory('Мясо');">
+                    <img src="images/category/carrot.png" class = "categoryBlock1" onclick="ClickCategory('Овощи');">
+                    <img src="images/category/nut.png" class = "categoryBlock1" onclick="ClickCategory('Орехи');">
+                    <img src="images/category/sauce.png" class = "categoryBlock1" onclick="ClickCategory('Соусы');">
                     <img src="images/category/spices.png" class = "categoryBlock1" onclick="">
                     <img src="images/category/cheese.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/apple.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/blackberry.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/green.png" class = "categoryBlock1" onclick="">
+                    <img src="images/category/apple.png" class = "categoryBlock1" onclick="ClickCategory('Фрукты');">
+                    <img src="images/category/blackberry.png" class = "categoryBlock1" onclick="ClickCategory('Ягоды');">
+                    <img src="images/category/green.png" class = "categoryBlock1" onclick="ClickCategory('Зелень');">
                 </div>
             </div>
 

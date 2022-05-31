@@ -54,7 +54,7 @@
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
 	           
-				<div style = "display:flex;width: 100%;justify-content: center;">
+				<div style = "display:flex;width: 100%;justify-content: center;align-items: center;">
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
@@ -203,40 +203,46 @@
 								</form>
 							</div>
 
-
-								<?php
-									$reviews =  $recipe['reviews'];
-									if (!$reviews) echo 'Пока пусто';
-									$mailRev = '';
-									$rev = '';
-									$mailOrRev = 1;
-									for($i = 0; $i < strlen($reviews); $i++){
-										if($reviews[$i]!="$" && $mailOrRev == 1){
-											$mailRev = $mailRev.$reviews[$i];
-										}
-										if($reviews[$i]=="$" && $mailOrRev == 1){
-											$mailOrRev = 2;
-										}
-										if($reviews[$i]!="$" && $mailOrRev == 2){
-											$rev = $rev.$reviews[$i];
-										}
-										if($reviews[$i]=="$" && $rev){
-											$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$mailRev'");
-											$user = mysqli_fetch_assoc($query);
-											echo '
-											<div class = "allfidbackForm">
-												<div class = "avatar" style="background: url(./images/avatars/' . $user['avatar'] . ') no-repeat center center; background-size: cover;"></div>
-												<div class = "fidbackForm">
-													<div class = "userName">' . $user['name'] . '</div>
-													<div class = "messenger">' . $rev . '</div>
-												</div>
-											</div>';
-											$mailRev = '';
-											$rev = '';
-											$mailOrRev = 1;
-										}
+							<?php
+								$reviews =  $recipe['reviews'];
+								if (!$reviews) echo '<div style="margin:auto; padding: 5%">Пока пусто</div>';
+								$mailRev = '';
+								$rev = '';
+								$mailOrRev = 1;
+								for($i = 0; $i < strlen($reviews); $i++){
+									if($reviews[$i]!="$" && $mailOrRev == 1){
+										$mailRev = $mailRev.$reviews[$i];
 									}
-								?>
+									if($reviews[$i]=="$" && $mailOrRev == 1){
+										$mailOrRev = 2;
+									}
+									if($reviews[$i]!="$" && $mailOrRev == 2){
+										$rev = $rev.$reviews[$i];
+									}
+									if($reviews[$i]=="$" && $rev){
+										$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$mailRev'");
+										$user = mysqli_fetch_assoc($query);
+										echo '
+										<div class = "allfidbackForm">
+											<div class = "avatar" style="background: url(./images/avatars/' . $user['avatar'] . ') no-repeat center center; background-size: cover;"></div>
+											<div class = "fidbackForm">
+												<div class = "userName">' . $user['name'] . '</div>
+												<div class = "messenger">' . $rev . '</div>
+											</div>';
+
+										echo (' <div class = "editFidback">
+										<a class = "znak_edit" href="edit.php?id='.$id.'">&#9998;</a>
+										<a class = "znak_edit" href="del.php?id='.$id.'">&#9746;</a>
+										</div>');
+
+										echo '
+										</div>';
+										$mailRev = '';
+										$rev = '';
+										$mailOrRev = 1;
+									}
+								}
+							?>
             </div>
         </div>
 				</div>
