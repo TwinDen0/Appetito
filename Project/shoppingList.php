@@ -90,7 +90,7 @@
                     <img src="images/category/nut.png" class = "categoryBlock1" onclick="ClickCategory('Орехи');">
                     <img src="images/category/sauce.png" class = "categoryBlock1" onclick="ClickCategory('Соусы');">
                     <img src="images/category/spices.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/cheese.png" class = "categoryBlock1" onclick="">
+                    <img src="images/category/cheese.png" class = "categoryBlock1" onclick="ClickCategory('Сыры');">
                     <img src="images/category/apple.png" class = "categoryBlock1" onclick="ClickCategory('Фрукты');">
                     <img src="images/category/blackberry.png" class = "categoryBlock1" onclick="ClickCategory('Ягоды');">
                     <img src="images/category/green.png" class = "categoryBlock1" onclick="ClickCategory('Зелень');">

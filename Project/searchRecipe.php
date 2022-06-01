@@ -115,7 +115,7 @@ $SelectedIng = '';
 							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="ClickCategory('Орехи');">
 							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="ClickCategory('Соусы');">
 							<img src="images/category/spices.png" class = "categoryImage" title="Специи" onclick="">
-							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="">
+							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="ClickCategory('Сыры');">
 							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="ClickCategory('Фрукты');">
 							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="ClickCategory('Ягоды');">
 							<img src="images/category/green.png" class = "categoryImage" title="Зелень" onclick="ClickCategory('Зелень');">

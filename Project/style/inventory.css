@@ -227,7 +227,7 @@ body {
     margin-bottom: 20px;
     background-color: white;
     height: 220px;
-    width: 170px;
+    width: 180px;
     border-radius: 20px;
     box-shadow: 0px 1.29236px 5.16943px rgb(0 0 0 / 25%);
     overflow-wrap: break-word;
@@ -241,7 +241,7 @@ body {
 }
 .addBlock {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     margin-bottom: 2%;
     flex-wrap: wrap;
