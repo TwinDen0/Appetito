@@ -96,7 +96,7 @@ $SelectedIng = '';
 					<!-- Выбор категорий -->
 					<div class = "boxIngredient">
 						<div class = "textCut">категория:</div>
-						<div class = "boxScroll">
+						<div class = "boxScroll" id = "boxScroll">
 							<img src="images/category/all.png" class = "categoryImage"  title="Все продукты" onclick="ClickCategory('');">
 							<img src="images/category/mushroom.png" class = "categoryImage" title="Грибы" onclick="ClickCategory('Грибы');">
 							<img src="images/category/milk.png" class = "categoryImage" title="Молочные продукты" onclick="ClickCategory('Молочное');">
@@ -430,6 +430,25 @@ $SelectedIng = '';
 			    return false;
 			  }
 			}
+
+
+			(function() {
+					function scrollHorizontally1(e) {
+							e = window.event || e;
+							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+							document.getElementById('boxScroll').scrollLeft += (delta * 70); // Multiplied by 40
+							e.preventDefault();
+					}
+					if (document.getElementById('boxScroll').addEventListener) {
+							// IE9, Chrome, Safari, Opera
+							document.getElementById('boxScroll').addEventListener('mousewheel', scrollHorizontally1, false);
+							// Firefox
+							document.getElementById('boxScroll').addEventListener('DOMMouseScroll', scrollHorizontally1, false);
+					} else {
+							// IE 6/7/8
+							document.getElementById('boxScroll').attachEvent('onmousewheel', scrollHorizontally1);
+					}
+				})();
 		</script>
 
 		<?php

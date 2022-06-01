@@ -200,6 +200,13 @@
 			<div class = "subheader">Комментарии:</div>
 
 							<div class = "flexFidback">
+
+							<?php
+							if ($_SESSION['auth'] == false){?>
+							<?php 
+							} else {
+							?>
+
 								<?php session_start(); ?>
 								<div class = "formAva" <?php echo 'style = "background: url(./images/avatars/' . $_SESSION['avatar'] . ') no-repeat center center; background-size: cover;"' ?>></div>
 								<form action="../php/sendReview.php" class = "formFidback">
@@ -207,8 +214,11 @@
 										<textarea type="text" name="text" placeholder="Ваш комментарий..." class = "textarea"></textarea>
 										<input class = "sendMes" type="submit" value="Отправить">
 								</form>
+								<?php
+								};
+								?>
 							</div>
-
+							
 							<?php
 								$reviews =  $recipe['reviews'];
 								if (!$reviews) echo '<div style="margin:auto; padding: 5%">Пока пусто</div>';
@@ -237,8 +247,8 @@
 											</div>';
 
 										echo (' <div class = "editFidback">
-										<a class = "znak_edit" href="edit.php?id='.$id.'">&#9998;</a>
-										<a class = "znak_edit" href="del.php?id='.$id.'">&#9746;</a>
+											<a class = "znak_edit" href="edit.php?id='.$id.'">&#9998;</a>
+											<a class = "znak_edit" href="del.php?id='.$id.'">&#9746;</a>
 										</div>');
 
 										echo '
