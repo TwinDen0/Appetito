@@ -40,7 +40,11 @@ $SelectedIng = '';
 		</div>
 				
 <!-- рецепты-->
-				<div id = "recipeB" class = "box" style = "display:flex;">
+				<div id = "recipeB" class = "box" style = "display:flex;
+															background-color: #f1f1f1;
+															padding: 1%;
+															border-radius: 20px;
+				">
 					<div class="select">
 						<select name="sortRecipes" id="sortRecipes">
 							<?php $sortRecipes = $_GET['sortRecipes']; ?>

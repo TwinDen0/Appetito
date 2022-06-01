@@ -28,22 +28,28 @@
 
 	<div class = "wapper"></div>
 
+		<?php
+		include 'connect.php';
+		session_start();
+		$mail = $_SESSION['mail'];
+		$id = $_GET['id'];
+
+		$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
+		$recipe = mysqli_fetch_assoc($query);
+
+		$user = $recipe['author'];
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$user'");
+		$author = mysqli_fetch_assoc($query);
+		echo '
 		<div class = "avtor">автор:</div>
 		<img src="images/recipes/плашка-18.png" class = "fireAva">
-		<img src="images/avatars/default.jpg" class = "boxAva">
-		<div class = "avtorName">Иван Иванов</div>
+		<img src="images/avatars/'.$author['avatar'].'" class = "boxAva">
+		<div class = "avtorName">'.$author['name'].'</div>';
+		 ?>
 
 				<div id='phpCode'>
         <div class = "main">
 					<?php
-						include 'connect.php';
-						session_start();
-						$mail = $_SESSION['mail'];
-						$id = $_GET['id'];
-
-						$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
-						$recipe = mysqli_fetch_assoc($query);
-
 						$time =  $recipe['time'];
 						$hours = intdiv($time,60);
 						if($hours < 1) $hours = '00';
@@ -53,7 +59,7 @@
 
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
-	           
+
 				<div style = "display:flex;width: 100%;justify-content: center;align-items: center;">
 
 					<div class = "header">' . $recipe['name'] . '</div>
@@ -74,7 +80,7 @@
 						';
 					?>
 
-			
+
 
 			<script>
 				$(function(){
@@ -194,6 +200,13 @@
 			<div class = "subheader">Комментарии:</div>
 
 							<div class = "flexFidback">
+
+							<?php
+							if ($_SESSION['auth'] == false){?>
+							<?php 
+							} else {
+							?>
+
 								<?php session_start(); ?>
 								<div class = "formAva" <?php echo 'style = "background: url(./images/avatars/' . $_SESSION['avatar'] . ') no-repeat center center; background-size: cover;"' ?>></div>
 								<form action="../php/sendReview.php" class = "formFidback">
@@ -201,8 +214,11 @@
 										<textarea type="text" name="text" placeholder="Ваш комментарий..." class = "textarea"></textarea>
 										<input class = "sendMes" type="submit" value="Отправить">
 								</form>
+								<?php
+								};
+								?>
 							</div>
-
+							
 							<?php
 								$reviews =  $recipe['reviews'];
 								if (!$reviews) echo '<div style="margin:auto; padding: 5%">Пока пусто</div>';
@@ -231,8 +247,8 @@
 											</div>';
 
 										echo (' <div class = "editFidback">
-										<a class = "znak_edit" href="edit.php?id='.$id.'">&#9998;</a>
-										<a class = "znak_edit" href="del.php?id='.$id.'">&#9746;</a>
+											<a class = "znak_edit" href="edit.php?id='.$id.'">&#9998;</a>
+											<a class = "znak_edit" href="del.php?id='.$id.'">&#9746;</a>
 										</div>');
 
 										echo '
