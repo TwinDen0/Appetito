@@ -609,15 +609,15 @@ footer {
     text-align: center;
 }
 .ava_input__wrapper_2 {
-    width: 90%;
+    width: 75%;
     position: relative;
     margin: 0 auto;
     text-align: center;
-    margin-top: 35px;
+    margin-top: 65px;
 }
 .ava_input__file-button_2 {
     width: 100%;
-    height: 30px;
+    height: 35px;
     background: #f89a4c;
     color: #fff;
     font-size: 1.125rem;
@@ -636,6 +636,8 @@ footer {
 .ava_input__file {
     opacity: 0;
     position: absolute;
+    margin-left: -26%;
+    margin-top: 3%;
 }
 .ava_input__file-button {
     width: 250px;

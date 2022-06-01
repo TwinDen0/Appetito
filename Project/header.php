@@ -93,7 +93,12 @@
 
 							<div onclick="location.href='./profile.php'" class = "nameheader"> <?php echo($_SESSION['name']) ?> </div>
 							<div style = "margin-left: 15px;" onclick="location.href='./profile.php'">
-								<img <?php echo 'src = "./images/avatars/' . $_SESSION['avatar'] . '"' ?> class = "profile">
+								<div <?php echo 'style = "
+								background: url(./images/avatars/' . $_SESSION['avatar'] . '); 
+								background-size: cover;
+								background-repeat:no-repeat;
+								background-position: center center;
+								"'?> class = "profile"></div>
 							</div>
 							<a  style = "margin-left: 25px;" onclick="location.href='../exit.php'"href="#" class = "btnHeader2">Выйти</a>
 
