@@ -28,22 +28,28 @@
 
 	<div class = "wapper"></div>
 
+		<?php
+		include 'connect.php';
+		session_start();
+		$mail = $_SESSION['mail'];
+		$id = $_GET['id'];
+
+		$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
+		$recipe = mysqli_fetch_assoc($query);
+
+		$user = $recipe['author'];
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$user'");
+		$author = mysqli_fetch_assoc($query);
+		echo '
 		<div class = "avtor">автор:</div>
 		<img src="images/recipes/плашка-18.png" class = "fireAva">
-		<img src="images/avatars/default.jpg" class = "boxAva">
-		<div class = "avtorName">Иван Иванов</div>
+		<img src="images/avatars/'.$author['avatar'].'" class = "boxAva">
+		<div class = "avtorName">'.$author['name'].'</div>';
+		 ?>
 
 				<div id='phpCode'>
         <div class = "main">
 					<?php
-						include 'connect.php';
-						session_start();
-						$mail = $_SESSION['mail'];
-						$id = $_GET['id'];
-
-						$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
-						$recipe = mysqli_fetch_assoc($query);
-
 						$time =  $recipe['time'];
 						$hours = intdiv($time,60);
 						if($hours < 1) $hours = '00';
@@ -53,7 +59,7 @@
 
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
-	           
+
 				<div style = "display:flex;width: 100%;justify-content: center;align-items: center;">
 
 					<div class = "header">' . $recipe['name'] . '</div>
@@ -74,7 +80,7 @@
 						';
 					?>
 
-			
+
 
 			<script>
 				$(function(){
