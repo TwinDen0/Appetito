@@ -60,7 +60,7 @@
 .ava_input__file-icon-wrapper {
 height: 30%;
 width: 30%;
-margin-right: 10%;
+margin-right: 5%;
 display: flex;
 align-items: center;
 justify-content: center;
@@ -138,7 +138,7 @@ margin: 0 auto;
         font-size: 18px;
     }
     .ava_input__file-button {
-        max-width: 95%;
+        max-width: 100%;
     }
     .ava_add {
         font-size: 19px;

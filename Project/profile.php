@@ -86,7 +86,7 @@ $id = $user['id'];
 			</div>
 
 			<div class = "information800">
-				<button class = "edit800" value="Редактировать" onclick="document.getElementById('replaceName').style.display = 'flex';">Редактировать</button>
+				<button class = "edit800" value="Редактировать" onclick="document.getElementById('replaceName').style.display = 'flex';">Изменить имя</button>
 				<div class = "textInfomation">
 					<div class = "userName"><?php echo $_SESSION['name']; ?></div>
 				</div>
@@ -171,29 +171,53 @@ $id = $user['id'];
 			
 				<div id="content-1" class = "list1">
 				  <div class = "recipeList">
-					<div class = "recipeBox"><p>Украинский борщ с курицей бла бла бла бла бла</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
-					<div class = "recipeBox"><p>Название</p></div>
+				  <?php
+						$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `id`='$id'");
+						$favoriteRecipes = mysqli_fetch_assoc($query);
+						$favoriteRecipes = $favoriteRecipes['favoriteRecipes'];
+						$inv = '';
+						for($i = 0; $i < strlen($favoriteRecipes); $i++){
+							if($favoriteRecipes[$i]!=","){
+								$rec = $rec.$favoriteRecipes[$i];
+							}
+							if($favoriteRecipes[$i]=="," && $rec){
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$rec'");
+								$recipe = mysqli_fetch_assoc($query);
+								echo '
+								<div class = "recipe_img_name">
+									<div class = "recipeBox" style = "background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover; cursor:pointer;" onclick="GoToRecipe('.$recipe['id'].');"></div>
+									<div class = "recipeBox_Text"><p>'.$recipe['name'].'</p></div>
+								</div>';
+								$rec = '';
+							}
+						}
+						?>
 				  </div>
 			  </div>
 
 				<div id="content-2" class = "list2">
 					<div class = "recipeList">
-						<div class = "recipeBox"><p>Дениска дурачок</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
-						<div class = "recipeBox"><p>Название</p></div>
+					<?php
+						$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `id`='$id'");
+						$myRecipes = mysqli_fetch_assoc($query);
+						$myRecipes = $myRecipes['myRecipes'];
+						$inv = '';
+						for($i = 0; $i < strlen($myRecipes); $i++){
+							if($myRecipes[$i]!=","){
+								$rec = $rec.$myRecipes[$i];
+							}
+							if($myRecipes[$i]=="," && $rec){
+								$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$rec'");
+								$recipe = mysqli_fetch_assoc($query);
+								echo '
+								<div class = "recipe_img_name">
+									<div class = "recipeBox" style = "background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover; cursor:pointer;" onclick="GoToRecipe('.$recipe['id'].');"></div>
+									<div class = "recipeBox_Text"><p>'.$recipe['name'].'</p></div>
+								</div>';
+								$rec = '';
+							}
+						}
+						?>
 					</div>
 				</div>
 			  </div>

@@ -105,6 +105,7 @@ body {
     background-color: rgb(241 241 241);
     margin-top: 2%;
     border-radius: 20px;
+    background-color: #ffffff;
 }
 
 .boxRecipe {
@@ -123,7 +124,7 @@ body {
     height: 250px;
     margin: 15px;
     border-radius: 30px;
-    background-color: white;
+    background-color: #fffcf4;
     filter: drop-shadow(0px 0px 5px rgba(184, 175, 143, 0.5));
 }
 .recipeReady.active {
@@ -134,7 +135,7 @@ body {
 .recipeReady_descript {
     height: 100%;
     width: 58%;
-    background: #ffffff;
+    background: #fffcf4;
     border-radius: 0px;
     font-size: 14px;
     border-bottom-right-radius: 20px;

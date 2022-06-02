@@ -338,6 +338,7 @@ img {
 .recipe_img_name {
     display: inline-block;
     min-width: 50%;
+    filter: drop-shadow(0px 0px 5px rgba(184, 175, 143, 0.5));
 }
 
 .information800 {
@@ -522,7 +523,7 @@ img {
         width: 90%;
         height: 100%;
         font-size: 3vw;
-        margin-top: 65vw;
+        margin-top: 63vw;
         z-index: 1;
         margin-right: auto;
         display: block;
@@ -534,8 +535,9 @@ img {
     }
 
     .tabs>input[type="radio"]:checked+label {
-        background-color: #fff3c7;
-        border-radius: 20px;
+        background-color: #ffffff;
+        border: 3px solid #ffffff;
+        border-bottom-color: #ff6b00;
     }
 
     .tabs>div {
@@ -566,7 +568,7 @@ img {
         box-sizing: border-box;
         width: 90vw;
         height: 100%;
-        margin-top: 2%;
+        margin-top: 4%;
     }
 
     .list2 {
@@ -600,5 +602,27 @@ img {
         padding: 30vw 30px 20px 30px;
     }
 
+    .recipe_img_name {
+        margin-bottom: 3%;
+    }
 
+    .recipeBox {
+        border-radius: 0px;
+    }
+
+    .recipeBox_Text {
+        height: 70px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: white;
+        margin-right: 1%;
+        margin-bottom: 0%;
+        margin-top: -2%;
+        padding-top: 4%;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .ava_input__file-button {
+        max-width: 100%;
+    }
 }
