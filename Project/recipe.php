@@ -28,22 +28,35 @@
 
 	<div class = "wapper"></div>
 
+		<?php
+		include 'connect.php';
+		session_start();
+		$mail = $_SESSION['mail'];
+		$id = $_GET['id'];
+
+		$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
+		$recipe = mysqli_fetch_assoc($query);
+
+		$user = $recipe['author'];
+		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$user'");
+		$author = mysqli_fetch_assoc($query);
+
+	  $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+	  $user = mysqli_fetch_assoc($query);
+	  $favoriteRecipes = $user['favoriteRecipes'];
+		if(strpos($favoriteRecipes, ",".$id.",") === false) $like = 0;
+		else $like = 1;
+
+		echo '
 		<div class = "avtor">автор:</div>
 		<img src="images/recipes/плашка-18.png" class = "fireAva">
-		<img src="images/avatars/default.jpg" class = "boxAva">
-		<div class = "avtorName">Иван Иванов</div>
+		<img src="images/avatars/'.$author['avatar'].'" class = "boxAva">
+		<div class = "avtorName">'.$author['name'].'</div>';
+		 ?>
 
 				<div id='phpCode'>
         <div class = "main">
 					<?php
-						include 'connect.php';
-						session_start();
-						$mail = $_SESSION['mail'];
-						$id = $_GET['id'];
-
-						$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
-						$recipe = mysqli_fetch_assoc($query);
-
 						$time =  $recipe['time'];
 						$hours = intdiv($time,60);
 						if($hours < 1) $hours = '00';
@@ -53,13 +66,18 @@
 
 						echo '
 							<div class = "mainPhotoRecipe" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
-	           
+
 				<div style = "display:flex;width: 100%;justify-content: center;align-items: center;">
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
-					<div class="like">
-						<button class="like-toggle basic2"> ♥</button>
+					<div class="like">';
+					if($like == "0"){
+						echo '<button class="like-toggle basic2">♥</button>';
+					}else{
+						echo '<button class="like-toggle basic2 like-active">♥</button>';
+					};
+					echo'
 					</div>
 
 				</div>
@@ -74,13 +92,18 @@
 						';
 					?>
 
-			
+
 
 			<script>
+
 				$(function(){
 					$('.like-toggle').click(function(){
 						$(this).toggleClass('like-active');
 						$(this).next().toggleClass('hidden');
+						var location = window.location.href;
+						var url = new URL(location);
+						var id = url.searchParams.get("id");
+						$.post('php/likeRecipe.php', {'id':id},function() {});
 					});
 				});
 			</script>

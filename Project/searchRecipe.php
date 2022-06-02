@@ -40,9 +40,11 @@ $SelectedIng = '';
 				<div class = "boxFilter">
 					<div class = "upTextFilter">
 						<div class = "upTextFilter_1">Подобрать на основе ваших</div>
-						
+						<?php
+							$useInventory = $_GET['useInventory'];
+						?>
 						<label class="checkbox_reg">
-							<input type="checkbox" required/>
+							<input type="checkbox" onchange="UseInventory()" <?php if($useInventory == 1) echo 'checked'; ?>/>
 							<div class="checkbox__checkmark" >
 							</div>
 							<div  id = "er" class="checkbox__body" onclick="location.href='../inventory.php'">
@@ -51,9 +53,9 @@ $SelectedIng = '';
 						</label>
 					</div>
 
-					
+
 					<div class="values">
-						<div class = "val">Подходящая цена:</div>
+						<div class = "val">Подходящая цена блюда:</div>
 						<span id="range1">
 							0
 						</span>
@@ -62,17 +64,24 @@ $SelectedIng = '';
 						</span>
 						<span> &dash; </span>
 						<span id="range2">
-							5000
+							3000
 						</span>
 						<span >
 							₽
 						</span>
 					</div>
 
+					<?php
+					$max = 3000;
+					$min = 0;
+					if($_GET['max']) $max = $_GET['max'];
+					if($_GET['min']) $min = $_GET['min'];
+					?>
+
 					<div class="container">
 						<div class="slider-track"></div>
-						<input type="range" min="0" max="5000" value="1500" id="slider-1" oninput="slideOne()">
-						<input type="range" min="0" max="5000" value="3000" id="slider-2" oninput="slideTwo()">
+						<input type="range" min="0" max="5000" value="<?php echo $min; ?>" id="slider-1" oninput="slideOne()" onchange="updatePrice()">
+						<input type="range" min="0" max="5000" value="<?php echo $max; ?>" id="slider-2" oninput="slideTwo()" onchange="updatePrice()">
 					</div>
 					<script src="scripts/price.js"></script>
 
@@ -81,18 +90,16 @@ $SelectedIng = '';
 					<div class = "choice">
 						<div class = "choiceText">Выбери продкуты:</div>
 						<!-- Количоство выбранных ингредиентов -->
-						<div class = "choiceSelect">Выбранно <?php echo substr_count($selectedIngredientInSearch, ',')/2; ?></div>
-						
+						<div class = "choiceSelect" id="choice">Выбранно <?php echo substr_count($selectedIngredientInSearch, ',')/2; ?></div>
+
 
 						<label class="checkbox_choice">
 							<input type="checkbox" name="selectIngredients" value="+" id="onlySelect" required/>
 							<div class="checkbox__checkmark_choice">
 							</div>
 						</label>
-
-
 					</div>
-					
+
 					<!-- Выбор категорий -->
 					<div class = "boxIngredient">
 						<div class = "textCut">категория:</div>
@@ -101,7 +108,7 @@ $SelectedIng = '';
 							<img src="images/category/mushroom.png" class = "categoryImage" title="Грибы" onclick="ClickCategory('Грибы');">
 							<img src="images/category/milk.png" class = "categoryImage" title="Молочные продукты" onclick="ClickCategory('Молочное');">
 							<img src="images/category/groats.png" class = "categoryImage" title="Крупы и злаки" onclick="ClickCategory('Крупыизлаки');">
-							<img src="images/category/pasta.png"" class = "categoryImage" title="Макароны" onclick="ClickCategory('Макароны');">
+							<img src="images/category/pasta.png" class = "categoryImage" title="Макароны" onclick="ClickCategory('Макароны');">
 							<img src="images/category/oil.png" class = "categoryImage" title="Масла" onclick="ClickCategory('Маслорастительное');">
 							<img src="images/category/bobs.png" class = "categoryImage" title="Бобовые" onclick="ClickCategory('Бобовые');">
 							<img src="images/category/jam.png" class = "categoryImage" title="Джемы" onclick="ClickCategory('Джемы');">
@@ -160,10 +167,7 @@ $SelectedIng = '';
 							</div>
 						</div>
 					</div>
-					
 
-					
-				
 
 				<div class = "selectoinBox" id="selectionBox">
 					<?php
@@ -187,33 +191,33 @@ $SelectedIng = '';
 							switch($sort){
 								case "0":
 									if($category)
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `name`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `name`");
 									else
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `name`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `name`");
 									break;
 								case "1":
 									if($category)
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `price`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `price`");
 									else
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `price`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `price`");
 									break;
 								case "2":
 									if($category)
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `price` DESC");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `price` DESC");
 									else
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `price` DESC");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `price` DESC");
 									break;
 								case "3":
 									if($category)
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `id` DESC");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `id` DESC");
 									else
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `id` DESC");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `id` DESC");
 									break;
 								default :
 									if($category)
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `name`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `category`='$category' ORDER BY `name`");
 									else
-									$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `name`");
+										$query = mysqli_query($conn, "SELECT * FROM `ingredients` ORDER BY `name`");
 									break;
 							}
 
@@ -221,18 +225,18 @@ $SelectedIng = '';
 								$idIngredient = ",".$row['id'].",";
 							if($_GET['onlySelect'] == 'v' && strstr($selectedIngredientInSearch, $idIngredient)){
 									echo
-									'<ing><div class="productBox">
-									 	<div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="ClickIngredient(' . $row['id'] . ');" id="ingredient' . $row['id'] . '">';
+									'<ing><div class="productBox" onclick="ClickIngredient(' . $row['id'] . ');">
+									 	<div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" id="ingredient' . $row['id'] . '">';
 									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '
-									<img src="images/галочка.png" class = "addTrue">
+									<img id="ingredientImg' . $row['id'] . '" src="images/галочка.png" class = "addTrue">
 									'; else  echo '<img src="images/no.png" class = "addTrue">';
 									echo '<div class = "nameFood"> <a>' . $row['name'] . '</a></div>
 									</div></div></ing>';
 								}
 								if($_GET['onlySelect'] == '-' || !$_GET['onlySelect']){
 									echo
-									'<ing><div class="productBox">
-										 <div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick="ClickIngredient(' . $row['id'] . ');" id="ingredient' . $row['id'] . '">';
+									'<ing><div class="productBox" onclick="ClickIngredient(' . $row['id'] . ');" >
+										 <div class = "foodImage" style = "background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" id="ingredient' . $row['id'] . '">';
 									if(strstr($selectedIngredientInSearch, $idIngredient)) echo '
 									<img id="ingredientImg' . $row['id'] . '" src="images/галочка.png" class = "addTrue">
 									'; else  echo '<img id="ingredientImg' . $row['id'] . '" src="images/no.png" class = "addTrue">';
@@ -245,13 +249,13 @@ $SelectedIng = '';
 				</div>
 			</div>
 		</div>
-	
+
 
 			<div class = "recipe">
 				<div class = "upeerText">
 					<div id = "headingFil" class = "headingFilter">Подходящие рецепты:</div>
 				</div>
-				
+
 <!-- рецепты-->
 				<div id = "recipeB" class = "box" style = "display:flex;">
 					<div class="select">
@@ -265,8 +269,27 @@ $SelectedIng = '';
 									<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
 							</select>
 					</div>
+					<div style="width:10px;"></div>
+					<div class="select">
+						<select name="sortKitchen" id="sortKitchen">
+							<?php $kitchen = $_GET['kitchen']; ?>
+							<option value="Любое" <?php echo 'selected="selected"' ?>>Любое</option>
+							<option value="Другое" <?php if($kitchen=="Другое") echo 'selected="selected"' ?>>Другое</option>
+							<option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
+							<option value="Первые блюда" <?php if($kitchen=="Первые блюда") echo 'selected="selected"' ?>>Первые блюда</option>
+							<option value="Вторые блюда" <?php if($kitchen=="Вторые блюда") echo 'selected="selected"' ?>>Вторые блюда</option>
+							<option value="Закуски" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закуски</option>
+							<option value="Салаты" <?php if($kitchen=="Салаты") echo 'selected="selected"' ?>>Салаты</option>
+							<option value="Соусы, кремы" <?php if($kitchen=="Соусы, кремы") echo 'selected="selected"' ?>>Соусы, кремы</option>
+							<option value="Напитки" <?php if($kitchen=="Напитки") echo 'selected="selected"' ?>>Напитки</option>
+							<option value="Десерты" <?php if($kitchen=="Десерты") echo 'selected="selected"' ?>>Десерты</option>
+							<option value="Выпечка" <?php if($kitchen=="Выпечка") echo 'selected="selected"' ?>>Выпечка</option>
+							<option value="Торты" <?php if($kitchen=="Торты") echo 'selected="selected"' ?>>Торты</option>
+						</select>
+					</div>
+					<?php $extra = $_GET['extra']; ?>
 					<label class="checkbox_reg">
-							<input type="checkbox" name="selectIngredients" value="1" id="extra">
+							<input type="checkbox" name="selectIngredients" value="1" id="extra" <?php if($extra=='1') echo 'checked'; ?>>
 							<div class="checkbox__checkmark" id = "left">
 							</div>
 							<div class="checkbox__bodyProd">
@@ -276,28 +299,51 @@ $SelectedIng = '';
 				</div>
 				<div class = "boxRecipe" id="recipe">
 					<?php
-						$extra = $_GET['extra'];
+					$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+					$user = mysqli_fetch_assoc($query);
+					$myInventory = $user['myInventory'];
 						switch($sortRecipes){
 							case "0":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `name`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
 								break;
 							case "1":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes` DESC");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `likes` DESC");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes` DESC");
 								break;
 							case "2":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `time`");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `time`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `time`");
 								break;
 							case "3":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `calories`");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `calories`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `calories`");
 								break;
 							case "4":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `price`");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `price`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `price`");
 								break;
 							case "5":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id` DESC");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `id` DESC");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id` DESC");
 								break;
 							default :
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								if($max || $min)
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `price` >= '$min' AND`price` <= '$max' ORDER BY `name`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
 								break;
 						}
 						while($recipe = mysqli_fetch_assoc($query)){
@@ -314,27 +360,35 @@ $SelectedIng = '';
 									$ing = '';
 								}
 							}
-							for($i = 0; $i < strlen($myInventory); $i++){
-								if($myInventory[$i]!=","){
-									$inv = $inv.$myInventory[$i];
+							$recipesIngredients = str_replace("null" , '' , $recipesIngredients);
+							if($useInventory == 1){
+								$inv = '';
+								for($i = 0; $i < strlen($myInventory); $i++){
+									if($myInventory[$i]!=","){
+										$inv = $inv.$myInventory[$i];
+									}
+									if($myInventory[$i]=="," && $inv != ''){
+										$recipesInventory = str_replace(",".$inv."," , '' , $recipesInventory);
+										$inv = '';
+									}
 								}
-								if($myInventory[$i]=="," && $inv){
-									$recipesInventory = str_replace(",".$inv."," , '' , $recipesInventory);
-									$inv = '';
-								}
+							}else{
+								$recipesInventory = '';
 							}
-							if((!$recipesIngredients && !$recipesInventory)||
-							($extra=='1' && substr_count($recipesIngredients, ',')/2 <= 4 && substr_count($recipesInventory, ',')/2 <= 4)){
+							$recipesInventory = str_replace("null" , '' , $recipesInventory);
+							if(($kitchen == $recipe['kitchen'] || $kitchen =="Любое" || !$kitchen) && ((!$recipesIngredients && !$recipesInventory)||
+							($extra=='1' && substr_count($recipesIngredients, ',')/2 <= 4 && substr_count($recipesInventory, ',')/2 <= 4))){
 								$time =  $recipe['time'];
 								$hours = intdiv($time,60);
 								if($hours < 1) $hours = '00';
 								if($hours > 0 && $hours < 10) $hours = '0'.$hours;
 								$minutes = $time % 60;
 								if($minutes > 1 && $minutes < 10) $minutes = '0'.$minutes;
+								if($minutes == 0) $minutes = '00';
 								echo '
 									<div onmouseover = "hoverOnRecipe ('.$recipe['id'].')" onmouseout = "hoverOffRecipe ('.$recipe['id'].')" id = "recipeReady'.$recipe['id'].'" class = "recipeReady" style="display:flex;" onclick="GoToRecipe(' . $recipe['id'] . ')">
 										<div class = "recipeReady_img" id = "recipe__img'.$recipe['id'].'" style="background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover;"></div>
-					
+
 										<div id = "recipe__description'.$recipe['id'].'" class = "recipe__description"> ' . $recipe['description'] . ' </div>
 
 										<div class = "recipeReady_descript" id = "recipe__parameter'.$recipe['id'].'">
@@ -345,7 +399,7 @@ $SelectedIng = '';
 											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
 											echo '<div style="height:20px"> Не хватает  ингредиентов: ' . substr_count($recipesIngredients, ',')/2 . '</div>';
 											if($extra=='1' && substr_count($recipesInventory, ',')/2 > 0)
-											echo '<div style="height:20px"> Не хватает принадлежностей:' . substr_count($recipesInventory, ',')/2 . '</div>';
+											echo '<div style="height:20px"> Не хватает принадлежностей: ' . substr_count($recipesInventory, ',')/2 . '</div>';
 											echo'
 										</div>
 									</div>
@@ -355,66 +409,103 @@ $SelectedIng = '';
 					?>
 				</div>
 				</div>
-						
+
 			</div>
 		</div>
 		<script>
 		  let category = '';
 		  let el=document.querySelector('#sort');
-		  el.addEventListener('change', function(){
-		    //location.href = "//project/ingentory.php?sort=" + el.value;
-		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes);
-				localStorage.setItem('boxFood', 0);
-		    elementUpdate('#selectionBox');
-		  });
 			let sortRecipes=document.querySelector('#sortRecipes');
-		  sortRecipes.addEventListener('change', function(){
-		    //location.href = "//project/ingentory.php?sort=" + el.value;
-		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&onlySelect='+valueOnlySelect+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes);
-		    elementUpdate('#recipe');
-		  });
-			let onlySelect=document.querySelector('#onlySelect');
+			let onlySelect = document.querySelector('#onlySelect');
 			let valueOnlySelect = '-';
-		  onlySelect.addEventListener('change', function(){
-		    //location.href = "//project/ingentory.php?sort=" + el.value;
-				if (onlySelect.checked) valueOnlySelect = 'v'; else valueOnlySelect = '-';
-				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes);
-				localStorage.setItem('boxFood', 0);
-		    elementUpdate('#selectionBox');
-		  });
 			let extra=document.querySelector('#extra');
 			let extraRecipes = '0';
-		  extra.addEventListener('change', function(){
-		    //location.href = "//project/ingentory.php?sort=" + el.value;
-				if (extra.checked) extraRecipes = '1'; else extraRecipes = '0';
-				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes);
+			let useInventory = 0;
+			let sortKitchen=document.getElementById('sortKitchen');
+
+			document.addEventListener("DOMContentLoaded", function() {
+				var location = window.location.href;
+				var url = new URL(location);
+				var extra = url.searchParams.get("extra");
+				if(extra) extraRecipes = extra;
+				var categoryUrl = url.searchParams.get("category");
+				if(categoryUrl) category = categoryUrl;
+				var onlySelectUrl = url.searchParams.get("onlySelect");
+				if(onlySelectUrl) valueOnlySelect = onlySelectUrl;
+				var useInventoryUrl = url.searchParams.get("useInventory");
+				if(useInventoryUrl) useInventory = useInventoryUrl;
+      });
+
+			sortKitchen.addEventListener('change', function(){
+			    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+			    elementUpdate('#recipe');
+			});
+
+		  el.addEventListener('change', function(){
+		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				localStorage.setItem('boxFood', 0);
+		    elementUpdate('#selectionBox');
+		  });
+
+		  sortRecipes.addEventListener('change', function(){
+		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&onlySelect='+valueOnlySelect+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value+"&kitchen="+sortKitchen.value);
 		    elementUpdate('#recipe');
 		  });
+
+		  onlySelect.addEventListener('change', function(){
+				if (onlySelect.checked) valueOnlySelect = 'v'; else valueOnlySelect = '-';
+				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				localStorage.setItem('boxFood', 0);
+		    elementUpdate('#selectionBox');
+		  });
+
+		  extra.addEventListener('change', function(){
+				if (extra.checked) extraRecipes = '1'; else extraRecipes = '0';
+				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+		    elementUpdate('#recipe');
+		  });
+
 		  function ClickCategory(categ){
-		    window.history.replaceState('1', 'Title', '?category='+categ+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes);
+		    window.history.replaceState('1', 'Title', '?category='+categ+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
 		    category = categ;
 				localStorage.setItem('boxFood', 0);
 		    elementUpdate('#selectionBox');
-		  }
-			function ClickIngredient(id){
+		  };
 
+			function updatePrice(){
+				window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				elementUpdate('#recipe');
+			}
+
+			function ClickIngredient(id){
 				let ingredient = document.querySelector('#ingredientImg'+id);
 				if(ingredient.src == 'http://project/images/no.png')
-					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectAdd='+id+'&extra='+extraRecipes);
+					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectAdd='+id+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
 				else
-					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectDelete='+id+'&extra='+extraRecipes);
+					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectDelete='+id+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
 				console.log(ingredient.src);
 					let boxFood = document.querySelector('#boxFood');
 				localStorage.setItem('boxFood', boxFood.scrollTop);
 		    	elementUpdate('#selectionBox');
 				elementUpdate('#recipe');
+				elementUpdate('#choice');
 		  }
+
 			function GoToInventory(){
 				location.href = "http://project/inventory.php";
 			}
+
 			function GoToRecipe(id){
 				location.href = "http://project/recipe.php?id=" + id;
 			}
+
+			function UseInventory(){
+				if(useInventory == 0) useInventory = 1;
+				else useInventory = 0;
+				window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				elementUpdate('#recipe');
+			}
+
 			async function elementUpdate(selector) {
 			  try {
 			    var html = await (await fetch(location.href)).text();

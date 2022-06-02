@@ -40,7 +40,7 @@ $hashpass = password_hash($pass, PASSWORD_BCRYPT);
 $token = password_hash($mail, PASSWORD_BCRYPT);;
 $avatar = "default.jpg";
 
-$sql = "INSERT INTO `users` (`name`, `mail`, `avatar`, `pass`, `confirmed`, `token`, `myInventory`, `ShoppingList`, `SelectedIngredientInSearch`, `comments`, `likes`, `myRecipes`, `favoriteRecipes`) VALUES 
+$sql = "INSERT INTO `users` (`name`, `mail`, `avatar`, `pass`, `confirmed`, `token`, `myInventory`, `ShoppingList`, `SelectedIngredientInSearch`, `comments`, `likes`, `myRecipes`, `favoriteRecipes`) VALUES
 ('$name', '$mail', '$avatar', '$hashpass' , NULL, '$token', '', '', '', '0', '0', '', '')";
 
 $_SESSION['auth'] = true;
@@ -50,5 +50,5 @@ mail("$mail", 'Подтвердите ваш email', $message, 'From: travelagen
 
 $conn->query($sql);
 $conn->close();
-header('Location: http://project/confirmed.php');
+header('Location: /confirmed.php');
 ?>

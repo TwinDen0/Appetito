@@ -172,7 +172,7 @@
                             <div class="productName" style = " background: url(./images/ingredients/' . $row['image'] . ') no-repeat center center; background-size: cover;" onclick = "ClickAdd('. $row['id'] .')"></div>
                             <div class="amount">
                                 <div class="amountText1">Количество (кг):</div>
-                                <input type="number" min="0.05" value = "0.05" step="0.05" class="amountInput" id="inputQuantity' . $row['id'] . '">
+                                <input type="number" min="0.001" value = "0.001" step="0.001" class="amountInput" id="inputQuantity' . $row['id'] . '">
                             </div>
                             <div class="productName"><a>' . $row['name'] . '</a></div>
                         </div></ing>';
@@ -201,7 +201,7 @@
   }
   function ClickAdd(id){
     $.post('php/addInShoppingList.php', {'id':id, 'quantity':document.getElementById("inputQuantity"+id).value},function() {elementUpdate('#selectList');});
-    document.getElementById("inputQuantity"+id).value = '0.05';
+    document.getElementById("inputQuantity"+id).value = '0.001';
   }
 </script>
 

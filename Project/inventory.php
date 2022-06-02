@@ -78,8 +78,8 @@ include 'header.php';
                     $query = mysqli_query($conn, "SELECT * FROM `inventory` WHERE `id` = '$id'");
                     $row = mysqli_fetch_assoc($query);
                     echo '
-                    <div class="kichenBlockY">
-                    <div class="kichenBlock" onclick = "ClickSelect(' . $row['id'] . ')" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
+                    <div class="kichenBlockY" onclick = "ClickSelect(' . $row['id'] . ')">
+                    <div class="kichenBlock" style = "background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
                     <div class="kichenUtensil"><span class="text">' . $row['name'] . '</span></div>
                     </div>';
                   }
@@ -190,8 +190,8 @@ include 'header.php';
               if(!$none)
               echo
               '<inv>
-                <div class="addKichenBlockL">
-                <div class="addKichenBlock" onclick = "ClickInv(' . $row['id'] . ')" style = " background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
+                <div class="addKichenBlockL" onclick = "ClickInv(' . $row['id'] . ')">
+                <div class="addKichenBlock" style = " background: url(./images/inventory/' . $row['image'] . ') no-repeat center center; background-size: cover;"></div>
                   <div class="addKichenUtensil"><span class="addText"><a>' . $row['name'] . '</a></span></div>
                   </div>
               </inv>';
