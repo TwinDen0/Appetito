@@ -28,6 +28,8 @@
 		<div id="myDropdown" class="dropdown-content">
 			<a onclick="location.href='./index.php'" class = "textMenu" href="#">Главная</a>
 			<div class = "splitHorizontal"></div>
+			<a onclick="location.href='./profile.php'" class = "textMenu" href="#">Профиль</a>
+			<div class = "splitHorizontal"></div>
 			<a onclick="location.href='./addrecipe.php'" class = "textMenu" href="#">Добавить свой рецепт</a>
 			<div class = "splitHorizontal"></div>
 			<a onclick="location.href='./inventory.php'" class = "textMenu" href="#">Инвентарь</a>

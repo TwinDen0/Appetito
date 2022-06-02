@@ -40,10 +40,11 @@ $SelectedIng = '';
 		</div>
 
 <!-- рецепты-->
-				<div id = "recipeB" class = "box" style = "display:flex;
-															background-color: #f1f1f1;
-															padding: 1%;
+				<div id = "recipeB" class = "box" style = " padding: 1%;
 															border-radius: 20px;
+															display: flex;
+															background-color: #fffcf4;
+															filter: drop-shadow(0px 0px 5px rgba(184, 175, 143, 0.5));
 				">
 					<div class="select">
 						<select name="sortRecipes" id="sortRecipes">
