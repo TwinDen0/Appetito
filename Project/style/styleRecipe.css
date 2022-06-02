@@ -443,7 +443,11 @@ img {
     width: 60px;
     transition: all 0.3s linear;
   }
-  
+
+.znak_edit {
+    display: flex;
+    margin-left: 95%;
+}
 
   @media only screen and (max-width: 1000px) {
     .textOnLine {

@@ -71,31 +71,54 @@
             <a class = "look" onclick="ShoppingListOpen()">Смотреть список</a>
             <div class="category">
                 <div class="categoryText">категория:</div>
-                <div class="categoryBlocks">
-                    <img src="images/category/all.png" class = "categoryBlock1" onclick="ClickCategory('');">
-                    <img src="images/category/mushroom.png" class = "categoryBlock1" onclick="ClickCategory('Грибы');">
-                    <img src="images/category/milk.png" class = "categoryBlock1" onclick="ClickCategory('Молочное');">
-                    <img src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупыизлаки');">
-                    <img src="images/category/pasta.png" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
-                    <img src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Маслорастительное');">
-                    <img src="images/category/jam.png" class = "categoryBlock1" onclick="ClickCategory('Джемы');">
-                    <img src="images/category/chicken.png" class = "categoryBlock1" onclick="ClickCategory('Птица');">
-                    <img src="images/category/fish.png" class = "categoryBlock1" onclick="ClickCategory('Рыбаиморепродукты');">
-                    <img src="images/category/egg.png" class = "categoryBlock1" onclick="ClickCategory('Яйца');">
-                    <img src="images/category/bobs.png" class = "categoryBlock1" onclick="ClickCategory('Бобовые');">
-                    <img src="images/category/flour.png" class = "categoryBlock1" onclick="ClickCategory('Мука');">
-                    <img src="images/category/bread.png" class = "categoryBlock1" onclick="ClickCategory('Хлеб');">
-                    <img src="images/category/meat.png" class = "categoryBlock1" onclick="ClickCategory('Мясо');">
-                    <img src="images/category/carrot.png" class = "categoryBlock1" onclick="ClickCategory('Овощи');">
-                    <img src="images/category/nut.png" class = "categoryBlock1" onclick="ClickCategory('Орехи');">
-                    <img src="images/category/sauce.png" class = "categoryBlock1" onclick="ClickCategory('Соусы');">
-                    <img src="images/category/spices.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/cheese.png" class = "categoryBlock1" onclick="">
-                    <img src="images/category/apple.png" class = "categoryBlock1" onclick="ClickCategory('Фрукты');">
-                    <img src="images/category/blackberry.png" class = "categoryBlock1" onclick="ClickCategory('Ягоды');">
-                    <img src="images/category/green.png" class = "categoryBlock1" onclick="ClickCategory('Зелень');">
+                <div class="categoryBlocks" id = "categoryBlocks">
+                    <img title="Все продукты" src="images/category/all.png" class = "categoryBlock1" onclick="ClickCategory('');">
+                    <img title="Грибы" src="images/category/mushroom.png" class = "categoryBlock1" onclick="ClickCategory('Грибы');">
+                    <img title="Молочное" src="images/category/milk.png" class = "categoryBlock1" onclick="ClickCategory('Молочное');">
+                    <img title="Крупы и злаки" src="images/category/groats.png" class = "categoryBlock1" onclick="ClickCategory('Крупыизлаки');">
+                    <img title="Макароны" src="images/category/pasta.png" class = "categoryBlock1" onclick="ClickCategory('Макароны');">
+                    <img title="Масла" src="images/category/oil.png" class = "categoryBlock1" onclick="ClickCategory('Маслорастительное');">
+                    <img title="Джемы" src="images/category/jam.png" class = "categoryBlock1" onclick="ClickCategory('Джемы');">
+                    <img title="Птица" src="images/category/chicken.png" class = "categoryBlock1" onclick="ClickCategory('Птица');">
+                    <img title="Морепродукты" src="images/category/fish.png" class = "categoryBlock1" onclick="ClickCategory('Рыбаиморепродукты');">
+                    <img title="Яйца" src="images/category/egg.png" class = "categoryBlock1" onclick="ClickCategory('Яйца');">
+                    <img title="Бобовые" src="images/category/bobs.png" class = "categoryBlock1" onclick="ClickCategory('Бобовые');">
+                    <img title="Мука" src="images/category/flour.png" class = "categoryBlock1" onclick="ClickCategory('Мука');">
+                    <img title="Мучное" src="images/category/bread.png" class = "categoryBlock1" onclick="ClickCategory('Хлеб');">
+                    <img title="Мясо" src="images/category/meat.png" class = "categoryBlock1" onclick="ClickCategory('Мясо');">
+                    <img title="Овощи" src="images/category/carrot.png" class = "categoryBlock1" onclick="ClickCategory('Овощи');">
+                    <img title="Орехи" src="images/category/nut.png" class = "categoryBlock1" onclick="ClickCategory('Орехи');">
+                    <img title="Соусы" src="images/category/sauce.png" class = "categoryBlock1" onclick="ClickCategory('Соусы');">
+                    <img title="" src="images/category/spices.png" class = "categoryBlock1" onclick="">
+                    <img title="Сыры" src="images/category/cheese.png" class = "categoryBlock1" onclick="ClickCategory('Сыры');">
+                    <img title="Фрукты" src="images/category/apple.png" class = "categoryBlock1" onclick="ClickCategory('Фрукты');">
+                    <img title="Ягоды" src="images/category/blackberry.png" class = "categoryBlock1" onclick="ClickCategory('Ягоды');">
+                    <img title="Зелень" src="images/category/green.png" class = "categoryBlock1" onclick="ClickCategory('Зелень');">
                 </div>
             </div>
+
+
+
+            <script>
+                (function() {
+              function scrollHorizontally1(e) {
+                  e = window.event || e;
+                  var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+                  document.getElementById('categoryBlocks').scrollLeft += (delta * 70); // Multiplied by 40
+                  e.preventDefault();
+              }
+              if (document.getElementById('categoryBlocks').addEventListener) {
+                  // IE9, Chrome, Safari, Opera
+                  document.getElementById('categoryBlocks').addEventListener('mousewheel', scrollHorizontally1, false);
+                  // Firefox
+                  document.getElementById('categoryBlocks').addEventListener('DOMMouseScroll', scrollHorizontally1, false);
+              } else {
+                  // IE 6/7/8
+                  document.getElementById('categoryBlocks').attachEvent('onmousewheel', scrollHorizontally1);
+              }
+            })();
+		    </script>
+
 
             <div class="popularity">
                 <div class="select">

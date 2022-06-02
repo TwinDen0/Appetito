@@ -241,7 +241,7 @@ body {
 }
 .addBlock {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     box-sizing: border-box;
     margin-bottom: 2%;
     flex-wrap: wrap;

@@ -103,7 +103,7 @@ $SelectedIng = '';
 					<!-- Выбор категорий -->
 					<div class = "boxIngredient">
 						<div class = "textCut">категория:</div>
-						<div class = "boxScroll">
+						<div class = "boxScroll" id = "boxScroll">
 							<img src="images/category/all.png" class = "categoryImage"  title="Все продукты" onclick="ClickCategory('');">
 							<img src="images/category/mushroom.png" class = "categoryImage" title="Грибы" onclick="ClickCategory('Грибы');">
 							<img src="images/category/milk.png" class = "categoryImage" title="Молочные продукты" onclick="ClickCategory('Молочное');">
@@ -122,7 +122,7 @@ $SelectedIng = '';
 							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="ClickCategory('Орехи');">
 							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="ClickCategory('Соусы');">
 							<img src="images/category/spices.png" class = "categoryImage" title="Специи" onclick="">
-							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="">
+							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="ClickCategory('Сыры');">
 							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="ClickCategory('Фрукты');">
 							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="ClickCategory('Ягоды');">
 							<img src="images/category/green.png" class = "categoryImage" title="Зелень" onclick="ClickCategory('Зелень');">
@@ -521,6 +521,25 @@ $SelectedIng = '';
 			    return false;
 			  }
 			}
+
+
+			(function() {
+					function scrollHorizontally1(e) {
+							e = window.event || e;
+							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+							document.getElementById('boxScroll').scrollLeft += (delta * 70); // Multiplied by 40
+							e.preventDefault();
+					}
+					if (document.getElementById('boxScroll').addEventListener) {
+							// IE9, Chrome, Safari, Opera
+							document.getElementById('boxScroll').addEventListener('mousewheel', scrollHorizontally1, false);
+							// Firefox
+							document.getElementById('boxScroll').addEventListener('DOMMouseScroll', scrollHorizontally1, false);
+					} else {
+							// IE 6/7/8
+							document.getElementById('boxScroll').attachEvent('onmousewheel', scrollHorizontally1);
+					}
+				})();
 		</script>
 
 		<?php

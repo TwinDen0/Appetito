@@ -19,15 +19,13 @@
 
 <?php
 include 'header.php';
+include 'menuMobile.php';
 ?>
 
 <?php
  if ($_SESSION['auth'] == false){?>
-
     <div class="error">Ошибка, вы не вошли в аккаунт!</div>
-
-<?php include 'menuMobile.php';
-
+<?php 
   } else {
 ?>
 
