@@ -130,7 +130,7 @@ img {
     display: flex;
     align-items: center;
     text-align: center;
-    letter-spacing: -0.050em;
+    letter-spacing: -0.05em;
     color: rgba(0, 0, 0, 0.38);
     margin-top: 48%;
     margin-left: 44%;
@@ -233,7 +233,7 @@ img {
 .mainPeople_2{
     margin-left: -10%;
     width: 30%;
-    height: fit-content;  
+    height: fit-content;
 }
 
 .descriptionTraining_1 {

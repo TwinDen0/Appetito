@@ -40,6 +40,13 @@
 		$user = $recipe['author'];
 		$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail`='$user'");
 		$author = mysqli_fetch_assoc($query);
+
+	  $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+	  $user = mysqli_fetch_assoc($query);
+	  $favoriteRecipes = $user['favoriteRecipes'];
+		if(strpos($favoriteRecipes, ",".$id.",") === false) $like = 0;
+		else $like = 1;
+
 		echo '
 		<div class = "avtor">автор:</div>
 		<img src="images/recipes/плашка-18.png" class = "fireAva">
@@ -64,8 +71,13 @@
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
-					<div class="like">
-						<button class="like-toggle basic2"> ♥</button>
+					<div class="like">';
+					if($like == "0"){
+						echo '<button class="like-toggle basic2">♥</button>';
+					}else{
+						echo '<button class="like-toggle basic2 like-active">♥</button>';
+					};
+					echo'
 					</div>
 
 				</div>
@@ -83,10 +95,15 @@
 
 
 			<script>
+
 				$(function(){
 					$('.like-toggle').click(function(){
 						$(this).toggleClass('like-active');
 						$(this).next().toggleClass('hidden');
+						var location = window.location.href;
+						var url = new URL(location);
+						var id = url.searchParams.get("id");
+						$.post('php/likeRecipe.php', {'id':id},function() {});
 					});
 				});
 			</script>

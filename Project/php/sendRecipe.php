@@ -67,7 +67,7 @@ for($i = 1; $i <= $countOfSteps; $i++){
             if(ingredients[i]==',' && quantityIng){
               let id = 'selectedIng'+quantityIng;
               let quantityIngredient = sessionStorage.getItem(id);
-              if(quantityIngredient == null) quantityIngredient = '0.05';
+              if(quantityIngredient == null) quantityIngredient = '0.001';
               quantityIngredients = quantityIngredients+','+quantityIngredient+',';
               quantityIng = '';
             }

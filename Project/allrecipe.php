@@ -32,13 +32,13 @@ $SelectedIng = '';
 		$selectedIngredientInSearch = mysqli_fetch_assoc($query);
 		$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
 	?>
-	
+
 
 	<div class = "recipe">
 		<div class = "upeerText">
 			<div class = "headingFilter">Все рецепты:</div>
 		</div>
-				
+
 <!-- рецепты-->
 				<div id = "recipeB" class = "box" style = "display:flex;
 															background-color: #f1f1f1;
@@ -48,7 +48,7 @@ $SelectedIng = '';
 					<div class="select">
 						<select name="sortRecipes" id="sortRecipes">
 							<?php $sortRecipes = $_GET['sortRecipes']; ?>
-			
+
 							<option value="0" <?php if($sortRecipes!="0") echo 'selected="selected"' ?>>По алфавиту</option>
 							<option value="1" <?php if($sortRecipes=="1") echo 'selected="selected"' ?>>По популярности</option>
 							<option value="2" <?php if($sortRecipes=="2") echo 'selected="selected"' ?>>По времени приготовления</option>
@@ -58,15 +58,16 @@ $SelectedIng = '';
 						</select>
 					</div>
 
-					
+
 					<div class="select">
-						<select name="sortRecipes" id="sortRecipes">
-							<?php $sortRecipes = $_GET['sortRecipes']; ?>
-							<option value="Другая" <?php echo 'selected="selected"' ?>>Другое</option>
+						<select name="sortKitchen" id="sortKitchen">
+							<?php $kitchen = $_GET['kitchen']; ?>
+							<option value="Любое" <?php echo 'selected="selected"' ?>>Любое</option>
+							<option value="Другое" <?php if($kitchen=="Другое") echo 'selected="selected"' ?>>Другое</option>
 							<option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
 							<option value="Первые блюда" <?php if($kitchen=="Первые блюда") echo 'selected="selected"' ?>>Первые блюда</option>
 							<option value="Вторые блюда" <?php if($kitchen=="Вторые блюда") echo 'selected="selected"' ?>>Вторые блюда</option>
-							<option value="Закузки" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закуски</option>
+							<option value="Закуски" <?php if($kitchen=="Закузки") echo 'selected="selected"' ?>>Закуски</option>
 							<option value="Салаты" <?php if($kitchen=="Салаты") echo 'selected="selected"' ?>>Салаты</option>
 							<option value="Соусы, кремы" <?php if($kitchen=="Соусы, кремы") echo 'selected="selected"' ?>>Соусы, кремы</option>
 							<option value="Напитки" <?php if($kitchen=="Напитки") echo 'selected="selected"' ?>>Напитки</option>
@@ -106,25 +107,46 @@ $SelectedIng = '';
 					<?php
 						switch($sortRecipes){
 							case "0":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `name`");
 								break;
 							case "1":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes` DESC");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `likes`");
 								break;
 							case "2":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `time`");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `time`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `time`");
 								break;
 							case "3":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `calories`");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `calories`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `calories`");
 								break;
 							case "4":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `price`");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `price`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `price`");
 								break;
 							case "5":
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id` DESC");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `id`");
 								break;
 							default :
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								if($kitchen=="Любое" || $kitchen=="")
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `name`");
+								else
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `name`");
 								break;
 						}
 						while($recipe = mysqli_fetch_assoc($query)){
@@ -142,7 +164,7 @@ $SelectedIng = '';
 										<div id = "recipe__description'.$recipe['id'].'" class = "recipe__description"> ' . $recipe['description'] . ' </div>
 
 										<div class = "recipeReady_descript" id = "recipe__parameter'.$recipe['id'].'">
-											<div> ' . $recipe['name'] . '</div>
+											<div> <a>' . $recipe['name'] . '</a> </div>
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
 											<div> Стоимость: ' . $recipe['price'] . '</div>
@@ -150,7 +172,7 @@ $SelectedIng = '';
 									</div>
 								</ing>';
 							}
-						
+
 					?>
 				</div>
 				<script src="scripts/price.js"></script>
@@ -161,9 +183,17 @@ $SelectedIng = '';
 		<script>
 
 		let sortRecipes=document.getElementById('sortRecipes');
+		let sortKitchen=document.getElementById('sortKitchen');
+
 		sortRecipes.addEventListener('change', function(){
 		    //location.href = "//project/ingentory.php?sort=" + el.value;
-		    window.history.replaceState('1', 'Title', '?sortRecipes='+sortRecipes.value);
+		    window.history.replaceState('1', 'Title', '?sortRecipes='+sortRecipes.value+'&kitchen='+sortKitchen.value);
+		    elementUpdate('#recipe');
+		});
+
+		sortKitchen.addEventListener('change', function(){
+		    //location.href = "//project/ingentory.php?sort=" + el.value;
+		    window.history.replaceState('1', 'Title', '?kitchen='+sortKitchen.value+'&sortRecipes='+sortRecipes.value);
 		    elementUpdate('#recipe');
 		});
 
@@ -176,8 +206,6 @@ $SelectedIng = '';
 			var newdoc = new DOMParser().parseFromString(html, 'text/html');
 			document.querySelector(selector).outerHTML = newdoc.querySelector(selector).outerHTML;
 			console.log('Элемент '+selector+' был успешно обновлен');
-				let boxFood = document.querySelector('#boxFood');
-				boxFood.scrollTop = localStorage.getItem('boxFood');
 			return true;
 			} catch(err) {
 			console.log('При обновлении элемента '+selector+' произошла ошибка:');
