@@ -308,6 +308,9 @@ display: none
         width: 100%;
         line-height: 24px;
     }
+    .amountInput {
+        font-size: 12px;
+    }
     
 }
 
@@ -320,6 +323,9 @@ display: none
         font-size: 11px;
     }
     .amountText1 {
+        font-size: 9px;
+    }
+    .amountInput {
         font-size: 9px;
     }
     .productName {
@@ -336,7 +342,12 @@ display: none
     .productName {
         height: 95px;
     }
-    
+    .noteImg {
+        height: 75vh;
+    }
+    .shoppingListBlocks {
+        height: 65vh;
+    }
 }
 
 @media screen and (max-width: 1010px) {
@@ -370,6 +381,7 @@ display: none
     .shoppingListBlock {
         height: 110px;
     }
+    
 }
 @media screen and (max-width: 871px) {
     .productBox {
@@ -391,6 +403,12 @@ display: none
     }
     .priceText {
         font-size: 11px;
+    }
+    .noteImg {
+        height: 65vh;
+    }
+    .shoppingListBlocks {
+        height: 55vh;
     }
     
 }
@@ -445,7 +463,7 @@ display: none
         font-size: 11px;
     }
     .productSelectionBox1 {
-        height: 65vh;
+        height: 60vh;
     }
     .look {
         display: block;
@@ -503,5 +521,63 @@ display: none
     }
     .priceText {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .productBox {
+        width: 130px;
+        height: 180px;
+    }
+    .amount {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 611px) {
+    .productBox {
+        width: 110px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 537px) {
+    .productBox {
+        width: 145px;
+        height: 200px;
+    }
+    .amountText1 {
+        font-size: 12px;
+    }
+    .amountInput {
+        font-size: 12px;
+    }
+    .productName {
+        font-size: 14px;
+    }
+    .productName {
+        height: 170px;
+    }
+    .amount {
+        margin-top: -10px;
+    }
+    .productName {
+        height: 140px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .productBox {
+        width: 125px;
+        height: 190px;
+    }
+    .amountText1 {
+        font-size: 11px;
+    }
+    .amountInput {
+        font-size: 11px;
+    }
+    .productName {
+        font-size: 12px;
     }
 }

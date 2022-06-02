@@ -942,7 +942,12 @@ input[type="range"]:active::-webkit-slider-thumb{
         margin: 5px;
     }
 }
-
+@media screen and (max-width: 450px) {
+    .headingFilter {
+        font-size: 25px;
+        margin-top: 3%;
+    }    
+}
 @media screen and (max-width: 435px) {
     .productBox {
         width: 70px;
@@ -963,6 +968,12 @@ input[type="range"]:active::-webkit-slider-thumb{
     .boxFilter {
         height: 54vh;
     }
+}
+@media screen and (max-width: 382px) {
+    .headingFilter {
+        font-size: 22px;
+        margin-top: 3%;
+    }    
 }
 
 @media screen and (max-width: 310px) {
