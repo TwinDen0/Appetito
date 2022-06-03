@@ -24,7 +24,15 @@ include 'menuMobile.php';
 
 <?php
  if ($_SESSION['auth'] == false){?>
-    <div class="error">Ошибка, вы не вошли в аккаунт!</div>
+    <div class="error"><p>Выбор кухонных принадлежностей доступен только зарегестрированным пользователям</p>
+                        <p style="color: #f5980e;margin-top: 1%;">Войдите или зарегистрируйтесь</p></div>
+
+                       
+              <div class = "blockAuth">
+                  <div  onclick="location.href='../login.php'"href="#" class = "btn">Войти</div>
+                  <div  onclick="location.href='../registration.php'"href="#" class = "btn">Регистрация</div>
+              </div>
+
 <?php 
   } else {
 ?>

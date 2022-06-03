@@ -158,10 +158,18 @@
                 </div>
             </div>
 
-            <div class = "addFoodBox">
-							<?php echo '<button class = "addFood" onclick="AddIngredients(' . $id . ');">Добавить ингредиенты в список покупок</button>' ?>
-            </div>
-
+					<?php
+					if ($_SESSION['auth'] == false){?>
+					<?php 
+					} else {
+					?>
+						<div class = "addFoodBox">
+										<?php echo '<button class = "addFood" onclick="AddIngredients(' . $id . ');">Добавить ингредиенты в список покупок</button>' ?>
+						</div>
+						<?php
+					};
+					?>
+					
             <div class = "backgroundInventory">
                 <div class = "subheader">Кухонные принадлежности:</div>
                 <div class = "box">
