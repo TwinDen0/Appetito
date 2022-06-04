@@ -445,8 +445,10 @@ img {
   }
 
 .znak_edit {
+    color: #a85e06;
+}
+.editFidback {
     display: flex;
-    margin-left: 95%;
 }
 
   @media only screen and (max-width: 1000px) {

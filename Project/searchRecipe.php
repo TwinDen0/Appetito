@@ -36,25 +36,32 @@ $SelectedIng = '';
 					<div class = "headingFilter">Фильтры для поиска рецептов:</div>
 				</div>
 
-
 				<div class = "boxFilter">
-					<div class = "upTextFilter">
-						<div class = "upTextFilter_1">Подобрать на основе ваших</div>
-						<?php
-							$useInventory = $_GET['useInventory'];
-						?>
-						<label class="checkbox_reg">
-							<input type="checkbox" onchange="UseInventory()" <?php if($useInventory == 1) echo 'checked'; ?>/>
-							<div class="checkbox__checkmark" >
-							</div>
-							<div  id = "er" class="checkbox__body" onclick="location.href='../inventory.php'">
-								кухонных принадлежностей
-							</div>
-						</label>
-					</div>
+				<?php
+					if ($_SESSION['auth'] == false){?>
+					<?php 
+					} else {
+					?>
 
+							<div class = "upTextFilter">
+								<div class = "upTextFilter_1">Подобрать на основе ваших</div>
+								<?php
+									$useInventory = $_GET['useInventory'];
+								?>
+								<label class="checkbox_reg">
+									<input type="checkbox" onchange="UseInventory()" <?php if($useInventory == 1) echo 'checked'; ?>/>
+									<div class="checkbox__checkmark" >
+									</div>
+									<div  id = "er" class="checkbox__body" onclick="location.href='../inventory.php'">
+										кухонных принадлежностей
+									</div>
+								</label>
+							</div>
+					<?php
+					};
+					?>
 
-					<div class="values">
+					<div style = "padding-top: 2%;" class="values">
 						<div class = "val">Подходящая цена блюда:</div>
 						<span id="range1">
 							0
@@ -80,8 +87,8 @@ $SelectedIng = '';
 
 					<div class="container">
 						<div class="slider-track"></div>
-						<input type="range" min="0" max="5000" value="<?php echo $min; ?>" id="slider-1" oninput="slideOne()" onchange="updatePrice()">
-						<input type="range" min="0" max="5000" value="<?php echo $max; ?>" id="slider-2" oninput="slideTwo()" onchange="updatePrice()">
+						<input type="range" min="0" max="3000" value="<?php echo $min; ?>" id="slider-1" oninput="slideOne()" onchange="updatePrice()">
+						<input type="range" min="0" max="3000" value="<?php echo $max; ?>" id="slider-2" oninput="slideTwo()" onchange="updatePrice()">
 					</div>
 					<script src="scripts/price.js"></script>
 

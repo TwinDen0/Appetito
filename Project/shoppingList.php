@@ -14,8 +14,24 @@
 	include 'header.php';
     ?>
 
+<div class = "wapper"></div>
+<?php
+ if ($_SESSION['auth'] == false){?>
+    <div class="error"><p>Список покупок доступен только зарегестрированным пользователям</p>
+                        <p style="color: #f5980e;margin-top: 1%;">Войдите или зарегистрируйтесь</p></div>
+
+                       
+              <div class = "blockAuth">
+                  <div  onclick="location.href='../login.php'"href="#" class = "btn">Войти</div>
+                  <div  onclick="location.href='../registration.php'"href="#" class = "btn">Регистрация</div>
+              </div>
+
+<?php 
+  } else {
+?>
+
 <body>
-    <div class = "wapper"></div>
+    
     <div id = "background" onclick = "closeList()" class = "background"></div>
     <div class="main">
         <div class="shoppingList" id = "ShoppingList" >
@@ -233,4 +249,9 @@
         ?>
 
 </body>
+
+<?php
+ };
+?>
+
 </html>
