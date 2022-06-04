@@ -71,15 +71,22 @@
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
+					
 					<div class="like">';
-					if($like == "0"){
-						echo '<button class="like-toggle basic2">♥</button>';
-					}else{
-						echo '<button class="like-toggle basic2 like-active">♥</button>';
-					};
-					echo'
+					
+				
+						if ($_SESSION['auth'] == false){?>
+						<?php 
+						} else {
+						
+							if($like == "0"){
+								echo '<button class="like-toggle basic2">♥</button>';
+							}else{
+								echo '<button class="like-toggle basic2 like-active">♥</button>';
+							};
+						}
+							echo'
 					</div>
-
 				</div>
 
 	            <div class = "description">' . $recipe['description'] . '</div>
@@ -151,10 +158,18 @@
                 </div>
             </div>
 
-            <div class = "addFoodBox">
-							<?php echo '<button class = "addFood" onclick="AddIngredients(' . $id . ');">Добавить ингредиенты в список покупок</button>' ?>
-            </div>
-
+					<?php
+					if ($_SESSION['auth'] == false){?>
+					<?php 
+					} else {
+					?>
+						<div class = "addFoodBox">
+										<?php echo '<button class = "addFood" onclick="AddIngredients(' . $id . ');">Добавить ингредиенты в список покупок</button>' ?>
+						</div>
+						<?php
+					};
+					?>
+					
             <div class = "backgroundInventory">
                 <div class = "subheader">Кухонные принадлежности:</div>
                 <div class = "box">
