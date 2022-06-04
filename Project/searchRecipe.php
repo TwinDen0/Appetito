@@ -347,6 +347,7 @@ $SelectedIng = '';
 								break;
 						}
 						while($recipe = mysqli_fetch_assoc($query)){
+							$match = 0;
 							$recipesInventory = $recipe['inventory'];
 							$recipesIngredients = $recipe['ingredients'];
 							$inv = '';
@@ -356,6 +357,7 @@ $SelectedIng = '';
 									$ing = $ing.$selectedIngredientInSearch[$i];
 								}
 								if($selectedIngredientInSearch[$i]=="," && $ing){
+									if(strpos($recipesIngredients, ",".$ing.",") !== false) $match += 1;
 									$recipesIngredients = str_replace(",".$ing."," , '' , $recipesIngredients);
 									$ing = '';
 								}
@@ -377,7 +379,7 @@ $SelectedIng = '';
 							}
 							$recipesInventory = str_replace("null" , '' , $recipesInventory);
 							if(($kitchen == $recipe['kitchen'] || $kitchen =="Любое" || !$kitchen) && ((!$recipesIngredients && !$recipesInventory)||
-							($extra=='1' && substr_count($recipesIngredients, ',')/2 <= 4 && substr_count($recipesInventory, ',')/2 <= 4))){
+							($extra=='1' && $match > 0))){
 								$time =  $recipe['time'];
 								$hours = intdiv($time,60);
 								if($hours < 1) $hours = '00';
@@ -396,6 +398,8 @@ $SelectedIng = '';
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
 											<div> Стоимость: ' . $recipe['price'] . '</div>';
+											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
+											echo '<div style="height:20px"> Совпало ингредиентов: '.$match.'</div>';
 											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
 											echo '<div style="height:20px"> Не хватает  ингредиентов: ' . substr_count($recipesIngredients, ',')/2 . '</div>';
 											if($extra=='1' && substr_count($recipesInventory, ',')/2 > 0)

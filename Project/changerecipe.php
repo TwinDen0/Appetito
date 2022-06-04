@@ -19,19 +19,26 @@ include 'header.php';
   ?>
 
 <body>
+  <?php
+    session_start();
+    include 'connect.php';
+    $id = $_GET['id'];
+    $query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id` = '$id'");
+    $recipe = mysqli_fetch_assoc($query);
+  ?>
   <div class="backgroundAddRecipe">
 
   </div>
   <form action="../php/sendRecipe.php" method="post" enctype="multipart/form-data">
     <div class="main" id="all">
-        <div class="addName">Добавить рецепт</div>
+        <div class="addName">Одобрение рецепта</div>
         <div class="name">
-            <div class="textName">Введите название:</div>
-            <input type="text" maxlength="60" name="nameRecipe" id="inputName" class="inputName" style = "resize: none" onchange="Save('inputName','inputName');" required></input>
+            <div class="textName">Название:</div>
+            <input type="text" maxlength="60" name="nameRecipe" id="inputName" class="inputName" style = "resize: none" value="<?php echo $recipe['name']; ?>" required></input>
         </div>
 
         <div class="name">
-            <div class="textName">Добавьте фото:</div>
+            <div class="textName">Фото:</div>
             <!-- <form id="my-form" enctype="multipart/form-data">
                 <input type="file" accept=".jpg, .jpeg, .png" name="img"  id='file_id' class="inputName" style = "resize: none" required>
             </form> -->
@@ -45,26 +52,27 @@ include 'header.php';
               </div>
         </div>
 
-        <div style="margin: 0 auto; margin-top:20px;" id="photo"></div>
+        <div style="margin: 0 auto; margin-top:20px; width:500px; height:240px;
+        background: url(<?php echo './images/recipes/'.$recipe['id'].'.jpg'; ?>) no-repeat center center; background-size:cover;" id="photo"></div>
 
         <div class="description">
-            <div class="descriptionName">Введите описание:</div>
-            <textarea name="description" maxlength="450" id="inputDescription" class="inputdescription" style = "resize: none" onchange="Save('inputDescription','inputDescription');" required></textarea>
+            <div class="descriptionName">Описание:</div>
+            <textarea name="description" maxlength="450" id="inputDescription" class="inputdescription" style = "resize: none" onchange="Save('inputDescription','inputDescription');" required> <?php echo $recipe['description']; ?> </textarea>
         </div>
 
         <div class="calories">
-            <div class="textCalories">Введите примерную коллорийность:</div>
-            <input type="number" min="0" step="1" type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');" required></input>
+            <div class="textCalories">Примерная коллорийность:</div>
+            <input type="number" min="0" step="1" type="text" name="calories" id="inputCalories" class="inputCalories" style = "resize: none" onchange="Save('inputCalories','inputCalories');"  value="<?php echo $recipe['calories']; ?>" required></input>
         </div>
 
         <div class="cookingTime">
             <div class="textCookingTime">Время приготовления (мин):</div>
-            <input type="number" min="0" step="5" name="time" id="inputCookingTime" class="inputCookingTime" style = "resize: none" onchange="Save('inputCookingTime','inputCookingTime');" required></input>
+            <input type="number" min="0" step="5" name="time" id="inputCookingTime" class="inputCookingTime" style = "resize: none" onchange="Save('inputCookingTime','inputCookingTime');"  value="<?php echo $recipe['time']; ?>" required></input>
         </div>
 
         <div class="kitchen">
             <div class="textKitchen">Категория:</div>
-            <?php $kitchen = $_GET['kitchen']; ?>
+            <?php $kitchen = $recipe['kitchen']; ?>
             <select name="kitchen" id="kitchen">
                 <option value="Другая" <?php echo 'selected="selected"' ?>>Другое</option>
                 <option value="Завтрак" <?php if($kitchen=="Завтрак") echo 'selected="selected"' ?>>Завтрак</option>
@@ -83,25 +91,43 @@ include 'header.php';
         <button type="submit" class="sendRecipe">Отправить рецепт</button>
 
 
-        <div class="chooseIngredientsText"><div class="chooseIngredientsText1">Выбери Ингредиенты:</div></div>
+<!-- Кнопочки админа -->
+        <button type="submit" class="AdminButtonOk">Принять</button>
+        <button type="submit" class="AdminButtonNo">Отклонить</button>
+<!-- Кнопочки админа -->
+
+
+        <div class="chooseIngredientsText"><div class="chooseIngredientsText1">Ингредиенты:</div></div>
 <!-- Выбранные ингредиенты -->
         <div class="ingredientsMain">
           <div id="ingredientsSelect">
             <?php
-            include 'connect.php';
-            // session_start();
-            $ingredients = $_GET['ingredients'];
+            $ingredients = $recipe['ingredients'];
+            $quantityIngredients = $recipe['quantityIngredients'];
             ?>
             <div class="selectedIngredientsName">Выбранные ингредиенты:  <?php echo substr_count($ingredients, ',')/2; ?></div>
             <div class="selectedProducts">
               <div class="selectedProductsBox" id="element">
                 <?php
+                $quantityArray = array();
+                $quan = '';
+                for($i = 0; $i < strlen($quantityIngredients); $i++){
+                  if($quantityIngredients[$i]!=","){
+                    $quan = $quan.$quantityIngredients[$i];
+                  }
+                  if($quantityIngredients[$i]=="," && $quan){
+                    $quantityArray[count($quantityArray)] = $quan;
+                    $quan = '';
+                  }
+                }
+                $ingredientsArray = array();
                 $ing = '';
                 for($i = 0; $i < strlen($ingredients); $i++){
                   if($ingredients[$i]!=","){
                     $ing = $ing.$ingredients[$i];
                   }
                   if($ingredients[$i]=="," && $ing){
+                    $ingredientsArray[count($ingredientsArray)] = $ing;
                     $query = mysqli_query($conn, "SELECT * FROM `ingredients` WHERE `id`='$ing'");
                     $ingredient = mysqli_fetch_assoc($query);
                     $nameBar = "'".'selectedIng'.$ingredient['id']."'";
@@ -109,7 +135,7 @@ include 'header.php';
                     <div class="selectedProduct">
                       <div class="productBox" style = "background: url(./images/ingredients/' . $ingredient['image'] . ') no-repeat center center; background-size: cover;" onclick="DeleteIngredient('.$ingredient['id'].');"></div>
                         <div class="numberText">количество:</div>
-                      <input type="number" min="0.001" value = "0.001" step="0.001" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'" onchange="Save('.$nameBar.','.$nameBar.');">
+                      <input type="number" min="0.001" value = "'.$quantityArray[count($ingredientsArray)-1].'" step="0.001" class="number" name="selectedIng'.$ingredient['id'].'" id="selectedIng'.$ingredient['id'].'">
                     </div>';
                     $ing = '';
                   }
@@ -193,11 +219,11 @@ include 'header.php';
             </div>
         </div>
 <!-- Выбранные кухонные принадлежности -->
-        <div class="kitckenUtensilsText"><div class="kitckenUtensilsText1">Выбери кухонные принадлежности:</div></div>
+        <div class="kitckenUtensilsText"><div class="kitckenUtensilsText1">Кухонные принадлежности:</div></div>
         <div class="kitckenUtensilsMain">
           <div id="inventorySelect">
             <?php
-            $inventory = $_GET['inventory'];
+            $inventory = $recipe['inventory'];
             ?>
             <div class="selectedKitckenUtensilsName">Выбранные кухонные принадлежнсти:  <?php echo substr_count($inventory, ',')/2; ?></div>
             <div class="selectedKitckenUtensils">
@@ -298,15 +324,25 @@ include 'header.php';
         <div class="stepsText"><div class="stepsText1">Напишите шаги:</div></div>
         <div class="stepsMain" id="steps">
           <?php
-            $countOfSteps = $_GET['countOfSteps'];
-            if(!$_GET['countOfSteps']) $countOfSteps = 1;
+            $countOfSteps = substr_count($recipe['steps'], '$');
+            $stepsArray = array();
+            $step = '';
+            for($i = 0; $i < strlen($recipe['steps']); $i++){
+              if($recipe['steps'][$i]!="$"){
+                $step = $step.$recipe['steps'][$i];
+              }
+              if($recipe['steps'][$i]=="$" && $step){
+                $stepsArray[count($stepsArray)] = $step;
+                $step = '';
+              }
+            }
             for ($i=0; $i < $countOfSteps; $i++) {
               $idStep = $i + 1;
               echo '
               <div class="step">
                   <div class="stepNumber" onclick="DeleteStep('.$i.');">'.$idStep.'</div>
                   <div class="stepContent">
-                      <div class="stepBox" id="stepBox'.$idStep.'">
+                      <div class="stepBox" id="stepBox'.$idStep.'" style="background: url(./images/recipes/'.$recipe['id'].'-'.$idStep.'.jpg) no-repeat center center; background-size:cover;">
                         <div class="ava_input__wrapper_2">
                           <input onchange="uploadImageStep(event, '.$idStep.')" type="file" accept=".jpg, .jpeg, .png" type="file" name="imgStep'.$idStep.'" id="imgStep'.$idStep.'" class="ava_input ava_input__file" style = "resize: none">
                           <label for="input__file" class="ava_input__file-button_2" style="cursor:pointer">
@@ -316,7 +352,7 @@ include 'header.php';
                           </label>
                         </div>
                       </div>
-                      <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'" required></textarea>
+                      <textarea class="inputStep" name="step'.$idStep.'" style = "resize: none" id="step'.$idStep.'" required>'.$stepsArray[$i].'</textarea>
                       <input id="stepCount" name="stepCount" style="display:none" value="'.$countOfSteps.'" required>
                   </div>
               </div>';
@@ -435,7 +471,7 @@ include 'header.php';
         elementUpdate('#steps');
       }
 
-      function RelaceTextArea(){
+      /*function RelaceTextArea(){
         document.querySelectorAll('textarea, input').forEach(function(e) {
             if(e.type != 'file'){
               if(e.value === '' && window.sessionStorage.getItem(e.name)) e.value = window.sessionStorage.getItem(e.name);
@@ -444,9 +480,9 @@ include 'header.php';
               })
             }
         })
-      }
+      }*/
 
-      document.addEventListener("DOMContentLoaded", function() {
+      /*document.addEventListener("DOMContentLoaded", function() {
           RelaceTextArea();
           ReplaceNumberInput();
           ReplaceAddressBar();
@@ -470,7 +506,7 @@ include 'header.php';
           }
 
           UpdatePhotoSteps();
-      });
+      });*/
 
       function UpdatePhotoSteps(){
         for (var i = 1; i <= document.getElementById("stepCount").value; i++) {
