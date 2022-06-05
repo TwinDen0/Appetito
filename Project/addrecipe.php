@@ -82,12 +82,6 @@ include 'header.php';
 
         <button type="submit" class="sendRecipe">Отправить рецепт</button>
 
-        
-<!-- Кнопочки админа -->
-        <button type="submit" class="AdminButtonOk">Принять</button>
-        <button type="submit" class="AdminButtonNo">Отклонить</button>
-<!-- Кнопочки админа -->
-
 
         <div class="chooseIngredientsText"><div class="chooseIngredientsText1">Выбери Ингредиенты:</div></div>
 <!-- Выбранные ингредиенты -->
@@ -205,7 +199,7 @@ include 'header.php';
             <?php
             $inventory = $_GET['inventory'];
             ?>
-            <div class="selectedKitckenUtensilsName">Выбранные кухонные принадлежнсти:  <?php echo substr_count($inventory, ',')/2; ?></div>
+            <div class="selectedKitckenUtensilsName">Выбранные кухонные принадлежности:  <?php echo substr_count($inventory, ',')/2; ?></div>
             <div class="selectedKitckenUtensils">
               <div class="selectedKitckenUtensilsBox" id="element">
                 <?php
@@ -309,8 +303,9 @@ include 'header.php';
             for ($i=0; $i < $countOfSteps; $i++) {
               $idStep = $i + 1;
               echo '
-              <div class="step">
-                  <div class="stepNumber" onclick="DeleteStep('.$i.');">'.$idStep.'</div>
+              <div class="step">';
+              if($idStep==$countOfSteps && $idStep!=1) echo '<div style="background:url(images/shoppingList/off.png) no-repeat center center; background-size:cover; cursor:pointer;" class = "deleteStep" onclick="DeleteStep('.$i.');"></div>';
+              echo'<div class="stepNumber">'.$idStep.'</div>
                   <div class="stepContent">
                       <div class="stepBox" id="stepBox'.$idStep.'">
                         <div class="ava_input__wrapper_2">
@@ -436,6 +431,7 @@ include 'header.php';
         let id = "step"+(steps+1);
         let step = document.getElementById(id);
         window.sessionStorage.setItem(id, '');
+        window.sessionStorage.setItem("stepPhoto"+(steps+1), '');
 
         ReplaceAddressBar();
         elementUpdate('#steps');

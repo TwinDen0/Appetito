@@ -42,7 +42,7 @@ $id = $user['id'];
 			<label class = "heading_add">Изображение профиля</label>
 
 			<div class="ava_input__wrapper">
-				<input  type="file" name="avatar" id="input__file" class="ava_input ava_input__file" multiple>
+				<input  type="file" accept=".jpg, .jpeg, .png" name="avatar" id="input__file" class="ava_input ava_input__file" multiple>
 				<label for="input__file" class="ava_input__file-button">
 					<span class="ava_input__file-icon-wrapper">
 					<img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
@@ -70,8 +70,8 @@ $id = $user['id'];
 
 		<img class = "wapper800" src="images/profile/fon800.png">
 		<img class = "fonUp800" src="images/profile/fonUp.png">
-		
-		
+
+
 
 			<img class = "img" src="images/profile/inform.png">
 
@@ -108,27 +108,44 @@ $id = $user['id'];
 			</div>
 
 			<div class = "recipe">
-				<div class = "heading">Избранные рецепты:</div>
+				<?php if($_SESSION['mail'] == 'admin@admin.admin')
+						echo '<div class = "heading">Рецепты ожидающие подтверждения:</div>';
+					else
+						echo '<div class = "heading">Избранные рецепты:</div>';
+				?>
 				<div class = "listDesktop">
 					<div class = "recipeList" id="favoriteRecipeList">
 						<?php
-						$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `id`='$id'");
-						$favoriteRecipes = mysqli_fetch_assoc($query);
-						$favoriteRecipes = $favoriteRecipes['favoriteRecipes'];
-						$inv = '';
-						for($i = 0; $i < strlen($favoriteRecipes); $i++){
-							if($favoriteRecipes[$i]!=","){
-								$rec = $rec.$favoriteRecipes[$i];
+						if($_SESSION['mail'] == 'admin@admin.admin'){
+							$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id`");
+							while($row = mysqli_fetch_assoc($query)){
+								if($row['confirmed'] != 1){
+									echo '
+									<div class = "recipe_img_name">
+										<div class = "recipeBox" style = "background: url(./images/recipes/' . $row['image'] . ') no-repeat center center; background-size: cover; cursor:pointer;" onclick="GoToChangeRecipe('.$row['id'].');"></div>
+										<div class = "recipeBox_Text"><p>'.$row['name'].'</p></div>
+									</div>';
+								}
 							}
-							if($favoriteRecipes[$i]=="," && $rec){
-								$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$rec'");
-								$recipe = mysqli_fetch_assoc($query);
-								echo '
-								<div class = "recipe_img_name">
-									<div class = "recipeBox" style = "background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover; cursor:pointer;" onclick="GoToRecipe('.$recipe['id'].');"></div>
-									<div class = "recipeBox_Text"><p>'.$recipe['name'].'</p></div>
-								</div>';
-								$rec = '';
+						}else{
+							$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `id`='$id'");
+							$favoriteRecipes = mysqli_fetch_assoc($query);
+							$favoriteRecipes = $favoriteRecipes['favoriteRecipes'];
+							$inv = '';
+							for($i = 0; $i < strlen($favoriteRecipes); $i++){
+								if($favoriteRecipes[$i]!=","){
+									$rec = $rec.$favoriteRecipes[$i];
+								}
+								if($favoriteRecipes[$i]=="," && $rec){
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$rec'");
+									$recipe = mysqli_fetch_assoc($query);
+									echo '
+									<div class = "recipe_img_name">
+										<div class = "recipeBox" style = "background: url(./images/recipes/' . $recipe['image'] . ') no-repeat center center; background-size: cover; cursor:pointer;" onclick="GoToRecipe('.$recipe['id'].');"></div>
+										<div class = "recipeBox_Text"><p>'.$recipe['name'].'</p></div>
+									</div>';
+									$rec = '';
+								}
 							}
 						}
 						?>
@@ -168,7 +185,7 @@ $id = $user['id'];
 				<label class = "tabsText" for="tab-btn-1">Сохраненные рецепты</label>
 				<input type="radio" name="tab-btn" id="tab-btn-2" value="">
 				<label class = "tabsText" for="tab-btn-2">Мои рецепты</label>
-			
+
 				<div id="content-1" class = "list1">
 				  <div class = "recipeList">
 				  <?php
@@ -228,13 +245,13 @@ $id = $user['id'];
 					function scrollHorizontally1(e) {
 							e = window.event || e;
 							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-							document.getElementById('favoriteRecipeList').scrollLeft += (delta * 70); // Multiplied by 40
+							document.getElementById('favoriteRecipeList').scrollLeft -= (delta * 70); // Multiplied by 40
 							e.preventDefault();
 					}
 					function scrollHorizontally2(e) {
 							e = window.event || e;
 							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-							document.getElementById('myRecipeList').scrollLeft += (delta * 70); // Multiplied by 40
+							document.getElementById('myRecipeList').scrollLeft -= (delta * 70); // Multiplied by 40
 							e.preventDefault();
 					}
 					if (document.getElementById('favoriteRecipeList').addEventListener) {
@@ -262,6 +279,9 @@ $id = $user['id'];
 				}
 				function GoToRecipe(id){
 					location.href = "http://project/recipe.php?id=" + id;
+				}
+				function GoToChangeRecipe(id){
+					location.href = "http://project/changerecipe.php?id=" + id;
 				}
 				function AddPhoto(){
 					let massage = document.getElementById('massage');

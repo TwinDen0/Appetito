@@ -8,6 +8,7 @@
 
   $id = $_POST['id'];
   $quantityIng = $_POST['quantity'];
+  $quantityIng = round($quantityIng, 3);
   $find=",".$id ."-";
   if(strpos($shoppingList, $find) === false){
     $shoppingList = ",".$id ."-".$quantityIng.",".$shoppingList;
@@ -27,5 +28,5 @@
       }
     }
   }
-  mysqli_query($conn, "UPDATE `users` SET `ShoppingList` = '$shoppingList' WHERE `mail` = '$mail'");
+  if($quantityIng > 0 && $quantityIng < 10000) mysqli_query($conn, "UPDATE `users` SET `ShoppingList` = '$shoppingList' WHERE `mail` = '$mail'");
  ?>

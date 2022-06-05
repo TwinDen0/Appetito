@@ -9,6 +9,7 @@ $SelectedIng = '';
         <meta name = "viewport" content = "width=device-width">
 		<title>Поиск рецепта</title>
 		<link href = "style/styleSearch.css" rel = "stylesheet" type = "text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	</head>
 
 
@@ -17,7 +18,7 @@ $SelectedIng = '';
     ?>
 
     <body>
-	<div class = "wapper"></div>
+	<div class = "wapper" id="maain"></div>
 			<?php
 				include 'connect.php';
 				session_start();
@@ -28,6 +29,10 @@ $SelectedIng = '';
 				$query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
 				$selectedIngredientInSearch = mysqli_fetch_assoc($query);
 				$selectedIngredientInSearch = $selectedIngredientInSearch['SelectedIngredientInSearch'];
+
+				if ($_SESSION['auth'] == false) {
+					$selectedIngredientInSearch = $_GET['ingredients'];
+				}
 			?>
 
 		<div class = "main800" style="display: flex">
@@ -39,7 +44,8 @@ $SelectedIng = '';
 				<div class = "boxFilter">
 				<?php
 					if ($_SESSION['auth'] == false){?>
-					<?php 
+						<div style="display:none;" id="auth"></div>
+					<?php
 					} else {
 					?>
 
@@ -178,7 +184,7 @@ $SelectedIng = '';
 
 				<div class = "selectoinBox" id="selectionBox">
 					<?php
-						if($_GET['selectAdd']){
+						/*if($_GET['selectAdd']){
 							$id = $_GET['selectAdd'];
 							if(!strstr($selectedIngredientInSearch, ",".$id.",")){
 								$selectedIngredientInSearch = $selectedIngredientInSearch.",".$id.",";
@@ -190,7 +196,7 @@ $SelectedIng = '';
 							$id = $_GET['selectDelete'];
 							$selectedIngredientInSearch = str_replace(",".$id."," , '' , $selectedIngredientInSearch);
 							mysqli_query($conn, "UPDATE `users` SET `SelectedIngredientInSearch` = '$selectedIngredientInSearch' WHERE `mail` = '$mail'");
-						}
+						}*/
 					?>
 					<!-- Продукты-->
 					<div class = "boxFood" id = "boxFood">
@@ -354,6 +360,7 @@ $SelectedIng = '';
 								break;
 						}
 						while($recipe = mysqli_fetch_assoc($query)){
+							$match = 0;
 							$recipesInventory = $recipe['inventory'];
 							$recipesIngredients = $recipe['ingredients'];
 							$inv = '';
@@ -363,6 +370,7 @@ $SelectedIng = '';
 									$ing = $ing.$selectedIngredientInSearch[$i];
 								}
 								if($selectedIngredientInSearch[$i]=="," && $ing){
+									if(strpos($recipesIngredients, ",".$ing.",") !== false) $match += 1;
 									$recipesIngredients = str_replace(",".$ing."," , '' , $recipesIngredients);
 									$ing = '';
 								}
@@ -384,7 +392,7 @@ $SelectedIng = '';
 							}
 							$recipesInventory = str_replace("null" , '' , $recipesInventory);
 							if(($kitchen == $recipe['kitchen'] || $kitchen =="Любое" || !$kitchen) && ((!$recipesIngredients && !$recipesInventory)||
-							($extra=='1' && substr_count($recipesIngredients, ',')/2 <= 4 && substr_count($recipesInventory, ',')/2 <= 4))){
+							($extra=='1' && $match > 0)) && $recipe['confirmed']=='1'){
 								$time =  $recipe['time'];
 								$hours = intdiv($time,60);
 								if($hours < 1) $hours = '00';
@@ -403,6 +411,8 @@ $SelectedIng = '';
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
 											<div> Стоимость: ' . $recipe['price'] . '</div>';
+											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
+											echo '<div style="height:20px"> Совпало ингредиентов: '.$match.'</div>';
 											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
 											echo '<div style="height:20px"> Не хватает  ингредиентов: ' . substr_count($recipesIngredients, ',')/2 . '</div>';
 											if($extra=='1' && substr_count($recipesInventory, ',')/2 > 0)
@@ -429,6 +439,11 @@ $SelectedIng = '';
 			let extraRecipes = '0';
 			let useInventory = 0;
 			let sortKitchen=document.getElementById('sortKitchen');
+			let auth = 1;
+			let ingredients = "";
+			if(document.querySelector('#auth')){
+				auth = 0;
+			}
 
 			document.addEventListener("DOMContentLoaded", function() {
 				var location = window.location.href;
@@ -444,58 +459,75 @@ $SelectedIng = '';
       });
 
 			sortKitchen.addEventListener('change', function(){
-			    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+			    UpdateAdres();
 			    elementUpdate('#recipe');
 			});
 
-		  el.addEventListener('change', function(){
-		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+		  sort.addEventListener('change', function(){
+		    UpdateAdres();
 				localStorage.setItem('boxFood', 0);
 		    elementUpdate('#selectionBox');
 		  });
 
 		  sortRecipes.addEventListener('change', function(){
-		    window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&onlySelect='+valueOnlySelect+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value+"&kitchen="+sortKitchen.value);
+		    UpdateAdres();
 		    elementUpdate('#recipe');
 		  });
 
 		  onlySelect.addEventListener('change', function(){
 				if (onlySelect.checked) valueOnlySelect = 'v'; else valueOnlySelect = '-';
-				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				UpdateAdres();
 				localStorage.setItem('boxFood', 0);
 		    elementUpdate('#selectionBox');
 		  });
 
 		  extra.addEventListener('change', function(){
 				if (extra.checked) extraRecipes = '1'; else extraRecipes = '0';
-				window.history.replaceState('1', 'Title', '?sort='+el.value+'&category='+category+'&sortRecipes='+sortRecipes.value+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				UpdateAdres();
 		    elementUpdate('#recipe');
 		  });
 
 		  function ClickCategory(categ){
-		    window.history.replaceState('1', 'Title', '?category='+categ+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
 		    category = categ;
+				UpdateAdres();
 				localStorage.setItem('boxFood', 0);
 		    elementUpdate('#selectionBox');
 		  };
 
 			function updatePrice(){
-				window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				UpdateAdres();
 				elementUpdate('#recipe');
 			}
 
 			function ClickIngredient(id){
 				let ingredient = document.querySelector('#ingredientImg'+id);
-				if(ingredient.src == 'http://project/images/no.png')
-					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectAdd='+id+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
-				else
-					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&selectDelete='+id+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
-				console.log(ingredient.src);
-					let boxFood = document.querySelector('#boxFood');
+				let boxFood = document.querySelector('#boxFood');
 				localStorage.setItem('boxFood', boxFood.scrollTop);
-		    	elementUpdate('#selectionBox');
-				elementUpdate('#recipe');
-				elementUpdate('#choice');
+				if(auth == 0){
+					if(ingredient.src == 'http://project/images/no.png'){
+						ingredients = ingredients+","+id+",";
+					}
+					else{
+						ingredients = ingredients.replace(","+id+",",'');
+					}
+					UpdateAdres();
+					elementUpdate('#selectionBox');
+					elementUpdate('#recipe');
+					elementUpdate('#choice');
+				}else{
+					if(ingredient.src == 'http://project/images/no.png'){
+						$.post('php/addSearchRecipe.php', {'id':id}, function() {
+							elementUpdate('#selectionBox');
+							elementUpdate('#recipe');
+							elementUpdate('#choice');});
+					}
+					else{
+						$.post('php/deleteSearchRecipe.php', {'id':id}, function() {
+							elementUpdate('#selectionBox');
+							elementUpdate('#recipe');
+							elementUpdate('#choice');});
+					}
+				}
 		  }
 
 			function GoToInventory(){
@@ -509,7 +541,7 @@ $SelectedIng = '';
 			function UseInventory(){
 				if(useInventory == 0) useInventory = 1;
 				else useInventory = 0;
-				window.history.replaceState('1', 'Title', '?category='+category+'&sort='+el.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				UpdateAdres();
 				elementUpdate('#recipe');
 			}
 
@@ -529,6 +561,13 @@ $SelectedIng = '';
 			  }
 			}
 
+			function UpdateAdres(){
+				if(auth == 0){
+					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+sort.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value+"&ingredients="+ingredients);
+				}else{
+					window.history.replaceState('1', 'Title', '?category='+category+'&sort='+sort.value+'&sortRecipes='+sortRecipes.value+'&onlySelect='+valueOnlySelect+'&extra='+extraRecipes+"&min="+sliderOne.value+"&max="+sliderTwo.value+"&useInventory="+useInventory+"&kitchen="+sortKitchen.value);
+				}
+			}
 
 			(function() {
 					function scrollHorizontally1(e) {

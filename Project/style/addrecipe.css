@@ -667,7 +667,13 @@ footer {
     padding-top: 0px;
     font-size: 12px;
 }
-
+.deleteStep {
+  position: absolute;
+    width: 4vw;
+    height: 4vw;
+    margin-top: 2%;
+    margin-left: 57%;
+}
 
 @media screen and (max-width: 1200px) {
     .popularity {
