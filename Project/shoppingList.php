@@ -14,7 +14,7 @@
 	include 'header.php';
     ?>
 
-<div class = "wapper"></div>
+  <div class = "wapper"></div>
 <?php
  if ($_SESSION['auth'] == false){?>
     <div class="error"><p>Список покупок доступен только зарегестрированным пользователям</p>
