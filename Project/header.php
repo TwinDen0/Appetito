@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+  ini_set('session.cookie_domain', 'buonappetito.site');
+  session_set_cookie_params(7200, "/", "buonappetito.site", false, false);
   session_start();
 ?>
 <html>
@@ -24,7 +26,7 @@
     <header>
 	<ul class = "menuHeader">
 		<div class = "containerHeader">
-			<?php 
+			<?php
 			if(( $_SERVER['REQUEST_URI'] != "/")){
 				if( $_SERVER['REQUEST_URI'] != "/index.php"){
 			?>
@@ -35,8 +37,8 @@
 				</div>
 
 				<div class = "split"></div>
-			<?php 
-				} 
+			<?php
+				}
 			}
 			?>
 
@@ -82,7 +84,7 @@
 				<?php } ?>
 
 			<?php } ?>
-			
+
 	<!-- регистрация и вход !-->
 
 				<?php if($_SERVER['REQUEST_URI'] != "/profile.php"){ ?>
@@ -94,7 +96,7 @@
 							<div onclick="location.href='./profile.php'" class = "nameheader"> <?php echo($_SESSION['name']) ?> </div>
 							<div style = "margin-left: 15px;" onclick="location.href='./profile.php'">
 								<div <?php echo 'style = "
-								background: url(./images/avatars/' . $_SESSION['avatar'] . '); 
+								background: url(./images/avatars/' . $_SESSION['avatar'] . ');
 								background-size: cover;
 								background-repeat:no-repeat;
 								background-position: center center;

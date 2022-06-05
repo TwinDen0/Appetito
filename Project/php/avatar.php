@@ -10,7 +10,7 @@
     $email = $_SESSION['mail'];
 
     if(move_uploaded_file($avatar['tmp_name'], $uploadfile)){
-      $mysql = new mysqli('127.0.0.1','mysql','','buon_appetito');
+      $mysql = new mysqli('localhost','m105407_dbuser','KD~o~jy&E:~t!%bX','m105407_db');
       $result = $mysql->query("SELECT * FROM `users` WHERE `mail` = '$email'");
       $oldAvatar = $result->fetch_assoc();
       if($oldAvatar['avatar'] != "default.jpg") unlink('../images/avatars/'.$oldAvatar['avatar']);

@@ -1,3 +1,6 @@
+<?php
+session_start();
+if($_SESSION['mail']=="appetito@mail.ru"){?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +23,6 @@ include 'header.php';
 
 <body>
   <?php
-    session_start();
     include 'connect.php';
     $id = $_GET['id'];
     $query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id` = '$id'");
@@ -525,3 +527,4 @@ include 'header.php';
 include 'menuMobile.php';
 ?>
 </html>
+<?php }; ?>

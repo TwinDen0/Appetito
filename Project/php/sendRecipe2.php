@@ -60,6 +60,11 @@
       $row = mysqli_fetch_assoc($query);
       $price += $quantity4Price[$i] * $row['price'];
     }
+    $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
+    $user = mysqli_fetch_assoc($query);
+    $myRecipes = $user['myRecipes'];
+    $myRecipes = ",".$id.",".$myRecipes;
+    mysqli_query($conn, "UPDATE `users` SET `myRecipes` = '$myRecipes' WHERE `mail` = '$mail'");
     $sql = "INSERT INTO `recipes` (`id`, `name`, `image`, `description`, `author`, `steps`, `time`, `calories`, `price`, `kitchen`, `likes`, `ingredients`, `quantityIngredients`, `inventory`, `reviews`) VALUES (NULL, '$name', '$image', '$description', '$mail', '$steps','$time','$calories','$price','$kitchen','$likes','$ingredients','$quantityIngredients','$inventory','$reviews');";
     $conn->query($sql);
     $conn->close();

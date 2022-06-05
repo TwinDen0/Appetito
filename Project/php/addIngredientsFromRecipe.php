@@ -1,6 +1,6 @@
 <?php
-include '../connect.php';
 session_start();
+include '../connect.php';
 $mail = $_SESSION['mail'];
 $query = mysqli_query($conn, "SELECT * FROM `users` WHERE `mail` = '$mail'");
 $shoppingList = mysqli_fetch_assoc($query);
