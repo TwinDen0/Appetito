@@ -42,7 +42,7 @@ $id = $user['id'];
 			<label class = "heading_add">Изображение профиля</label>
 
 			<div class="ava_input__wrapper">
-				<input  type="file" name="avatar" id="input__file" class="ava_input ava_input__file" multiple>
+				<input  type="file" accept=".jpg, .jpeg, .png" name="avatar" id="input__file" class="ava_input ava_input__file" multiple>
 				<label for="input__file" class="ava_input__file-button">
 					<span class="ava_input__file-icon-wrapper">
 					<img class="ava_input__file-icon" src="images/profile/add.png" alt="Выбрать файл" width="25"></span>
@@ -245,13 +245,13 @@ $id = $user['id'];
 					function scrollHorizontally1(e) {
 							e = window.event || e;
 							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-							document.getElementById('favoriteRecipeList').scrollLeft += (delta * 70); // Multiplied by 40
+							document.getElementById('favoriteRecipeList').scrollLeft -= (delta * 70); // Multiplied by 40
 							e.preventDefault();
 					}
 					function scrollHorizontally2(e) {
 							e = window.event || e;
 							var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-							document.getElementById('myRecipeList').scrollLeft += (delta * 70); // Multiplied by 40
+							document.getElementById('myRecipeList').scrollLeft -= (delta * 70); // Multiplied by 40
 							e.preventDefault();
 					}
 					if (document.getElementById('favoriteRecipeList').addEventListener) {
