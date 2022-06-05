@@ -329,6 +329,7 @@ img {
     vertical-align: top;
     margin-right: 1%;
     margin-bottom: 0%;
+    word-break: break-word;
     /* margin-top: 17%; */
     text-align: center;
     font-size: 14px;
