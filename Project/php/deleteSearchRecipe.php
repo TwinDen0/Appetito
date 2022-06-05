@@ -1,6 +1,6 @@
 <?php
-include '../connect.php';
 session_start();
+include '../connect.php';
 
 $mail = $_SESSION['mail'];
 $id = $_POST['id'];

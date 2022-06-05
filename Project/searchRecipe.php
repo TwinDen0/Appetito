@@ -1,4 +1,5 @@
 <?php
+session_start();
 $SelectedIng = '';
 ?>
 <!DOCTYPE html>
@@ -134,7 +135,6 @@ $SelectedIng = '';
 							<img src="images/category/carrot.png" class = "categoryImage" title="Овощи" onclick="ClickCategory('Овощи');">
 							<img src="images/category/nut.png" class = "categoryImage" title="Орехи" onclick="ClickCategory('Орехи');">
 							<img src="images/category/sauce.png" class = "categoryImage" title="Соусы" onclick="ClickCategory('Соусы');">
-							<img src="images/category/spices.png" class = "categoryImage" title="Специи" onclick="">
 							<img src="images/category/cheese.png" class = "categoryImage" title="Сыры" onclick="ClickCategory('Сыры');">
 							<img src="images/category/apple.png" class = "categoryImage" title="Фрукты" onclick="ClickCategory('Фрукты');">
 							<img src="images/category/blackberry.png" class = "categoryImage" title="Ягоды" onclick="ClickCategory('Ягоды');">
@@ -410,7 +410,8 @@ $SelectedIng = '';
 											<div> ' . $recipe['name'] . '</div>
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
-											<div> Стоимость: ' . $recipe['price'] . '</div>';
+											<div> Стоимость: ' . $recipe['price'] . '</div>
+											<div> Лайков: ' . $recipe['likes'] . '</div>';
 											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
 											echo '<div style="height:20px"> Совпало ингредиентов: '.$match.'</div>';
 											if($extra=='1' && substr_count($recipesIngredients, ',')/2 > 0)
@@ -504,7 +505,7 @@ $SelectedIng = '';
 				let boxFood = document.querySelector('#boxFood');
 				localStorage.setItem('boxFood', boxFood.scrollTop);
 				if(auth == 0){
-					if(ingredient.src == 'http://project/images/no.png'){
+					if(ingredient.src == './images/no.png'){
 						ingredients = ingredients+","+id+",";
 					}
 					else{
@@ -515,7 +516,7 @@ $SelectedIng = '';
 					elementUpdate('#recipe');
 					elementUpdate('#choice');
 				}else{
-					if(ingredient.src == 'http://project/images/no.png'){
+					if(ingredient.src == 'https://buonappetito.site/images/no.png'){
 						$.post('php/addSearchRecipe.php', {'id':id}, function() {
 							elementUpdate('#selectionBox');
 							elementUpdate('#recipe');
@@ -531,11 +532,11 @@ $SelectedIng = '';
 		  }
 
 			function GoToInventory(){
-				location.href = "http://project/inventory.php";
+				location.href = "./inventory.php";
 			}
 
 			function GoToRecipe(id){
-				location.href = "http://project/recipe.php?id=" + id;
+				location.href = "./recipe.php?id=" + id;
 			}
 
 			function UseInventory(){

@@ -1,3 +1,5 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,18 +22,18 @@
     <div class="error"><p>Список покупок доступен только зарегестрированным пользователям</p>
                         <p style="color: #f5980e;margin-top: 1%;">Войдите или зарегистрируйтесь</p></div>
 
-                       
+
               <div class = "blockAuth">
                   <div  onclick="location.href='../login.php'"href="#" class = "btn">Войти</div>
                   <div  onclick="location.href='../registration.php'"href="#" class = "btn">Регистрация</div>
               </div>
 
-<?php 
+<?php
   } else {
 ?>
 
 <body>
-    
+
     <div id = "background" onclick = "closeList()" class = "background"></div>
     <div class="main">
         <div class="shoppingList" id = "ShoppingList" >
@@ -105,7 +107,6 @@
                     <img title="Овощи" src="images/category/carrot.png" class = "categoryBlock1" onclick="ClickCategory('Овощи');">
                     <img title="Орехи" src="images/category/nut.png" class = "categoryBlock1" onclick="ClickCategory('Орехи');">
                     <img title="Соусы" src="images/category/sauce.png" class = "categoryBlock1" onclick="ClickCategory('Соусы');">
-                    <img title="" src="images/category/spices.png" class = "categoryBlock1" onclick="">
                     <img title="Сыры" src="images/category/cheese.png" class = "categoryBlock1" onclick="ClickCategory('Сыры');">
                     <img title="Фрукты" src="images/category/apple.png" class = "categoryBlock1" onclick="ClickCategory('Фрукты');">
                     <img title="Ягоды" src="images/category/blackberry.png" class = "categoryBlock1" onclick="ClickCategory('Ягоды');">

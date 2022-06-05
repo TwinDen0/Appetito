@@ -1,7 +1,7 @@
-<!DOCTYPE html>
 <?php
   session_start();
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset = "UTF-8" />
@@ -10,7 +10,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Главная страница</title>
 		<link href = "style/styleMain.css" rel = "stylesheet" type = "text/css"/>
-        <script src="scripts/home.js"></script>
+    <script src="scripts/home.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +69,7 @@
 
                 <div class = "flex">
                     <img src = "images/main/пиплы-05.png" class = "people">
-                    <div class = "description">и... Наслаждайся!<br> <br>   
+                    <div class = "description">и... Наслаждайся!<br> <br>
                     </div>
                 </div>
             </div>

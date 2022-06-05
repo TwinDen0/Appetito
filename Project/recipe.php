@@ -1,3 +1,5 @@
+<?php
+session_start(); ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,14 +73,13 @@
 
 					<div class = "header">' . $recipe['name'] . '</div>
 
-					
+
 					<div class="like">';
-					
-				
+
 						if ($_SESSION['auth'] == false){?>
-						<?php 
+						<?php
 						} else {
-						
+
 							if($like == "0"){
 								echo '<button class="like-toggle basic2">♥</button>';
 							}else{
@@ -87,9 +88,12 @@
 						}
 							echo'
 					</div>
-				</div>
-
-	            <div class = "description">' . $recipe['description'] . '</div>
+				</div>';
+				if($_SESSION['mail']=="appetito@mail.ru")
+				echo '<div class = "addFoodBox" style="margin-top: 2%; margin-bottom: 2%">
+												<button class = "addFood" style = "margin:0 auto" onclick="GoChange('.$recipe['id'].')">Редактировать</button>
+				 </div>';
+	            echo'<div class = "description">' . $recipe['description'] . '</div>
 	            <div class = "Line">
 	                <div class = "onLine">
 	                    <div class = "textOnLine">Время приготовления: ' . $hours . ':' . $minutes . '</div>
@@ -160,7 +164,7 @@
 
 					<?php
 					if ($_SESSION['auth'] == false){?>
-					<?php 
+					<?php
 					} else {
 					?>
 						<div class = "addFoodBox">
@@ -235,7 +239,7 @@
 
 							<?php
 							if ($_SESSION['auth'] == false){?>
-							<?php 
+							<?php
 							} else {
 							?>
 
@@ -250,7 +254,7 @@
 								};
 								?>
 							</div>
-							
+
 							<?php
 								$reviews =  $recipe['reviews'];
 								if (!$reviews) echo '<div style="margin:auto; padding: 5%">Пока пусто</div>';
@@ -297,6 +301,9 @@
 				<script>
 					function AddIngredients(id){
 						$.post('php/addIngredientsFromRecipe.php', {'id':id},function() {elementUpdate('#phpCode'); alert("Продукты успешно добавленны в ваш список покупок!");});
+					}
+					function GoChange(id){
+						location.href='./changerecipe.php?id='+id;
 					}
 				</script>
 

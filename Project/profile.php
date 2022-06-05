@@ -35,7 +35,6 @@ $id = $user['id'];
     ?>
 
     <body>
-
 		<div id="massage" class="ava_massage">
 			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 			<form action="../php/avatar.php" class="ava_ava_add" method="post" enctype="multipart/form-data">
@@ -108,7 +107,7 @@ $id = $user['id'];
 			</div>
 
 			<div class = "recipe">
-				<?php if($_SESSION['mail'] == 'admin@admin.admin')
+				<?php if($_SESSION['mail'] == 'appetito@mail.ru')
 						echo '<div class = "heading">Рецепты ожидающие подтверждения:</div>';
 					else
 						echo '<div class = "heading">Избранные рецепты:</div>';
@@ -116,7 +115,7 @@ $id = $user['id'];
 				<div class = "listDesktop">
 					<div class = "recipeList" id="favoriteRecipeList">
 						<?php
-						if($_SESSION['mail'] == 'admin@admin.admin'){
+						if($_SESSION['mail'] == 'appetito@mail.ru'){
 							$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `id`");
 							while($row = mysqli_fetch_assoc($query)){
 								if($row['confirmed'] != 1){
@@ -275,13 +274,13 @@ $id = $user['id'];
 				})();
 
 				function GoToAddRecipe(){
-					location.href = "http://project/addRecipe.php";
+					location.href = "./addrecipe.php";
 				}
 				function GoToRecipe(id){
-					location.href = "http://project/recipe.php?id=" + id;
+					location.href = "./recipe.php?id=" + id;
 				}
 				function GoToChangeRecipe(id){
-					location.href = "http://project/changerecipe.php?id=" + id;
+					location.href = "./changerecipe.php?id=" + id;
 				}
 				function AddPhoto(){
 					let massage = document.getElementById('massage');

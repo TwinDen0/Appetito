@@ -1,4 +1,5 @@
 <?php
+session_start();
 $SelectedIng = '';
 ?>
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ $SelectedIng = '';
 							<option value="2" <?php if($sortRecipes=="2") echo 'selected="selected"' ?>>По времени приготовления</option>
 							<option value="3" <?php if($sortRecipes=="3") echo 'selected="selected"' ?>>По каллорийности</option>
 							<option value="4" <?php if($sortRecipes=="4") echo 'selected="selected"' ?>>По цене</option>
-							<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добовления</option>
+							<option value="5" <?php if($sortRecipes=="5") echo 'selected="selected"' ?>>По дате добавления</option>
 						</select>
 					</div>
 
@@ -115,9 +116,9 @@ $SelectedIng = '';
 								break;
 							case "1":
 								if($kitchen=="Любое" || $kitchen=="")
-									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes`");
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` ORDER BY `likes` DESC");
 								else
-									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `likes`");
+									$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `kitchen` = '$kitchen' ORDER BY `likes` DESC");
 								break;
 							case "2":
 								if($kitchen=="Любое" || $kitchen=="")
@@ -169,6 +170,7 @@ $SelectedIng = '';
 											<div> Время приготовления: ' . $hours . ':' . $minutes . '</div>
 											<div> Каллорийность: ' . $recipe['calories'] . '</div>
 											<div> Стоимость: ' . $recipe['price'] . '</div>
+											<div> Лайков: ' . $recipe['likes'] . '</div>
 										</div>
 									</div>
 								</ing>';
@@ -199,7 +201,7 @@ $SelectedIng = '';
 		});
 
 		function GoToRecipe(id){
-			location.href = "http://project/recipe.php?id=" + id;
+			location.href = "./recipe.php?id=" + id;
 		}
 		async function elementUpdate(selector) {
 			try {

@@ -46,7 +46,7 @@ $sql = "INSERT INTO `users` (`name`, `mail`, `avatar`, `pass`, `confirmed`, `tok
 
 $_SESSION['auth'] = true;
 
-$message = 'Привет, ' . $name . '! Для подтверждения вашей почты перейдите по http://project/confirmed.php?token=' . $token . '';
+$message = 'Привет, ' . $name . '! Для подтверждения вашей почты перейдите по ./confirmed.php?token=' . $token . '';
 mail("$mail", 'Подтвердите ваш email', $message, 'From: travelagencyadventure@gmail.com');
 
 $conn->query($sql);
