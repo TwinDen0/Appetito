@@ -2,6 +2,7 @@
 session_start();
 include 'connect.php';
 
+
 $name = htmlspecialchars(trim($_POST['name']));
 $mail = filter_var(trim($_POST['mail']), FILTER_SANITIZE_EMAIL);
 $pass = htmlspecialchars(trim($_POST['pass']));
@@ -13,8 +14,8 @@ $_SESSION['pass'] = htmlspecialchars(trim($_POST['pass']));
 $_SESSION['avatar'] = "0";
 $avatar = $_SESSION['avatar'];
 
-if(mb_strlen($name) < 2 || mb_strlen($name) > 50){
-    $_SESSION['error'] = 'Имя должно быть от 2 до 50 символ';
+if(mb_strlen($name) < 2 || mb_strlen($name) > 10){
+    $_SESSION['error'] = 'Имя должно быть от 2 до 10 символ';
     header('Location: /registration.php');
     exit();
 }

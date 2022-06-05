@@ -32,9 +32,9 @@
 		include 'connect.php';
 		session_start();
 		$mail = $_SESSION['mail'];
-		$id = $_GET['id'];
+		$id = (int) $_GET['id'];
 
-		$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`='$id'");
+		$query = mysqli_query($conn, "SELECT * FROM `recipes` WHERE `id`=$id");
 		$recipe = mysqli_fetch_assoc($query);
 
 		$user = $recipe['author'];
@@ -169,7 +169,7 @@
 						<?php
 					};
 					?>
-					
+
             <div class = "backgroundInventory">
                 <div class = "subheader">Кухонные принадлежности:</div>
                 <div class = "box">
